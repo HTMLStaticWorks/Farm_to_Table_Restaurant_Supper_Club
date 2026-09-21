@@ -23,10 +23,22 @@
         </a>
       </div>
 
-      <!-- Hamburger (≤1024px) — opens sidebar drawer -->
-      <button type="button" class="hamburger-btn dash-hamburger-btn" id="dash-hamburger-btn" aria-label="Open dashboard navigation menu" aria-expanded="false">
-        <i class="ri-menu-4-line"></i>
-      </button>
+      <div class="dash-topbar-right">
+        <!-- RTL Toggle Button (Double Arrow ⇆, No text label) -->
+        <button type="button" class="btn-icon rtl-toggle-btn" aria-label="Toggle RTL layout" title="Switch text direction">
+          <i class="ri-arrow-left-right-line"></i>
+        </button>
+
+        <!-- Theme Toggle Button (Sun/Moon) -->
+        <button type="button" class="btn-icon theme-toggle-btn" aria-label="Toggle Dark / Light Theme" title="Toggle theme mode">
+          <i class="ri-moon-line"></i>
+        </button>
+
+        <!-- Hamburger (≤1024px) — opens sidebar drawer -->
+        <button type="button" class="hamburger-btn dash-hamburger-btn" id="dash-hamburger-btn" aria-label="Open dashboard navigation menu" aria-expanded="false">
+          <i class="ri-menu-4-line"></i>
+        </button>
+      </div>
     </header>
 
     <!-- ==================== DASHBOARD SHELL (SIDEBAR + MAIN CONTENT) ==================== -->
