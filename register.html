@@ -33,7 +33,7 @@
     </div>
   </header>
 
-  <main class="auth-card" style="max-width: 440px; padding: var(--space-5) var(--space-5);">
+  <main class="auth-card">
     <a href="index.html" class="brand-logo auth-logo" title="Return to Homepage">
       <i class="ri-fire-line brand-logo-icon"></i>
       <span>Harvest & Hearth</span>
@@ -73,7 +73,12 @@
         <label class="form-label" for="reg-password">
           Password <span class="required-star">*</span>
         </label>
-        <input type="password" id="reg-password" name="password" class="form-input" placeholder="Min 8 chars" required>
+        <div class="password-input-wrap">
+          <input type="password" id="reg-password" name="password" class="form-input" placeholder="Min 8 chars" required>
+          <button type="button" class="password-toggle-btn" aria-label="Show password" title="Show password">
+            <i class="ri-eye-line"></i>
+          </button>
+        </div>
         <span class="form-error-msg">Min 8 characters.</span>
       </div>
 
@@ -81,7 +86,12 @@
         <label class="form-label" for="reg-confirm-password">
           Confirm Password <span class="required-star">*</span>
         </label>
-        <input type="password" id="reg-confirm-password" name="confirm_password" class="form-input" placeholder="Re-type password" required>
+        <div class="password-input-wrap">
+          <input type="password" id="reg-confirm-password" name="confirm_password" class="form-input" placeholder="Re-type password" required>
+          <button type="button" class="password-toggle-btn" aria-label="Show password" title="Show password">
+            <i class="ri-eye-line"></i>
+          </button>
+        </div>
         <span class="form-error-msg">Must match password.</span>
       </div>
 

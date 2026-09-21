@@ -109,12 +109,19 @@ function initRoleSwitcher() {
   adminNavItems.forEach(item => {
     item.addEventListener('click', (e) => {
       e.preventDefault();
-      setDashboardRole('admin');
+      setDashboardRole('admin', false);
+
+      // Deactivate all sidebar items and activate only the clicked admin item
+      document.querySelectorAll('.sidebar-nav-item').forEach(i => i.classList.remove('active'));
+      item.classList.add('active');
+
       const targetHref = item.getAttribute('href');
       if (targetHref && targetHref.startsWith('#')) {
         const targetEl = document.querySelector(targetHref);
         if (targetEl) {
-          targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          const topbarHeight = 76;
+          const y = targetEl.getBoundingClientRect().top + window.pageYOffset - topbarHeight;
+          window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
         }
       }
       closeDashboardSidebar();
@@ -122,7 +129,7 @@ function initRoleSwitcher() {
   });
 }
 
-function setDashboardRole(role) {
+function setDashboardRole(role, activateFirstAdmin = true) {
   const guestView = document.getElementById('guest-dashboard-view');
   const adminView = document.getElementById('admin-dashboard-view');
   const roleButtons = document.querySelectorAll('.role-tab-btn');
@@ -140,19 +147,35 @@ function setDashboardRole(role) {
     if (guestView) guestView.style.display = 'none';
     if (adminView) adminView.style.display = 'block';
     if (mobileAdminToggle) mobileAdminToggle.classList.add('active');
+
+    // Deactivate guest tabs in sidebar, tabs bar, and dock
     document.querySelectorAll('[data-tab-target]').forEach(t => t.classList.remove('active'));
-    document.querySelectorAll('[data-role-target="admin"]').forEach(item => item.classList.add('active'));
+
+    if (activateFirstAdmin) {
+      document.querySelectorAll('[data-role-target="admin"]').forEach(item => item.classList.remove('active'));
+      const firstAdminItem = document.querySelector('[data-role-target="admin"]');
+      if (firstAdminItem) firstAdminItem.classList.add('active');
+
+      if (adminView) {
+        const topbarHeight = 76;
+        const y = adminView.getBoundingClientRect().top + window.pageYOffset - topbarHeight;
+        window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
+      }
+    }
   } else {
     if (adminView) adminView.style.display = 'none';
     if (guestView) guestView.style.display = 'block';
     if (mobileAdminToggle) mobileAdminToggle.classList.remove('active');
+
+    // Deactivate admin sidebar items
     document.querySelectorAll('[data-role-target="admin"]').forEach(item => item.classList.remove('active'));
-    // Restore default or current guest tab
-    const activeGuestTab = document.querySelector('.dash-nav-tab.active') || document.querySelector('[data-tab-target="guest-tab-bookings"]');
-    if (activeGuestTab) {
-      const tabTarget = activeGuestTab.getAttribute('data-tab-target');
-      switchDashboardTab(tabTarget);
-    }
+
+    // Restore active guest tab
+    const activeGuestTab = document.querySelector('.dash-nav-tab.active') ||
+      document.querySelector('.sidebar-nav-item[data-tab-target].active') ||
+      document.querySelector('[data-tab-target="guest-tab-bookings"]');
+    const tabTarget = activeGuestTab ? activeGuestTab.getAttribute('data-tab-target') : 'guest-tab-bookings';
+    switchDashboardTab(tabTarget, false);
   }
 
   closeDashboardSidebar();
@@ -167,12 +190,28 @@ function initDashboardTabs() {
     tab.addEventListener('click', (e) => {
       e.preventDefault();
       const targetId = tab.getAttribute('data-tab-target');
-      switchDashboardTab(targetId);
+      // Scroll smoothly into view when clicked from sidebar, mobile dock, or banner buttons
+      const shouldScroll = tab.classList.contains('sidebar-nav-item') ||
+        tab.classList.contains('dash-dock-item') ||
+        tab.classList.contains('btn');
+      switchDashboardTab(targetId, shouldScroll);
     });
   });
+
+  // Handle URL hash on initial load if present
+  if (window.location.hash) {
+    const hash = window.location.hash;
+    const tabMatch = document.querySelector(`[data-tab-target="${hash.substring(1)}"]`);
+    const adminMatch = document.querySelector(`[data-role-target="admin"][href="${hash}"]`);
+    if (tabMatch) {
+      switchDashboardTab(hash.substring(1), true);
+    } else if (adminMatch) {
+      adminMatch.click();
+    }
+  }
 }
 
-function switchDashboardTab(targetId) {
+function switchDashboardTab(targetId, shouldScroll = false) {
   if (!targetId) return;
 
   // Make sure we are in Guest view
@@ -192,9 +231,21 @@ function switchDashboardTab(targetId) {
   const mobileAdminToggle = document.getElementById('mobile-dock-admin-toggle');
   if (mobileAdminToggle) mobileAdminToggle.classList.remove('active');
 
-  // Update active state across navigation elements linking to this tab
+  // Deactivate all admin items in sidebar
+  document.querySelectorAll('[data-role-target="admin"]').forEach(item => item.classList.remove('active'));
+
+  // Update active state across all navigation elements linking to this tab:
+  // - Sidebar items (.sidebar-nav-item)
+  // - Horizontal tabs bar (.dash-nav-tab)
+  // - Mobile bottom dock (.dash-dock-item)
   document.querySelectorAll('[data-tab-target]').forEach(t => {
-    if (t.classList.contains('dash-nav-tab') || t.classList.contains('sidebar-link') || t.classList.contains('dock-item')) {
+    if (
+      t.classList.contains('sidebar-nav-item') ||
+      t.classList.contains('dash-nav-tab') ||
+      t.classList.contains('dash-dock-item') ||
+      t.classList.contains('sidebar-link') ||
+      t.classList.contains('dock-item')
+    ) {
       if (t.getAttribute('data-tab-target') === targetId) {
         t.classList.add('active');
       } else {
@@ -212,6 +263,16 @@ function switchDashboardTab(targetId) {
   const targetPane = document.getElementById(targetId);
   if (targetPane) {
     targetPane.style.display = 'block';
+
+    if (shouldScroll) {
+      const tabsBar = document.querySelector('.dash-tabs-bar');
+      const scrollTarget = tabsBar || targetPane;
+      if (scrollTarget) {
+        const topbarHeight = 76;
+        const y = scrollTarget.getBoundingClientRect().top + window.pageYOffset - topbarHeight;
+        window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
+      }
+    }
   }
 
   closeDashboardSidebar();

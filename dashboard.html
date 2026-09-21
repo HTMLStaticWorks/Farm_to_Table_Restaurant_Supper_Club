@@ -14,62 +14,19 @@
 <body>
 
   <div class="dashboard-page">
-    <!-- ==================== PROPER TOP NAVIGATION BAR ==================== -->
+    <!-- ==================== TOP NAVIGATION BAR ==================== -->
     <header class="dash-topbar" id="dash-topbar">
       <div class="dash-topbar-left">
-        <button type="button" class="dash-sidebar-toggle" id="dashboard-sidebar-toggle" aria-label="Toggle navigation sidebar" title="Toggle navigation sidebar menu">
-          <i class="ri-menu-4-line"></i>
-        </button>
-        <a href="index.html" class="brand-logo" title="Back to Harvest & Hearth">
+        <a href="index.html" class="brand-logo" title="Back to Harvest &amp; Hearth">
           <i class="ri-fire-line brand-logo-icon"></i>
-          <span>Harvest & Hearth</span>
+          <span>Harvest &amp; Hearth</span>
         </a>
-        <span class="dash-portal-pill">
-          <i class="ri-shield-star-line"></i> Sanctuary Portal
-        </span>
       </div>
 
-      <div class="dash-topbar-center">
-        <div class="dash-search-box">
-          <i class="ri-search-line"></i>
-          <input type="text" id="dash-global-search" class="dash-search-input" placeholder="Search reservations, cellar, dishes, suppliers...">
-        </div>
-      </div>
-
-      <div class="dash-topbar-right">
-        <!-- Dual Role Switcher -->
-        <div class="role-switcher-tabs" aria-label="Portal View Switcher">
-          <button type="button" class="role-tab-btn active" data-role="guest" id="top-switch-to-guest">
-            <i class="ri-user-smile-line"></i> <span>Guest</span>
-          </button>
-          <button type="button" class="role-tab-btn" data-role="admin" id="top-switch-to-admin">
-            <i class="ri-restaurant-line"></i> <span>Kitchen Admin</span>
-          </button>
-        </div>
-
-        <!-- Direction & Theme Toggles -->
-        <button type="button" class="btn-icon rtl-toggle-btn" aria-label="Toggle RTL layout" title="Switch text direction">
-          <i class="ri-arrow-left-right-line"></i>
-        </button>
-        <button type="button" class="btn-icon theme-toggle-btn" aria-label="Toggle Dark / Light Theme" title="Toggle theme mode">
-          <i class="ri-moon-line"></i>
-        </button>
-
-        <!-- Quick Link to Public Site -->
-        <a href="index.html" class="btn btn-outline dash-site-btn" style="padding: 0.45rem 0.85rem; font-size: 0.85rem;" title="Return to Public Site">
-          <i class="ri-home-4-line"></i> <span>Site</span>
-        </a>
-
-        <!-- Sign Out -->
-        <a href="login.html" class="btn-icon dash-logout-btn" style="color: var(--color-error);" title="Sign out of Sanctuary">
-          <i class="ri-logout-box-r-line"></i>
-        </a>
-
-        <!-- Dedicated Hamburger Menu Button (Mobile, 768px, 1024px) -->
-        <button type="button" class="hamburger-btn dash-hamburger-btn" id="dash-hamburger-btn" aria-label="Open dashboard navigation menu" aria-expanded="false">
-          <i class="ri-menu-4-line"></i>
-        </button>
-      </div>
+      <!-- Hamburger (≤1024px) — opens sidebar drawer -->
+      <button type="button" class="hamburger-btn dash-hamburger-btn" id="dash-hamburger-btn" aria-label="Open dashboard navigation menu" aria-expanded="false">
+        <i class="ri-menu-4-line"></i>
+      </button>
     </header>
 
     <!-- ==================== DASHBOARD SHELL (SIDEBAR + MAIN CONTENT) ==================== -->
@@ -149,24 +106,6 @@
           <a href="#hearth-temp-section" class="sidebar-nav-item" data-role-target="admin">
             <i class="ri-fire-line"></i>
             <span class="sidebar-link-text">Oven Temperatures</span>
-          </a>
-
-          <div class="sidebar-section-title">Public Restaurant</div>
-          <a href="index.html" class="sidebar-nav-item">
-            <i class="ri-home-4-line"></i>
-            <span class="sidebar-link-text">Home Sanctuary</span>
-          </a>
-          <a href="services.html" class="sidebar-nav-item">
-            <i class="ri-restaurant-2-line"></i>
-            <span class="sidebar-link-text">Dining Offerings</span>
-          </a>
-          <a href="about.html" class="sidebar-nav-item">
-            <i class="ri-compass-3-line"></i>
-            <span class="sidebar-link-text">About the Farm</span>
-          </a>
-          <a href="contact.html" class="sidebar-nav-item">
-            <i class="ri-mail-line"></i>
-            <span class="sidebar-link-text">Contact & Booking</span>
           </a>
         </nav>
 

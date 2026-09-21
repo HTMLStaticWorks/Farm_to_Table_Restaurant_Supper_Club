@@ -65,7 +65,12 @@
         <label class="form-label" for="login-password">
           Password <span class="required-star">*</span>
         </label>
-        <input type="password" id="login-password" name="password" class="form-input" placeholder="••••••••" required>
+        <div class="password-input-wrap">
+          <input type="password" id="login-password" name="password" class="form-input" placeholder="••••••••" required>
+          <button type="button" class="password-toggle-btn" aria-label="Show password" title="Show password">
+            <i class="ri-eye-line"></i>
+          </button>
+        </div>
         <span class="form-error-msg">Password must be at least 8 characters.</span>
       </div>
 

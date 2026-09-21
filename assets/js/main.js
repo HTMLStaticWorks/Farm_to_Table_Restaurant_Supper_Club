@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
   highlightActiveNavLink();
   initBackToTop();
   initFAQAccordion();
+  initPasswordToggle();
 });
 
 /* ==========================================================================
@@ -427,6 +428,36 @@ function initFAQAccordion() {
             otherItem.removeAttribute('open');
           }
         });
+      }
+    });
+  });
+}
+
+/* ==========================================================================
+   11. PASSWORD VISIBILITY TOGGLE (EYE ICON)
+   ========================================================================== */
+function initPasswordToggle() {
+  const toggleBtns = document.querySelectorAll('.password-toggle-btn');
+  toggleBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const wrap = btn.closest('.password-input-wrap');
+      if (!wrap) return;
+      const input = wrap.querySelector('input');
+      const icon = btn.querySelector('i');
+      if (!input || !icon) return;
+
+      const isPassword = input.type === 'password';
+      input.type = isPassword ? 'text' : 'password';
+
+      if (isPassword) {
+        icon.className = 'ri-eye-off-line';
+        btn.setAttribute('aria-label', 'Hide password');
+        btn.setAttribute('title', 'Hide password');
+      } else {
+        icon.className = 'ri-eye-line';
+        btn.setAttribute('aria-label', 'Show password');
+        btn.setAttribute('title', 'Show password');
       }
     });
   });

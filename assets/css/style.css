@@ -850,13 +850,15 @@ html[data-theme="dark"] .drawer-close:hover {
     height: 44px;
     margin-left: auto;
   }
-  .brand-logo {
+  .site-header .brand-logo,
+  .nav-container .brand-logo {
     font-size: clamp(1.2rem, 3.5vw, 1.45rem);
     max-width: calc(100% - 60px);
     flex-shrink: 1;
     overflow: hidden;
   }
-  .brand-logo span {
+  .site-header .brand-logo span,
+  .nav-container .brand-logo span {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -2070,27 +2072,58 @@ html[data-theme="dark"] .auth-back-link:hover {
     padding-inline: var(--space-3);
   }
   .auth-card {
-    padding: var(--space-5) var(--space-4);
+    padding: var(--space-5) var(--space-3);
   }
 }
 
+/* Authentication Card Brand Logo (Login & Register Pages) - Prevents mobile text cropping */
+.auth-card .brand-logo,
+.auth-card .auth-logo,
 .auth-logo,
-.auth-logo span,
-a.auth-logo,
-a.auth-logo span {
+a.auth-logo {
   font-family: var(--font-heading);
-  font-size: 1.75rem;
+  font-size: clamp(1.2rem, 5.5vw, 1.75rem) !important;
   font-weight: var(--weight-h2);
   color: var(--color-primary);
-  margin-bottom: var(--space-1);
-  display: flex;
-  align-items: center;
-  gap: var(--space-2);
-  text-decoration: none;
+  margin-bottom: var(--space-2);
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: var(--space-2) !important;
+  text-decoration: none !important;
   cursor: pointer;
   transition: var(--transition-smooth);
+  max-width: 100% !important;
+  width: auto !important;
+  overflow: visible !important;
+  white-space: nowrap !important;
 }
 
+.auth-card .brand-logo span,
+.auth-card .auth-logo span,
+.auth-logo span,
+a.auth-logo span {
+  display: inline-block !important;
+  overflow: visible !important;
+  text-overflow: clip !important;
+  white-space: nowrap !important;
+  font-size: inherit !important;
+  font-family: inherit !important;
+  font-weight: inherit !important;
+  color: inherit !important;
+  line-height: 1.2 !important;
+}
+
+.auth-card .brand-logo .brand-logo-icon,
+.auth-card .auth-logo i,
+.auth-logo i {
+  font-size: clamp(1.35rem, 6vw, 1.85rem) !important;
+  color: var(--color-secondary);
+  flex-shrink: 0 !important;
+  display: inline-flex !important;
+}
+
+.auth-card .brand-logo:hover,
 .auth-logo:hover,
 a.auth-logo:hover {
   opacity: 0.88;
@@ -2164,6 +2197,56 @@ html[data-theme="dark"] .auth-forgot-link {
 
 html[data-theme="dark"] .auth-forgot-link:hover {
   color: #F3C99F !important;
+}
+
+/* Password Field Wrapper & Eye Toggle Icon */
+.password-input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.password-input-wrap .form-input {
+  padding-inline-end: 2.75rem !important;
+}
+
+.password-toggle-btn {
+  position: absolute;
+  inset-inline-end: 0.65rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  padding: 0.35rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  line-height: 1;
+  border-radius: var(--radius-global);
+  transition: color var(--transition-fast), background-color var(--transition-fast);
+  z-index: 2;
+}
+
+.password-toggle-btn:hover {
+  color: var(--color-secondary);
+  background-color: var(--color-surface-subtle);
+}
+
+.password-toggle-btn:focus-visible {
+  outline: 2px solid var(--color-secondary);
+  outline-offset: 1px;
+}
+
+html[data-theme="dark"] .password-toggle-btn {
+  color: var(--color-text-muted);
+}
+
+html[data-theme="dark"] .password-toggle-btn:hover {
+  color: var(--color-accent);
 }
 
 .auth-btn-submit {
@@ -3569,6 +3652,8 @@ html[data-theme="dark"] [style*="color: var(--color-primary)"] {
   top: 0;
   left: 0;
   right: 0;
+  width: 100%;
+  box-sizing: border-box;
   height: 72px;
   background-color: var(--color-surface);
   border-bottom: 1px solid var(--color-border);
@@ -3578,7 +3663,8 @@ html[data-theme="dark"] [style*="color: var(--color-primary)"] {
   align-items: center;
   justify-content: space-between;
   padding-inline: var(--space-5);
-  gap: var(--space-4);
+  gap: var(--space-3);
+  overflow: hidden;
   transition: background-color 0.35s ease, border-color 0.35s ease;
 }
 
@@ -3587,27 +3673,13 @@ html[data-theme="dark"] [style*="color: var(--color-primary)"] {
   align-items: center;
   gap: var(--space-3);
   flex-shrink: 0;
+  min-width: 0;
+  overflow: hidden;
 }
 
+/* Desktop sidebar toggle — hidden (sidebar always visible on desktop) */
 .dash-sidebar-toggle {
-  width: 42px;
-  height: 42px;
-  border-radius: var(--radius-global);
-  background-color: var(--color-surface-subtle);
-  border: 1px solid var(--color-border);
-  color: var(--color-text);
-  font-size: 1.35rem;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: var(--transition-smooth);
-}
-
-.dash-sidebar-toggle:hover {
-  background-color: var(--color-surface);
-  border-color: var(--color-secondary);
-  color: var(--color-secondary);
+  display: none;
 }
 
 .dash-portal-pill {
@@ -3627,53 +3699,44 @@ html[data-theme="dark"] [style*="color: var(--color-primary)"] {
   color: var(--color-secondary);
 }
 
-.dash-topbar-center {
-  flex: 1;
-  max-width: 440px;
-  margin-inline: var(--space-2);
+/* Strictly ensure NO theme toggle, RTL toggle, or topbar-right exists in dash-topbar */
+.dash-topbar .rtl-toggle-btn,
+.dash-topbar .theme-toggle-btn,
+.dash-topbar-right,
+.dash-topbar-actions {
+  display: none !important;
 }
 
-.dash-search-box {
-  position: relative;
-  width: 100%;
-}
-
-.dash-search-box i {
-  position: absolute;
-  top: 50%;
-  inset-inline-start: 14px;
-  transform: translateY(-50%);
-  color: var(--color-text-muted);
-  font-size: 1.1rem;
-  pointer-events: none;
-}
-
-.dash-search-input {
-  width: 100%;
-  padding: 0.55rem 1rem 0.55rem 2.5rem;
-  border-radius: var(--radius-global);
-  border: 1px solid var(--color-border);
-  background-color: var(--color-surface-subtle);
-  color: var(--color-text);
-  font-size: 0.88rem;
-  transition: var(--transition-smooth);
-}
-
-[dir="rtl"] .dash-search-input,
-body.rtl .dash-search-input {
-  padding: 0.55rem 2.5rem 0.55rem 1rem;
-}
-
-.dash-search-input:focus {
-  background-color: var(--color-surface);
-  border-color: var(--color-secondary);
-  box-shadow: 0 0 0 3px rgba(186, 93, 56, 0.12);
-}
-
-.dash-topbar-right {
-  display: flex;
+/* Brand logo and name in dashboard header — always visible on all devices */
+.dash-topbar .brand-logo {
+  display: inline-flex !important;
   align-items: center;
   gap: var(--space-2);
+  text-decoration: none;
+  font-family: var(--font-heading);
+  font-weight: var(--weight-h2);
+  font-size: 1.35rem;
+  color: var(--color-primary);
+  white-space: nowrap;
+}
+
+.dash-topbar .brand-logo span {
+  display: inline-block !important;
+  font-family: var(--font-heading);
+  font-weight: var(--weight-h2);
+  color: var(--color-primary);
+  white-space: nowrap;
+}
+
+html[data-theme="dark"] .dash-topbar .brand-logo,
+html[data-theme="dark"] .dash-topbar .brand-logo span {
+  color: var(--color-accent) !important;
+}
+
+.dash-topbar .brand-logo-icon {
+  font-size: 1.55rem;
+  color: var(--color-secondary);
+  display: inline-flex !important;
   flex-shrink: 0;
 }
 
@@ -3865,7 +3928,7 @@ body.rtl .dash-search-input {
 }
 
 .sidebar-nav-item.active {
-  background-color: rgba(186, 93, 56, 0.09);
+  background-color: rgba(186, 93, 56, 0.12);
   color: var(--color-secondary);
   font-weight: 600;
 }
@@ -3875,12 +3938,28 @@ body.rtl .dash-search-input {
 }
 
 html[data-theme="dark"] .sidebar-nav-item.active {
-  background-color: rgba(212, 163, 115, 0.12);
+  background-color: rgba(212, 163, 115, 0.15);
   color: var(--color-accent);
 }
 
 html[data-theme="dark"] .sidebar-nav-item.active i {
   color: var(--color-accent);
+}
+
+/* Smooth Tab Pane Switch Animation */
+.dash-tab-pane {
+  animation: fadeInDashTab 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes fadeInDashTab {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .sidebar-badge {
@@ -3977,10 +4056,25 @@ html[data-theme="dark"] .dash-dock-item.active {
   color: var(--color-accent);
 }
 
+/* Ensure dash-hamburger-btn is hidden on desktop by default */
+.dash-hamburger-btn {
+  display: none !important;
+}
+
 /* Responsive Media Queries for All Devices */
+
+/* ── 1280px: reduce padding ── */
+@media (max-width: 1280px) {
+  .dash-topbar {
+    padding-inline: var(--space-4);
+  }
+}
+
+/* ── 1024px: hide desktop toggle, show hamburger ── */
 @media (max-width: 1024px) {
-  .dash-topbar-center {
-    display: none;
+  .dash-topbar {
+    padding-inline: var(--space-4);
+    gap: var(--space-2);
   }
   .dash-sidebar-toggle {
     display: none !important;
@@ -4019,24 +4113,32 @@ html[data-theme="dark"] .dash-dock-item.active {
 @media (max-width: 768px) {
   .dash-topbar {
     height: 64px;
-    padding-inline: var(--space-3);
+    padding-inline: var(--space-4);
+    gap: var(--space-2);
+  }
+  .dash-topbar .brand-logo {
+    display: inline-flex !important;
+    font-size: 1.2rem;
+    gap: 7px;
   }
   .dash-topbar .brand-logo span {
-    display: none;
+    display: inline-block !important;
+    font-size: 1.2rem;
+    white-space: nowrap;
   }
-  .dash-portal-pill {
-    display: none;
+  .dash-topbar .brand-logo-icon {
+    font-size: 1.4rem;
+    display: inline-flex !important;
   }
-  .dash-topbar .role-switcher-tabs {
-    display: none;
-  }
-  .dash-site-btn,
-  .dash-logout-btn {
+  .dash-topbar .rtl-toggle-btn,
+  .dash-topbar .theme-toggle-btn,
+  .dash-topbar-right,
+  .dash-topbar-actions {
     display: none !important;
   }
   .dash-main-content {
     padding: var(--space-3);
-    padding-bottom: 80px; /* Clearance for bottom dock */
+    padding-bottom: 80px;
   }
   .dash-mobile-dock {
     display: flex;
@@ -4048,18 +4150,38 @@ html[data-theme="dark"] .dash-dock-item.active {
     grid-template-columns: repeat(2, 1fr);
   }
   .back-to-top-btn {
-    bottom: 80px !important; /* Above dock on mobile */
+    bottom: 80px !important;
   }
 }
 
 @media (max-width: 480px) {
-  .dash-topbar-right {
+  .dash-topbar {
+    height: 58px;
+    padding-inline: var(--space-3);
+  }
+  .dash-topbar .brand-logo {
+    display: inline-flex !important;
+    font-size: 1.05rem;
     gap: 6px;
+  }
+  .dash-topbar .brand-logo span {
+    display: inline-block !important;
+    font-size: 1.05rem;
+    white-space: nowrap;
+  }
+  .dash-topbar .brand-logo-icon {
+    font-size: 1.25rem;
   }
   .dash-hamburger-btn {
     width: 40px;
     height: 40px;
-    font-size: 1.35rem;
+    font-size: 1.3rem;
+  }
+  .dash-topbar .rtl-toggle-btn,
+  .dash-topbar .theme-toggle-btn,
+  .dash-topbar-right,
+  .dash-topbar-actions {
+    display: none !important;
   }
   .kpi-grid {
     grid-template-columns: 1fr;
