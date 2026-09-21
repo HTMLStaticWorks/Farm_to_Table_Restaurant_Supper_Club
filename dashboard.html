@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Patron & Hearth Dashboard — Harvest & Hearth</title>
+  <meta name="description" content="Manage your supper club reservations, dietary preferences, and kitchen operations at Harvest & Hearth.">
+  
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23BA5D38'><path d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z'/></svg>">
+
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+</head>
+<body>
+
+  <!-- ==================== MAIN CONTENT ==================== -->
+  <main class="dashboard-page">
+    <div class="container">
+      <!-- Toolbar with Portal Switcher & Quick Navigation -->
+      <div class="dashboard-toolbar">
+        <div style="display: flex; align-items: center; gap: var(--space-4); flex-wrap: wrap;">
+          <a href="index.html" class="brand-logo" title="Back to Harvest & Hearth">
+            <i class="ri-fire-line brand-logo-icon"></i>
+            <span>Harvest & Hearth</span>
+          </a>
+          <span style="font-size: 0.75rem; background-color: var(--color-surface-subtle); padding: 4px 10px; border-radius: var(--radius-global); border: 1px solid var(--color-border); color: var(--color-text-muted); font-weight: var(--weight-bold-inline);">
+            <i class="ri-shield-star-line" style="color: var(--color-secondary);"></i> Sanctuary Portal
+          </span>
+        </div>
+
+        <!-- Role View Switcher -->
+        <div class="role-switcher-tabs" aria-label="Portal View Switcher">
+          <button type="button" class="role-tab-btn active" data-role="guest" id="switch-to-guest">
+            <i class="ri-user-smile-line"></i> Guest Portal
+          </button>
+          <button type="button" class="role-tab-btn" data-role="admin" id="switch-to-admin">
+            <i class="ri-restaurant-line"></i> Kitchen & Admin
+          </button>
+        </div>
+
+        <!-- User Badge & Utility Controls -->
+        <div style="display: flex; align-items: center; gap: var(--space-3); flex-wrap: wrap;">
+          <div class="dashboard-user-info" style="cursor: default;">
+            <div style="position: relative;">
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=150&auto=format&fit=crop" 
+                   alt="User Avatar" class="dashboard-avatar">
+              <span style="position: absolute; bottom: 2px; right: 2px; width: 12px; height: 12px; background-color: var(--color-success); border: 2px solid var(--color-surface); border-radius: 50%;"></span>
+            </div>
+            <div>
+              <strong style="font-size: 0.95rem; display: block; line-height: 1.2;">Claire Delacroix</strong>
+              <span style="font-size: var(--size-caption); color: var(--color-secondary); font-weight: var(--weight-bold-inline);">
+                <i class="ri-vip-crown-fill"></i> Hearth Fellow (Tier II)
+              </span>
+            </div>
+          </div>
+
+          <div style="display: flex; align-items: center; gap: var(--space-2);">
+            <button type="button" class="btn-icon rtl-toggle-btn" aria-label="Toggle RTL layout" title="Switch text direction">
+              <i class="ri-arrow-left-right-line"></i>
+            </button>
+            <button type="button" class="btn-icon theme-toggle-btn" aria-label="Toggle Dark / Light Theme" title="Toggle theme mode">
+              <i class="ri-moon-line"></i>
+            </button>
+            <a href="index.html" class="btn btn-outline" style="padding: 0.45rem 0.9rem; font-size: 0.85rem;" title="Return to Website">
+              <i class="ri-home-line"></i> <span>Home</span>
+            </a>
+            <a href="login.html" class="btn btn-outline" style="padding: 0.45rem 0.9rem; font-size: 0.85rem; color: var(--color-error); border-color: var(--color-error);" title="Sign out of dashboard">
+              <i class="ri-logout-box-r-line"></i> <span>Logout</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ==================== GUEST DASHBOARD VIEW ==================== -->
+      <div id="guest-dashboard-view" class="dashboard-view-container">
+        <!-- Luxury Welcome Banner -->
+        <div class="dash-welcome-banner">
+          <div>
+            <span class="section-eyebrow" style="margin-bottom: var(--space-1); display: inline-block;">Autumn Fellowship • Patron Member</span>
+            <h1 style="font-size: clamp(1.6rem, 3vw, 2.2rem); margin-bottom: var(--space-2); text-align: start !important;">
+              Welcome home to the Hearth, Claire
+            </h1>
+            <p style="font-size: 1rem; color: var(--color-text-muted); max-width: 620px; text-align: start !important; margin-bottom: var(--space-3);">
+              Your fireside seats for <em>The Autumn Equinox Supper Club</em> are reserved for Saturday, Nov 14th. Chef Arlo has cellared a rare 2019 Highland Valley Pinot magnum in honor of your anniversary.
+            </p>
+            <div style="display: flex; gap: var(--space-2); flex-wrap: wrap;">
+              <a href="#guest-tab-bookings" class="btn btn-secondary dash-nav-tab" data-tab-target="guest-tab-bookings" style="padding: 0.5rem 1.15rem; font-size: 0.88rem;">
+                <i class="ri-ticket-2-line"></i> View Seating Pass
+              </a>
+              <a href="#guest-tab-messages" class="btn btn-outline dash-nav-tab" data-tab-target="guest-tab-messages" style="padding: 0.5rem 1.15rem; font-size: 0.88rem;">
+                <i class="ri-chat-1-line"></i> Message Chef Arlo
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3 Quick Stat Chips -->
+        <div class="dash-stats-row">
+          <div class="dash-stat-chip">
+            <div class="dash-stat-icon"><i class="ri-calendar-event-line"></i></div>
+            <div>
+              <span style="font-size: var(--size-caption); color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.05em;">Next Seating</span>
+              <strong style="font-size: 1.15rem; display: block; color: var(--color-text);">Nov 14 • 18:30</strong>
+              <small style="font-size: 0.8rem; color: var(--color-secondary);">Table 1 • 2 Guests</small>
+            </div>
+          </div>
+
+          <div class="dash-stat-chip">
+            <div class="dash-stat-icon"><i class="ri-vip-crown-line"></i></div>
+            <div>
+              <span style="font-size: var(--size-caption); color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.05em;">Membership Tier</span>
+              <strong style="font-size: 1.15rem; display: block; color: var(--color-text);">Hearth Fellow (II)</strong>
+              <small style="font-size: 0.8rem; color: var(--color-success);"><i class="ri-check-line"></i> 48h Priority Booking</small>
+            </div>
+          </div>
+
+          <div class="dash-stat-chip">
+            <div class="dash-stat-icon"><i class="ri-goblet-line"></i></div>
+            <div>
+              <span style="font-size: var(--size-caption); color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.05em;">Private Cellar Locker</span>
+              <strong style="font-size: 1.15rem; display: block; color: var(--color-text);">14 Bottles Stored</strong>
+              <small style="font-size: 0.8rem; color: var(--color-text-muted);">Locker #42 • 54°F Resting</small>
+            </div>
+          </div>
+        </div>
+
+        <!-- Guest Sub-Navigation Tabs Bar -->
+        <div class="dash-tabs-bar">
+          <a href="#" class="dash-nav-tab active" data-tab-target="guest-tab-bookings">
+            <i class="ri-calendar-check-line"></i> My Reservations <span class="tab-badge">2</span>
+          </a>
+          <a href="#" class="dash-nav-tab" data-tab-target="guest-tab-profile">
+            <i class="ri-user-settings-line"></i> Dietary Profile
+          </a>
+          <a href="#" class="dash-nav-tab" data-tab-target="guest-tab-saved">
+            <i class="ri-heart-line"></i> Cellar Library & Menus <span class="tab-badge" style="background-color: var(--color-accent); color: #111;">3</span>
+          </a>
+          <a href="#" class="dash-nav-tab" data-tab-target="guest-tab-messages">
+            <i class="ri-chat-1-line"></i> Chef Concierge <span class="tab-badge">1</span>
+          </a>
+        </div>
+
+        <!-- Guest Tab 1: Bookings & Tickets -->
+        <div id="guest-tab-bookings" class="dash-tab-pane">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-4); flex-wrap: wrap; gap: var(--space-2);">
+            <div>
+              <h2 style="font-size: 1.6rem; margin: 0; text-align: start !important;">Upcoming Dining Reservations</h2>
+              <span style="font-size: var(--size-caption); color: var(--color-text-muted);">Digital embossed passes required upon arrival at the stone hearth</span>
+            </div>
+            <a href="contact.html" class="btn btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.85rem;">
+              <i class="ri-add-circle-line"></i> Request New Reservation
+            </a>
+          </div>
+
+          <div class="grid-2" style="gap: var(--space-5); margin-bottom: var(--space-6);">
+            <!-- Luxury Pass 1 -->
+            <article class="luxury-ticket">
+              <div class="ticket-header">
+                <div>
+                  <span class="badge-status confirmed"><i class="ri-checkbox-circle-fill"></i> Confirmed Seating</span>
+                </div>
+                <div style="text-align: end;">
+                  <span style="font-family: var(--font-heading); color: var(--color-secondary); font-weight: var(--weight-bold-inline); font-size: 1.05rem;">#HH-9824</span>
+                  <div style="font-size: 0.72rem; color: var(--color-text-muted);">Passcode: •••• 441</div>
+                </div>
+              </div>
+
+              <div class="ticket-body">
+                <h3 style="font-size: 1.45rem; margin-bottom: var(--space-1); text-align: start;">The Autumn Equinox Supper Club</h3>
+                <p style="font-size: 0.92rem; color: var(--color-text-muted); text-align: start; margin-bottom: var(--space-3);">
+                  An intimate 24-seat communal banquet celebrating valley squashes, ember roasted trout, and heritage spelt.
+                </p>
+
+                <div class="ticket-specs-grid">
+                  <div class="ticket-spec-item">
+                    <span>Date & Time</span>
+                    <strong>Sat, Nov 14, 2026 • 18:30</strong>
+                  </div>
+                  <div class="ticket-spec-item">
+                    <span>Party & Seating</span>
+                    <strong>2 Guests • Table 1 (Hearthside)</strong>
+                  </div>
+                  <div class="ticket-spec-item">
+                    <span>Dining Format</span>
+                    <strong>7-Course Seasonal Journey</strong>
+                  </div>
+                  <div class="ticket-spec-item">
+                    <span>Cellar Pairing</span>
+                    <strong style="color: var(--color-secondary);">Biodynamic Flight Included</strong>
+                  </div>
+                </div>
+
+                <div style="background-color: rgba(186, 93, 56, 0.08); border-inline-start: 3px solid var(--color-secondary); padding: 8px 12px; border-radius: var(--radius-global); font-size: 0.85rem; margin-bottom: var(--space-4); text-align: start;">
+                  <i class="ri-cake-2-line" style="color: var(--color-secondary);"></i> <strong>Hospitality Note:</strong> 5th Anniversary celebration. Vintage 2019 Pinot reserve chambered.
+                </div>
+
+                <div style="display: flex; gap: var(--space-2); margin-top: auto; width: 100%; flex-wrap: wrap;">
+                  <a href="services.html#menus" class="btn btn-primary" style="flex: 1; padding: 0.5rem 1rem; font-size: 0.85rem;">
+                    <i class="ri-book-open-line"></i> View Menu
+                  </a>
+                  <button type="button" class="btn btn-outline btn-cancel-reservation" style="color: var(--color-error); border-color: var(--color-error); padding: 0.5rem 1rem; font-size: 0.85rem;">
+                    <i class="ri-close-circle-line"></i> Cancel
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <!-- Luxury Pass 2 -->
+            <article class="luxury-ticket">
+              <div class="ticket-header">
+                <div>
+                  <span class="badge-status pending"><i class="ri-time-line"></i> Awaiting Confirmation</span>
+                </div>
+                <div style="text-align: end;">
+                  <span style="font-family: var(--font-heading); color: var(--color-secondary); font-weight: var(--weight-bold-inline); font-size: 1.05rem;">#HH-1049</span>
+                  <div style="font-size: 0.72rem; color: var(--color-text-muted);">Passcode: •••• 928</div>
+                </div>
+              </div>
+
+              <div class="ticket-body">
+                <h3 style="font-size: 1.45rem; margin-bottom: var(--space-1); text-align: start;">The Seven-Course Hearth Symphony</h3>
+                <p style="font-size: 0.92rem; color: var(--color-text-muted); text-align: start; margin-bottom: var(--space-3);">
+                  Multi-course winter tasting featuring slow-braised roots, chanterelles, and embers pastry.
+                </p>
+
+                <div class="ticket-specs-grid">
+                  <div class="ticket-spec-item">
+                    <span>Date & Time</span>
+                    <strong>Fri, Dec 04, 2026 • 20:30</strong>
+                  </div>
+                  <div class="ticket-spec-item">
+                    <span>Party & Seating</span>
+                    <strong>4 Guests • Table 4 (Patio View)</strong>
+                  </div>
+                  <div class="ticket-spec-item">
+                    <span>Dining Format</span>
+                    <strong>Winter Symphony Act I</strong>
+                  </div>
+                  <div class="ticket-spec-item">
+                    <span>Cellar Pairing</span>
+                    <strong style="color: var(--color-secondary);">Optional at Table</strong>
+                  </div>
+                </div>
+
+                <div style="background-color: var(--color-surface-subtle); border-inline-start: 3px solid var(--color-accent); padding: 8px 12px; border-radius: var(--radius-global); font-size: 0.85rem; margin-bottom: var(--space-4); text-align: start;">
+                  <i class="ri-information-line" style="color: var(--color-secondary);"></i> <strong>Status:</strong> Sommelier table assignment in progress. Kitchen notified of party size 4.
+                </div>
+
+                <div style="display: flex; gap: var(--space-2); margin-top: auto; width: 100%; flex-wrap: wrap;">
+                  <a href="contact.html" class="btn btn-outline" style="flex: 1; padding: 0.5rem 1rem; font-size: 0.85rem;">
+                    <i class="ri-edit-line"></i> Modify Guests
+                  </a>
+                  <button type="button" class="btn btn-outline btn-cancel-reservation" style="color: var(--color-error); border-color: var(--color-error); padding: 0.5rem 1rem; font-size: 0.85rem;">
+                    <i class="ri-close-circle-line"></i> Cancel
+                  </button>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <!-- Guest Tab 2: Dietary Profile -->
+        <div id="guest-tab-profile" class="dash-tab-pane" style="display: none;">
+          <div style="max-width: 780px; background-color: var(--color-surface); padding: var(--space-6); border-radius: var(--radius-global); border: 1px solid var(--color-border); box-shadow: var(--shadow-global);">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: var(--space-4); flex-wrap: wrap; gap: var(--space-2);">
+              <div>
+                <h2 style="font-size: 1.6rem; margin-bottom: var(--space-1); text-align: start !important;">Hospitality & Dietary Preferences</h2>
+                <p style="font-size: 0.95rem; color: var(--color-text-muted); text-align: start !important; margin: 0;">
+                  Our culinary team customizes every menu dish around the specifications saved below.
+                </p>
+              </div>
+              <span style="font-size: 0.78rem; background-color: rgba(46, 125, 70, 0.12); color: var(--color-success); padding: 4px 10px; border-radius: var(--radius-global); font-weight: var(--weight-bold-inline);">
+                <i class="ri-shield-check-line"></i> Kitchen Verified
+              </span>
+            </div>
+
+            <!-- Interactive Dietary Tag Pills -->
+            <label class="form-label" style="text-align: start; display: block; margin-bottom: var(--space-2);">Quick Dietary Tags (Click to toggle):</label>
+            <div class="dietary-tag-pills">
+              <span class="dietary-tag active"><i class="ri-check-line"></i> Pescatarian</span>
+              <span class="dietary-tag active"><i class="ri-check-line"></i> Wild Game Welcome</span>
+              <span class="dietary-tag active"><i class="ri-alert-line" style="color: var(--color-error);"></i> Strict Tree Nut Allergy</span>
+              <span class="dietary-tag active"><i class="ri-check-line"></i> Allium Tolerant</span>
+              <span class="dietary-tag"><i class="ri-add-line"></i> Dairy Free</span>
+              <span class="dietary-tag"><i class="ri-add-line"></i> Gluten Conscious</span>
+              <span class="dietary-tag"><i class="ri-add-line"></i> Low Sodium</span>
+            </div>
+
+            <form id="dietary-form" style="margin-top: var(--space-4);">
+              <div id="dietary-save-feedback" style="display: none; background-color: rgba(46, 125, 70, 0.12); color: var(--color-success); border: 1px solid var(--color-success); border-radius: var(--radius-global); padding: 10px 14px; margin-bottom: var(--space-4); align-items: center; gap: 8px; font-size: 0.9rem;">
+                <i class="ri-checkbox-circle-fill"></i>
+                <span>Your hospitality profile has been updated and synchronized with Chef Arlo's kitchen brigade!</span>
+              </div>
+
+              <div class="form-group" style="text-align: start;">
+                <label class="form-label">Allergy Details & Severity</label>
+                <input type="text" class="form-input" value="Tree Nuts: Macadamia, Walnut, Pecan (Anaphylactic). Almond and pine nut tolerant." required>
+                <span style="font-size: 0.8rem; color: var(--color-text-muted);">Our line cooks sterilize prep areas prior to all services for these allergies.</span>
+              </div>
+
+              <div class="form-group" style="text-align: start;">
+                <label class="form-label">Sommelier & Cellar Flavor Profile</label>
+                <input type="text" class="form-input" value="Skin-contact Orange, Jura oxidative whites, high-acid Austrian pet-nats, un-sulfured Pinot Noir.">
+              </div>
+
+              <div class="form-group" style="text-align: start;">
+                <label class="form-label">Table & Ambiance Requests</label>
+                <input type="text" class="form-input" value="Prefer tables near the oak hearth embers or garden-facing window alcove.">
+              </div>
+
+              <button type="submit" class="btn btn-secondary" style="padding: 0.65rem 1.4rem;">
+                <i class="ri-save-line"></i> Save Profile Preferences
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Guest Tab 3: Saved Menus & Cellar (3 Cards - utilizes tablet center rule!) -->
+        <div id="guest-tab-saved" class="dash-tab-pane" style="display: none;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-4); flex-wrap: wrap; gap: var(--space-2);">
+            <div>
+              <h2 style="font-size: 1.6rem; margin: 0; text-align: start !important;">Cellar Notes & Tasting Memory Vault</h2>
+              <span style="font-size: var(--size-caption); color: var(--color-text-muted);">Curated archives of dishes you have experienced and bottles stored in your locker</span>
+            </div>
+            <a href="services.html#menus" class="btn btn-outline" style="padding: 0.5rem 1rem; font-size: 0.85rem;">
+              <i class="ri-restaurant-line"></i> Explore Current Autumn Menus
+            </a>
+          </div>
+
+          <div class="grid-3">
+            <!-- Saved Menu Card 1 -->
+            <article class="card" style="align-items: flex-start; text-align: start; padding: 0; overflow: hidden;">
+              <div style="width: 100%; height: 180px; overflow: hidden;">
+                <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=600&auto=format&fit=crop" 
+                     alt="Foraged Morel Symphony" style="width: 100%; height: 100%; object-fit: cover;">
+              </div>
+              <div style="padding: var(--space-5); width: 100%;">
+                <span class="card-badge" style="position: static; display: inline-block; margin-bottom: var(--space-2);">Spring 2026</span>
+                <h3 style="font-size: 1.25rem; margin-bottom: var(--space-1);">Act VII: Foraged Morel Symphony</h3>
+                <p style="font-size: 0.92rem; margin-bottom: var(--space-3);">Wild morels, green garlic velouté, and estate churned raw butter.</p>
+                <div style="border-top: 1px solid var(--color-border); padding-top: var(--space-2); font-size: 0.85rem; color: var(--color-secondary); font-weight: var(--weight-bold-inline);">
+                  <i class="ri-goblet-line"></i> Domaine Belluard 'Les Perles' Gringet
+                </div>
+              </div>
+            </article>
+
+            <!-- Saved Menu Card 2 -->
+            <article class="card" style="align-items: flex-start; text-align: start; padding: 0; overflow: hidden;">
+              <div style="width: 100%; height: 180px; overflow: hidden;">
+                <img src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?q=80&w=600&auto=format&fit=crop" 
+                     alt="Cedar Plank Mountain Trout" style="width: 100%; height: 100%; object-fit: cover;">
+              </div>
+              <div style="padding: var(--space-5); width: 100%;">
+                <span class="card-badge" style="position: static; display: inline-block; margin-bottom: var(--space-2);">Summer 2026</span>
+                <h3 style="font-size: 1.25rem; margin-bottom: var(--space-1);">Act III: Cedar Plank Mountain Trout</h3>
+                <p style="font-size: 0.92rem; margin-bottom: var(--space-3);">Spring-fed trout roasted over glowing cedar embers with charred lemon.</p>
+                <div style="border-top: 1px solid var(--color-border); padding-top: var(--space-2); font-size: 0.85rem; color: var(--color-secondary); font-weight: var(--weight-bold-inline);">
+                  <i class="ri-goblet-line"></i> Gut Oggau 'Theodora' Natural White
+                </div>
+              </div>
+            </article>
+
+            <!-- Cellar Locker Card 3 (Centered in tablet view!) -->
+            <article class="card" style="align-items: flex-start; text-align: start; padding: var(--space-5); border-color: var(--color-secondary); box-shadow: var(--shadow-hover);">
+              <div style="display: flex; justify-content: space-between; width: 100%; margin-bottom: var(--space-3);">
+                <span class="badge-status confirmed"><i class="ri-lock-line"></i> Vault Active</span>
+                <span style="font-size: 0.85rem; color: var(--color-secondary); font-weight: var(--weight-bold-inline);">Locker #42</span>
+              </div>
+              <h3 style="font-size: 1.25rem; margin-bottom: var(--space-1);">Estate Cellar Allocation</h3>
+              <p style="font-size: 0.92rem; color: var(--color-text-muted); margin-bottom: var(--space-3);">
+                14 bottles currently resting in temperature-controlled cave chamber at 54°F / 70% humidity.
+              </p>
+              <ul style="font-size: 0.85rem; width: 100%; display: flex; flex-direction: column; gap: 6px; margin-bottom: var(--space-4);">
+                <li><i class="ri-checkbox-circle-fill" style="color: var(--color-secondary);"></i> <strong>6x</strong> 2019 Highland Valley Pinot Noir Magnum</li>
+                <li><i class="ri-checkbox-circle-fill" style="color: var(--color-secondary);"></i> <strong>4x</strong> 2021 Sunstone Amphora Skin-Contact Orange</li>
+                <li><i class="ri-checkbox-circle-fill" style="color: var(--color-secondary);"></i> <strong>4x</strong> 2023 Ancestral Pet-Nat Sparkling Cider</li>
+              </ul>
+              <button type="button" class="btn btn-outline" style="width: 100%; padding: 0.5rem; font-size: 0.85rem;">
+                <i class="ri-file-list-3-line"></i> Request Bottle Retrieval
+              </button>
+            </article>
+          </div>
+        </div>
+
+        <!-- Guest Tab 4: Messages / Concierge Chat -->
+        <div id="guest-tab-messages" class="dash-tab-pane" style="display: none;">
+          <div style="max-width: 800px; margin-inline: auto;">
+            <div class="chat-box-wrap">
+              <div class="chat-header">
+                <div style="display: flex; align-items: center; gap: var(--space-3);">
+                  <div style="position: relative;">
+                    <img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?q=80&w=120&auto=format&fit=crop" 
+                         alt="Chef Arlo Vance" style="width: 48px; height: 48px; border-radius: 50%; object-fit: cover; border: 2px solid var(--color-secondary);">
+                    <span style="position: absolute; bottom: 0; right: 0; width: 12px; height: 12px; background-color: var(--color-success); border: 2px solid var(--color-surface); border-radius: 50%;"></span>
+                  </div>
+                  <div style="text-align: start;">
+                    <strong style="font-size: 1.05rem; display: block;">Chef Arlo Vance</strong>
+                    <span style="font-size: var(--size-caption); color: var(--color-text-muted);">Executive Chef & Co-Founder • Online in Kitchen</span>
+                  </div>
+                </div>
+
+                <span style="font-size: 0.78rem; background-color: rgba(186, 93, 56, 0.1); color: var(--color-secondary); padding: 4px 10px; border-radius: var(--radius-global); font-weight: var(--weight-bold-inline);">
+                  Direct Concierge Channel
+                </span>
+              </div>
+
+              <!-- Message Stream -->
+              <div class="chat-messages-container" id="concierge-chat-messages">
+                <div class="chat-msg incoming">
+                  <strong style="font-size: 0.82rem; color: var(--color-secondary); display: block; margin-bottom: 2px;">Chef Arlo Vance</strong>
+                  <p style="margin: 0;">Hello Claire! We noted your 5th anniversary celebration on Nov 14th. We have rested a rare 2019 Highland Valley Pinot Noir magnum in our cellar specifically for your arrival.</p>
+                  <div class="chat-msg-meta"><span style="color: var(--color-text-muted);">Executive Chef</span><span>Yesterday 17:42</span></div>
+                </div>
+
+                <div class="chat-msg outgoing">
+                  <p style="margin: 0;">Thank you Chef Arlo! That sounds wonderful. Looking forward to the wood-roasted kuri squash!</p>
+                  <div class="chat-msg-meta"><span>You</span><span>Yesterday 18:05</span></div>
+                </div>
+
+                <div class="chat-msg incoming">
+                  <strong style="font-size: 0.82rem; color: var(--color-secondary); display: block; margin-bottom: 2px;">Chef Arlo Vance</strong>
+                  <p style="margin: 0;">The squash came in from Alder Ridge this morning with beautiful sugar brix. It will be caramelized over red oak embers. Looking forward to hosting you!</p>
+                  <div class="chat-msg-meta"><span style="color: var(--color-text-muted);">Executive Chef</span><span>Today 08:30</span></div>
+                </div>
+              </div>
+
+              <!-- Live Chat Input Bar -->
+              <form class="chat-input-bar" id="concierge-chat-form">
+                <input type="text" id="concierge-chat-input" class="form-input" placeholder="Message Chef Arlo Vance directly..." style="flex: 1;" required>
+                <button type="submit" class="btn btn-primary" style="padding: 0.5rem 1.25rem;">
+                  <i class="ri-send-plane-fill"></i> <span>Send</span>
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ==================== ADMIN / KITCHEN DASHBOARD VIEW ==================== -->
+      <div id="admin-dashboard-view" class="dashboard-view-container" style="display: none;">
+        <!-- KPI Cards Grid -->
+        <div class="kpi-grid">
+          <div class="kpi-card">
+            <div class="kpi-icon"><i class="ri-user-heart-line"></i></div>
+            <div class="kpi-value">482</div>
+            <div class="kpi-label">Monthly Covers</div>
+            <span style="font-size: 0.75rem; color: var(--color-success); font-weight: var(--weight-bold-inline); margin-top: 4px;">
+              <i class="ri-arrow-up-line"></i> +18% vs last harvest
+            </span>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-icon"><i class="ri-money-dollar-circle-line"></i></div>
+            <div class="kpi-value">$78.4K</div>
+            <div class="kpi-label">Hearth Revenue</div>
+            <span style="font-size: 0.75rem; color: var(--color-success); font-weight: var(--weight-bold-inline); margin-top: 4px;">
+              <i class="ri-arrow-up-line"></i> Avg check $162
+            </span>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-icon"><i class="ri-vip-diamond-line"></i></div>
+            <div class="kpi-value">100%</div>
+            <div class="kpi-label">Supper Club Fill</div>
+            <span style="font-size: 0.75rem; color: var(--color-secondary); font-weight: var(--weight-bold-inline); margin-top: 4px;">
+              24/24 Seats Booked
+            </span>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-icon"><i class="ri-scales-3-line"></i></div>
+            <div class="kpi-value">1,420 lbs</div>
+            <div class="kpi-label">Local Produce Inflow</div>
+            <span style="font-size: 0.75rem; color: var(--color-success); font-weight: var(--weight-bold-inline); margin-top: 4px;">
+              42 Miles radius sourcing
+            </span>
+          </div>
+        </div>
+
+        <!-- Service Manifest Table with Live Filter & Search -->
+        <div class="dashboard-table-wrap">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-4); flex-wrap: wrap; gap: var(--space-3);">
+            <div>
+              <h2 style="font-size: 1.5rem; margin: 0; text-align: start !important;">Tonight's Service Manifest (Nov 14)</h2>
+              <span style="font-size: var(--size-caption); color: var(--color-text-muted);">24 Seats Confirmed • First Seating 18:00 • 2 Seating Cycles</span>
+            </div>
+
+            <!-- Table Search & Filter Toolbar -->
+            <div style="display: flex; gap: var(--space-2); align-items: center; flex-wrap: wrap;">
+              <input type="text" id="manifest-search" class="form-input" placeholder="Search guest or booking ID..." style="width: 220px; padding: 0.4rem 0.8rem; font-size: 0.85rem;">
+              <select id="manifest-time-filter" class="form-select" style="width: 140px; padding: 0.4rem 0.8rem; font-size: 0.85rem;">
+                <option value="all">All Cycles</option>
+                <option value="18:30">18:30 Seating</option>
+                <option value="20:30">20:30 Seating</option>
+              </select>
+              <button type="button" class="btn btn-secondary" style="padding: 0.45rem 0.9rem; font-size: 0.85rem;">
+                <i class="ri-printer-line"></i> Print Run
+              </button>
+            </div>
+          </div>
+
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Booking ID</th>
+                <th>Guest Name</th>
+                <th>Party</th>
+                <th>Time & Table</th>
+                <th>Dietary / Notes</th>
+                <th>Status</th>
+                <th>Live Action</th>
+              </tr>
+            </thead>
+            <tbody id="manifest-tbody">
+              <tr>
+                <td><strong>#HH-9824</strong></td>
+                <td>
+                  <div style="display: flex; align-items: center; gap: 8px;">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=60&auto=format&fit=crop" 
+                         alt="Guest" style="width: 28px; height: 28px; border-radius: 50%; object-fit: cover;">
+                    <strong>Claire Delacroix</strong>
+                  </div>
+                </td>
+                <td>2 Guests</td>
+                <td>18:30 • Table 1 (Hearth)</td>
+                <td><span style="background: rgba(186, 93, 56, 0.1); color: var(--color-secondary); padding: 2px 6px; border-radius: 4px; font-size: 0.75rem; font-weight: bold;">Pescatarian, No Tree Nuts</span></td>
+                <td><span class="badge-status confirmed">Confirmed</span></td>
+                <td>
+                  <select class="form-select status-select" style="padding: 0.3rem 0.5rem; font-size: 0.85rem;">
+                    <option value="confirmed" selected>Confirmed</option>
+                    <option value="seated">Seated</option>
+                    <option value="pending">Pending</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>#HH-9825</strong></td>
+                <td>
+                  <div style="display: flex; align-items: center; gap: 8px;">
+                    <div style="width: 28px; height: 28px; border-radius: 50%; background: var(--color-surface-subtle); display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: bold;">MT</div>
+                    <strong>Dr. Marcus Thorne</strong>
+                  </div>
+                </td>
+                <td>4 Guests</td>
+                <td>18:30 • Table 2 (Center)</td>
+                <td>Standard Tasting, Cellar Pairings</td>
+                <td><span class="badge-status seated">Seated</span></td>
+                <td>
+                  <select class="form-select status-select" style="padding: 0.3rem 0.5rem; font-size: 0.85rem;">
+                    <option value="seated" selected>Seated</option>
+                    <option value="confirmed">Confirmed</option>
+                    <option value="pending">Pending</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>#HH-9826</strong></td>
+                <td>
+                  <div style="display: flex; align-items: center; gap: 8px;">
+                    <div style="width: 28px; height: 28px; border-radius: 50%; background: var(--color-surface-subtle); display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: bold;">EV</div>
+                    <strong>Elena Vance</strong>
+                  </div>
+                </td>
+                <td>2 Guests</td>
+                <td>20:30 • Chef Counter</td>
+                <td>Gastronomica review inspection</td>
+                <td><span class="badge-status confirmed">Confirmed</span></td>
+                <td>
+                  <select class="form-select status-select" style="padding: 0.3rem 0.5rem; font-size: 0.85rem;">
+                    <option value="confirmed" selected>Confirmed</option>
+                    <option value="seated">Seated</option>
+                    <option value="pending">Pending</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>#HH-9827</strong></td>
+                <td>
+                  <div style="display: flex; align-items: center; gap: 8px;">
+                    <div style="width: 28px; height: 28px; border-radius: 50%; background: var(--color-surface-subtle); display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: bold;">JC</div>
+                    <strong>Julian Croft</strong>
+                  </div>
+                </td>
+                <td>6 Guests</td>
+                <td>20:30 • Orchard Room</td>
+                <td>Private anniversary group</td>
+                <td><span class="badge-status pending">Pending</span></td>
+                <td>
+                  <select class="form-select status-select" style="padding: 0.3rem 0.5rem; font-size: 0.85rem;">
+                    <option value="pending" selected>Pending</option>
+                    <option value="confirmed">Confirmed</option>
+                    <option value="seated">Seated</option>
+                  </select>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Supplier & Produce Tracker + Hearth Oven Status -->
+        <div class="grid-2" style="gap: var(--space-5);">
+          <!-- Morning Farm Inflow Tracker -->
+          <div style="background-color: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-global); padding: var(--space-5); box-shadow: var(--shadow-global);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-3);">
+              <h3 style="font-size: 1.25rem; color: var(--color-secondary); margin: 0; text-align: start !important;">
+                Morning Farm Inflow & Quality Control
+              </h3>
+              <span style="font-size: 0.75rem; background-color: rgba(46, 125, 70, 0.12); color: var(--color-success); padding: 2px 8px; border-radius: var(--radius-global); font-weight: var(--weight-bold-inline);">
+                100% Regenerative
+              </span>
+            </div>
+            <ul style="display: flex; flex-direction: column; gap: var(--space-3); font-size: 0.95rem;">
+              <li style="display: flex; justify-content: space-between; align-items: center; padding-bottom: var(--space-2); border-bottom: 1px solid var(--color-border);">
+                <div>
+                  <strong>Alder Ridge Heirloom Pears</strong>
+                  <span style="display: block; font-size: 0.8rem; color: var(--color-text-muted);">6 Miles Away • Brix Sugar 14.8°</span>
+                </div>
+                <span style="background-color: var(--color-surface-subtle); padding: 4px 10px; border-radius: var(--radius-global); font-weight: bold;">45 lbs (Inspected)</span>
+              </li>
+              <li style="display: flex; justify-content: space-between; align-items: center; padding-bottom: var(--space-2); border-bottom: 1px solid var(--color-border);">
+                <div>
+                  <strong>Ridge Foraged Pine Chanterelles</strong>
+                  <span style="display: block; font-size: 0.8rem; color: var(--color-text-muted);">Maeve Thorne dawn harvest • Zero sand</span>
+                </div>
+                <span style="background-color: var(--color-surface-subtle); padding: 4px 10px; border-radius: var(--radius-global); font-weight: bold;">18 lbs (Cleaned)</span>
+              </li>
+              <li style="display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                  <strong>Valley Pasture Raw Farm Curd</strong>
+                  <span style="display: block; font-size: 0.8rem; color: var(--color-text-muted);">14 Miles Away • Morning warm milk batch</span>
+                </div>
+                <span style="background-color: var(--color-surface-subtle); padding: 4px 10px; border-radius: var(--radius-global); font-weight: bold;">30 lbs (Chambered)</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Hearth Oven Temperatures with Live Gauges -->
+          <div style="background-color: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-global); padding: var(--space-5); box-shadow: var(--shadow-global);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-3);">
+              <h3 style="font-size: 1.25rem; color: var(--color-secondary); margin: 0; text-align: start !important;">
+                6-Ton Stone Hearth Roasting Zones
+              </h3>
+              <span style="font-size: 0.75rem; color: var(--color-text-muted);">Fueled by Fallen Red Oak</span>
+            </div>
+
+            <div style="display: flex; gap: var(--space-3); text-align: center; margin-top: var(--space-3); flex-wrap: wrap;">
+              <div class="temp-gauge-card">
+                <span style="font-size: var(--size-caption); color: var(--color-text-muted);">Zone 1 (Baking)</span>
+                <strong style="font-size: 1.8rem; display: block; color: var(--color-text); line-height: 1.2;">485°F</strong>
+                <div class="temp-gauge-bar">
+                  <div class="temp-gauge-fill" style="width: 65%; background-color: var(--color-primary);"></div>
+                </div>
+                <small style="font-size: 0.75rem; color: var(--color-text-muted); display: block; margin-top: 4px;">Sourdough & Brioche</small>
+              </div>
+
+              <div class="temp-gauge-card">
+                <span style="font-size: var(--size-caption); color: var(--color-text-muted);">Zone 2 (Ember Sear)</span>
+                <strong style="font-size: 1.8rem; display: block; color: var(--color-secondary); line-height: 1.2;">720°F</strong>
+                <div class="temp-gauge-bar">
+                  <div class="temp-gauge-fill" style="width: 90%; background-color: var(--color-secondary);"></div>
+                </div>
+                <small style="font-size: 0.75rem; color: var(--color-text-muted); display: block; margin-top: 4px;">Live Wood Coals</small>
+              </div>
+
+              <div class="temp-gauge-card">
+                <span style="font-size: var(--size-caption); color: var(--color-text-muted);">Zone 3 (Slow Roast)</span>
+                <strong style="font-size: 1.8rem; display: block; color: var(--color-accent); line-height: 1.2;">240°F</strong>
+                <div class="temp-gauge-bar">
+                  <div class="temp-gauge-fill" style="width: 35%; background-color: var(--color-accent);"></div>
+                </div>
+                <small style="font-size: 0.75rem; color: var(--color-text-muted); display: block; margin-top: 4px;">Pears & Sunchokes</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/dashboard.js"></script>
+</body>
+</html>

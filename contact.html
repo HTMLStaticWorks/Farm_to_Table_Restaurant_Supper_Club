@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reserve & Connect — Harvest & Hearth</title>
+  <meta name="description" content="Inquire about intimate dining reservations, Supper Club memberships, private farm buyouts, and visit directions.">
+  
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23BA5D38'><path d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z'/></svg>">
+
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+</head>
+<body>
+
+  <!-- ==================== HEADER & NAVBAR ==================== -->
+  <header class="site-header" id="site-header">
+    <div class="nav-container">
+      <a href="index.html" class="brand-logo">
+        <i class="ri-fire-line brand-logo-icon"></i>
+        <span>Harvest & Hearth</span>
+      </a>
+
+      <nav class="desktop-nav" aria-label="Main Navigation">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="home2.html" class="nav-link">Home 2</a>
+        <a href="services.html" class="nav-link">Services</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="blog.html" class="nav-link">Blog</a>
+        <a href="contact.html" class="nav-link active">Contact</a>
+        <a href="dashboard.html" class="nav-link">Dashboard</a>
+      </nav>
+
+      <div class="header-actions">
+        <button type="button" class="btn-icon rtl-toggle-btn" aria-label="Toggle RTL layout" title="Switch text direction">
+          <i class="ri-arrow-left-right-line"></i>
+        </button>
+        <button type="button" class="btn-icon theme-toggle-btn" aria-label="Toggle Dark / Light Theme" title="Toggle theme mode">
+          <i class="ri-moon-line"></i>
+        </button>
+        <a href="login.html" class="btn btn-primary">Login</a>
+        <button type="button" class="hamburger-btn" aria-label="Open mobile navigation" aria-expanded="false">
+          <i class="ri-menu-4-line"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="drawer-backdrop"></div>
+  <aside class="mobile-drawer" aria-label="Mobile Navigation Drawer">
+    <div class="drawer-header">
+      <a href="index.html" class="brand-logo">
+        <i class="ri-fire-line brand-logo-icon"></i>
+        <span>Harvest & Hearth</span>
+      </a>
+      <button type="button" class="drawer-close" aria-label="Close navigation drawer">
+        <i class="ri-close-line"></i>
+      </button>
+    </div>
+
+    <nav class="drawer-nav-list">
+      <a href="index.html" class="drawer-link">Home <i class="ri-arrow-right-s-line"></i></a>
+      <a href="home2.html" class="drawer-link">Home 2 <i class="ri-arrow-right-s-line"></i></a>
+      <a href="services.html" class="drawer-link">Services <i class="ri-arrow-right-s-line"></i></a>
+      <a href="about.html" class="drawer-link">About <i class="ri-arrow-right-s-line"></i></a>
+      <a href="blog.html" class="drawer-link">Blog <i class="ri-arrow-right-s-line"></i></a>
+      <a href="contact.html" class="drawer-link active">Contact <i class="ri-arrow-right-s-line"></i></a>
+      <a href="dashboard.html" class="drawer-link">Dashboard <i class="ri-arrow-right-s-line"></i></a>
+    </nav>
+
+    <div class="drawer-footer">
+      <div class="drawer-actions-row">
+        <button type="button" class="btn-icon rtl-toggle-btn" aria-label="Toggle RTL layout" title="Switch text direction">
+          <i class="ri-arrow-left-right-line"></i>
+        </button>
+        <button type="button" class="btn-icon theme-toggle-btn" aria-label="Toggle Dark / Light Theme" title="Toggle theme mode">
+          <i class="ri-moon-line"></i>
+        </button>
+      </div>
+      <a href="login.html" class="btn btn-primary" style="width: 100%;">Login</a>
+    </div>
+  </aside>
+
+  <!-- ==================== MAIN CONTENT ==================== -->
+  <main>
+    <section class="section" style="padding-top: calc(var(--header-height) + var(--space-6));">
+      <div class="container">
+        <header class="section-header">
+          <span class="section-eyebrow">Reservations & Inquiries</span>
+          <h1>An Invitation to the Hearth</h1>
+          <p class="section-subtext">
+            Reserve your evening for our seasonal tasting menus, inquire regarding private farmstead buyouts, or join our guest registry.
+          </p>
+        </header>
+
+        <div class="grid-2" style="align-items: start; margin-top: var(--space-6);">
+          <!-- Contact Form with Client-Side Validation (Step 12) -->
+          <div style="background-color: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-global); padding: var(--space-5); box-shadow: var(--shadow-global);">
+            <h2 style="font-size: 1.8rem; margin-bottom: var(--space-2); text-align: center;">Reservation Inquiry</h2>
+            <p class="section-subtext" style="font-size: 0.95rem; margin-bottom: var(--space-4);">
+              Please complete all required fields. Our dining director will confirm within 24 hours.
+            </p>
+
+            <form data-validate="true" id="reservation-form">
+              <div class="form-success-banner">
+                <i class="ri-checkbox-circle-fill"></i>
+                <span>Your reservation inquiry has been received! Check your inbox for confirmation.</span>
+              </div>
+
+              <!-- Name & Email -->
+              <div class="grid-2" style="gap: var(--space-3); margin-bottom: 0;">
+                <div class="form-group">
+                  <label class="form-label" for="res-name">Full Name <span class="required-star">*</span></label>
+                  <input type="text" id="res-name" name="name" class="form-input" placeholder="e.g. Eleanor Vance" required>
+                  <span class="form-error-msg">Please provide your full name.</span>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="res-email">Email Address <span class="required-star">*</span></label>
+                  <input type="email" id="res-email" name="email" class="form-input" placeholder="e.g. eleanor@estate.com" required>
+                  <span class="form-error-msg">Please provide a valid email.</span>
+                </div>
+              </div>
+
+              <!-- Phone & Date -->
+              <div class="grid-2" style="gap: var(--space-3); margin-bottom: 0;">
+                <div class="form-group">
+                  <label class="form-label" for="res-phone">Phone Number <span class="required-star">*</span></label>
+                  <input type="tel" id="res-phone" name="phone" class="form-input" placeholder="e.g. +1 (707) 555-0192" required>
+                  <span class="form-error-msg">Please enter a valid phone number.</span>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="res-date">Preferred Date <span class="required-star">*</span></label>
+                  <input type="date" id="res-date" name="date" class="form-input" required>
+                  <span class="form-error-msg">Please pick a preferred date.</span>
+                </div>
+              </div>
+
+              <!-- Party Size & Experience -->
+              <div class="grid-2" style="gap: var(--space-3); margin-bottom: 0;">
+                <div class="form-group">
+                  <label class="form-label" for="res-guests">Number of Guests <span class="required-star">*</span></label>
+                  <select id="res-guests" name="guests" class="form-select" required>
+                    <option value="">Select party size...</option>
+                    <option value="2">2 Guests (Intimate Table)</option>
+                    <option value="4">4 Guests (Fourtop)</option>
+                    <option value="6">6 Guests (Chef's Counter)</option>
+                    <option value="8">8-12 Guests (Small Group)</option>
+                    <option value="24">24 Guests (Full Supper Club Communal Table)</option>
+                    <option value="buyout">Full Estate Buyout (Up to 60)</option>
+                  </select>
+                  <span class="form-error-msg">Please select number of guests.</span>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="res-experience">Dining Format <span class="required-star">*</span></label>
+                  <select id="res-experience" name="experience" class="form-select" required>
+                    <option value="">Select experience...</option>
+                    <option value="seven-course">The 7-Course Hearth Symphony ($145)</option>
+                    <option value="four-course">The 4-Course Hearth Journey ($95)</option>
+                    <option value="supper-club">Monthly Supper Club Banquet ($185)</option>
+                    <option value="chef-counter">Chef's Table Immersive Counter ($210)</option>
+                    <option value="private-orchard">Private Orchard Pavilion Dinner</option>
+                  </select>
+                  <span class="form-error-msg">Please select dining experience.</span>
+                </div>
+              </div>
+
+              <!-- Dietary Requirements & Notes -->
+              <div class="form-group">
+                <label class="form-label" for="res-dietary">Dietary Preferences / Allergies</label>
+                <input type="text" id="res-dietary" name="dietary" class="form-input" placeholder="e.g. 1 pescatarian, severe tree nut allergy">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="res-notes">Special Occasion or Notes</label>
+                <textarea id="res-notes" name="notes" class="form-textarea" placeholder="Celebrating an anniversary, requesting outdoor seating, wine questions..."></textarea>
+              </div>
+
+              <!-- Terms Checkbox (Step 12) -->
+              <div class="form-group">
+                <label class="form-checkbox-label">
+                  <input type="checkbox" name="terms" required>
+                  <span>I agree to the 48-hour reservation cancellation policy and terms of service.</span>
+                </label>
+                <span class="form-error-msg">You must accept the terms before submitting.</span>
+              </div>
+
+              <button type="submit" class="btn btn-secondary" style="width: 100%;">
+                <span>Submit Reservation Request</span>
+                <i class="ri-arrow-right-line"></i>
+              </button>
+            </form>
+          </div>
+
+          <!-- Contact Details & Map Card -->
+          <div style="display: flex; flex-direction: column; gap: var(--space-5);">
+            <!-- Details Card -->
+            <div style="background-color: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-global); padding: var(--space-5); box-shadow: var(--shadow-global);">
+              <h3 style="font-size: 1.4rem; color: var(--color-primary); margin-bottom: var(--space-3); border-bottom: 1px solid var(--color-border); padding-bottom: var(--space-2);">
+                Farmstead Information
+              </h3>
+
+              <div style="display: flex; flex-direction: column; gap: var(--space-4);">
+                <div style="display: flex; gap: var(--space-3); align-items: flex-start;">
+                  <i class="ri-map-pin-2-line" style="font-size: 1.5rem; color: var(--color-secondary);"></i>
+                  <div>
+                    <strong>Location</strong>
+                    <p style="font-size: 0.95rem;">
+                      742 Meadowbrook Valley Road<br>
+                      Highland Valley, CA 95476<br>
+                      <span style="font-size: 0.85rem; color: var(--color-text-muted);">(45 minutes from Coast Highway)</span>
+                    </p>
+                  </div>
+                </div>
+
+                <div style="display: flex; gap: var(--space-3); align-items: flex-start;">
+                  <i class="ri-time-line" style="font-size: 1.5rem; color: var(--color-secondary);"></i>
+                  <div>
+                    <strong>Hours of Service</strong>
+                    <p style="font-size: 0.95rem;">
+                      Thursday – Sunday: 17:30 – 23:00<br>
+                      Two Seatings: 18:00 & 20:30<br>
+                      Closed Monday – Wednesday for Farm Harvesting
+                    </p>
+                  </div>
+                </div>
+
+                <div style="display: flex; gap: var(--space-3); align-items: flex-start;">
+                  <i class="ri-mail-line" style="font-size: 1.5rem; color: var(--color-secondary);"></i>
+                  <div>
+                    <strong>Direct Inquiries</strong>
+                    <p style="font-size: 0.95rem;">
+                      reservations@harvestandhearth.com<br>
+                      events@harvestandhearth.com<br>
+                      +1 (707) 843-9210
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Styled Map Card -->
+            <div style="background-color: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-global); overflow: hidden; box-shadow: var(--shadow-global);">
+              <div style="position: relative; width: 100%; height: 320px; background-color: var(--color-surface-subtle); display: flex; align-items: center; justify-content: center; flex-direction: column; text-align: center; padding: var(--space-4);">
+                <iframe 
+                  title="Harvest and Hearth Location Map" 
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d100000!2d-122.8!3d38.5!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzjCsDMwJzAwLjAiTiAxMjLCsDQ4JzAwLjAiVw!5e0!3m2!1sen!2sus!4v1600000000000!5m2!1sen!2sus" 
+                  style="width: 100%; height: 100%; border: 0; position: absolute; inset: 0;" 
+                  allowfullscreen="" 
+                  loading="lazy" 
+                  referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+                <div style="position: absolute; bottom: var(--space-3); left: var(--space-3); right: var(--space-3); background-color: var(--color-surface); padding: var(--space-2) var(--space-3); border-radius: var(--radius-global); border: 1px solid var(--color-border); font-size: 0.85rem; display: flex; justify-content: space-between; align-items: center; box-shadow: var(--shadow-global);">
+                  <span><strong>Highland Valley Estate Grounds</strong></span>
+                  <a href="https://maps.google.com" target="_blank" rel="noopener" style="color: var(--color-secondary); font-weight: var(--weight-bold-inline);">Open Navigation <i class="ri-external-link-line"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <a href="index.html" class="brand-logo" style="margin-bottom: var(--space-3);">
+            <i class="ri-fire-line brand-logo-icon"></i>
+            <span>Harvest & Hearth</span>
+          </a>
+          <p>
+            A seasonal sanctuary of regenerative cooking, heirloom biodiversity, and communal gatherings in the Highland Valley.
+          </p>
+          <div class="footer-socials">
+            <a href="#" class="btn-icon" aria-label="Instagram"><i class="ri-instagram-line"></i></a>
+            <a href="#" class="btn-icon" aria-label="YouTube"><i class="ri-youtube-line"></i></a>
+            <a href="#" class="btn-icon" aria-label="Spotify"><i class="ri-spotify-line"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <div class="footer-links">
+            <a href="index.html" class="footer-link">Home</a>
+            <a href="home2.html" class="footer-link">Home 2</a>
+            <a href="services.html" class="footer-link">Services</a>
+            <a href="about.html" class="footer-link">About the Farm</a>
+            <a href="blog.html" class="footer-link">Hearth Journal</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Supper Club</h4>
+          <div class="footer-links">
+            <a href="services.html#supper-club" class="footer-link">Membership Tiers</a>
+            <a href="services.html#menus" class="footer-link">Tasting Menus</a>
+            <a href="dashboard.html" class="footer-link">Guest Portal</a>
+            <a href="contact.html" class="footer-link">Private Bookings</a>
+            <a href="coming-soon.html" class="footer-link">Spring Equinox Drop</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>The Farmstead</h4>
+          <p>
+            742 Meadowbrook Valley Rd<br>
+            Highland Valley, CA 95476<br>
+            Thursday – Sunday | 17:30 – 23:00
+          </p>
+          <p style="font-size: var(--size-caption); color: var(--color-text-muted);">
+            Inquiries: reservations@harvestandhearth.com
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-copyright">
+        <p>© 2026 Harvest & Hearth Sanctuary. All rights reserved. Soil-to-table culinary collective.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Harvest & Hearth — The Seasonal Sanctuary (Home 2)</title>
+  <meta name="description" content="Discover our interactive seasonal produce calendar, open kitchen tasting counter, and agrarian supper club.">
+  
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23BA5D38'><path d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z'/></svg>">
+
+  <!-- Core CSS & RTL Overrides -->
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+</head>
+<body>
+
+  <!-- ==================== HEADER & NAVBAR ==================== -->
+  <header class="site-header" id="site-header">
+    <div class="nav-container">
+      <a href="index.html" class="brand-logo">
+        <i class="ri-fire-line brand-logo-icon"></i>
+        <span>Harvest & Hearth</span>
+      </a>
+
+      <nav class="desktop-nav" aria-label="Main Navigation">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="home2.html" class="nav-link active">Home 2</a>
+        <a href="services.html" class="nav-link">Services</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="blog.html" class="nav-link">Blog</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+        <a href="dashboard.html" class="nav-link">Dashboard</a>
+      </nav>
+
+      <div class="header-actions">
+        <button type="button" class="btn-icon rtl-toggle-btn" aria-label="Toggle RTL layout" title="Switch text direction">
+          <i class="ri-arrow-left-right-line"></i>
+        </button>
+        <button type="button" class="btn-icon theme-toggle-btn" aria-label="Toggle Dark / Light Theme" title="Toggle theme mode">
+          <i class="ri-moon-line"></i>
+        </button>
+        <a href="login.html" class="btn btn-primary">Login</a>
+        <button type="button" class="hamburger-btn" aria-label="Open mobile navigation" aria-expanded="false">
+          <i class="ri-menu-4-line"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="drawer-backdrop"></div>
+  <aside class="mobile-drawer" aria-label="Mobile Navigation Drawer">
+    <div class="drawer-header">
+      <a href="index.html" class="brand-logo">
+        <i class="ri-fire-line brand-logo-icon"></i>
+        <span>Harvest & Hearth</span>
+      </a>
+      <button type="button" class="drawer-close" aria-label="Close navigation drawer">
+        <i class="ri-close-line"></i>
+      </button>
+    </div>
+
+    <nav class="drawer-nav-list">
+      <a href="index.html" class="drawer-link">Home <i class="ri-arrow-right-s-line"></i></a>
+      <a href="home2.html" class="drawer-link active">Home 2 <i class="ri-arrow-right-s-line"></i></a>
+      <a href="services.html" class="drawer-link">Services <i class="ri-arrow-right-s-line"></i></a>
+      <a href="about.html" class="drawer-link">About <i class="ri-arrow-right-s-line"></i></a>
+      <a href="blog.html" class="drawer-link">Blog <i class="ri-arrow-right-s-line"></i></a>
+      <a href="contact.html" class="drawer-link">Contact <i class="ri-arrow-right-s-line"></i></a>
+      <a href="dashboard.html" class="drawer-link">Dashboard <i class="ri-arrow-right-s-line"></i></a>
+    </nav>
+
+    <div class="drawer-footer">
+      <div class="drawer-actions-row">
+        <button type="button" class="btn-icon rtl-toggle-btn" aria-label="Toggle RTL layout" title="Switch text direction">
+          <i class="ri-arrow-left-right-line"></i>
+        </button>
+        <button type="button" class="btn-icon theme-toggle-btn" aria-label="Toggle Dark / Light Theme" title="Toggle theme mode">
+          <i class="ri-moon-line"></i>
+        </button>
+      </div>
+      <a href="login.html" class="btn btn-primary" style="width: 100%;">Login</a>
+    </div>
+  </aside>
+
+  <!-- ==================== MAIN CONTENT ==================== -->
+  <main>
+    <!-- UNIQUE SPLIT HERO (STEP 9.2 & 11) -->
+    <section class="section" style="padding-top: calc(var(--header-height) + var(--space-6));">
+      <div class="container">
+        <div class="grid-2">
+          <!-- Text Col -->
+          <div>
+            <span class="section-eyebrow">The Agrarian Counter</span>
+            <h1 style="margin-bottom: var(--space-3); font-size: clamp(2.5rem, 4.5vw, 4rem);">
+              Where Every Course Has a Face and a Soil.
+            </h1>
+            <p style="font-size: var(--size-lead); margin-bottom: var(--space-5);">
+              An open-concept kitchen where patrons dine within arm's reach of wood smoke, cast iron skillets, and foraged wild mushrooms plucked at dawn.
+            </p>
+            <div style="display: flex; gap: var(--space-3); flex-wrap: wrap;">
+              <a href="#interactive-season" class="btn btn-primary">
+                <span>View Seasonal Produce</span>
+                <i class="ri-sparkling-line"></i>
+              </a>
+              <a href="contact.html" class="btn btn-outline">Reserve Seats</a>
+            </div>
+
+            <div style="display: flex; flex-wrap: wrap; gap: var(--space-4); margin-top: var(--space-6); padding-top: var(--space-4); border-top: 1px solid var(--color-border);">
+              <div>
+                <strong style="font-size: 1.5rem; font-family: var(--font-heading); color: var(--color-secondary);">Thu — Sun</strong>
+                <span style="display: block; font-size: var(--size-caption); color: var(--color-text-muted);">Dinner Service Only</span>
+              </div>
+              <div>
+                <strong style="font-size: 1.5rem; font-family: var(--font-heading); color: var(--color-secondary);">24 Seats</strong>
+                <span style="display: block; font-size: var(--size-caption); color: var(--color-text-muted);">Communal Long Table</span>
+              </div>
+              <div>
+                <strong style="font-size: 1.5rem; font-family: var(--font-heading); color: var(--color-secondary);">7 Courses</strong>
+                <span style="display: block; font-size: var(--size-caption); color: var(--color-text-muted);">Blind Tasting Experience</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Media Col -->
+          <div style="position: relative;">
+            <div style="border-radius: var(--radius-global); overflow: hidden; box-shadow: var(--shadow-global);">
+              <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=900&auto=format&fit=crop" 
+                   alt="Boutique restaurant dining room with glowing warm hearth and ambient lighting" 
+                   style="width: 100%; height: 500px; object-fit: cover;">
+            </div>
+            <div class="hero-floating-badge">
+              <i class="ri-time-line" style="font-size: 2rem; color: var(--color-secondary);"></i>
+              <div>
+                <strong style="font-size: 1.1rem; display: block;">Next Seating: Tonight</strong>
+                <span style="font-size: var(--size-caption); color: var(--color-text-muted);">18:00 & 20:30 • 4 spots remain</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INTERACTIVE SECTION: SEASONAL HARVEST CALENDAR (STEP 9.2) -->
+    <section class="section section-alt" id="interactive-season">
+      <div class="container">
+        <header class="section-header">
+          <span class="section-eyebrow">Interactive Garden Explorer</span>
+          <h2>The Four Acts of the Valley</h2>
+          <p class="section-subtext">
+            Select a season to preview the living produce ripening in our greenhouses and the corresponding hearth creations.
+          </p>
+        </header>
+
+        <!-- Season Selector Pills -->
+        <div style="display: flex; justify-content: center; gap: var(--space-2); margin-bottom: var(--space-6); flex-wrap: wrap;">
+          <button type="button" class="season-btn btn btn-outline active" data-season="autumn" style="padding: 0.6rem 1.5rem;">
+            <i class="ri-leaf-line"></i> Autumn (Current)
+          </button>
+          <button type="button" class="season-btn btn btn-outline" data-season="winter" style="padding: 0.6rem 1.5rem;">
+            <i class="ri-snowy-line"></i> Winter (Ferments & Game)
+          </button>
+          <button type="button" class="season-btn btn btn-outline" data-season="spring" style="padding: 0.6rem 1.5rem;">
+            <i class="ri-seedling-line"></i> Spring (Shoots & Alliums)
+          </button>
+          <button type="button" class="season-btn btn btn-outline" data-season="summer" style="padding: 0.6rem 1.5rem;">
+            <i class="ri-sun-line"></i> Summer (Nightshades & Berries)
+          </button>
+        </div>
+
+        <!-- Dynamic Season Content Display -->
+        <div class="grid-3" id="season-cards-container">
+          <!-- Autumn Card 1 -->
+          <article class="card season-item" data-seasons="autumn">
+            <div class="card-media">
+              <img src="https://images.unsplash.com/photo-1506484381205-f7945653044d?q=80&w=600&auto=format&fit=crop" alt="Autumn harvest squash and pumpkins">
+            </div>
+            <span class="card-badge">Valley Crop</span>
+            <div class="card-icon"><i class="ri-copper-diamond-line"></i></div>
+            <h3>Wood-Roasted Red Kuri</h3>
+            <p>Glazed in estate wildflower honey, smoked brown butter, and pickled mountain berries with puffed buckwheat.</p>
+          </article>
+
+          <!-- Autumn Card 2 -->
+          <article class="card season-item" data-seasons="autumn">
+            <div class="card-media">
+              <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=600&auto=format&fit=crop" alt="Chanterelles and wild forest mushrooms">
+            </div>
+            <span class="card-badge">Wild Foraged</span>
+            <div class="card-icon"><i class="ri-focus-3-line"></i></div>
+            <h3>Golden Pine Chanterelles</h3>
+            <p>Hand-foraged in the Douglas fir ridge, served over ancient emmer grain congee with egg yolk cured in kelp vinegar.</p>
+          </article>
+
+          <!-- Autumn Card 3 -->
+          <article class="card season-item" data-seasons="autumn">
+            <div class="card-media">
+              <img src="https://images.unsplash.com/photo-1551218808-94e220e084d2?q=80&w=600&auto=format&fit=crop" alt="Ember-baked brioche with honeycomb">
+            </div>
+            <span class="card-badge">Hearth Pastry</span>
+            <div class="card-icon"><i class="ri-cake-3-line"></i></div>
+            <h3>Smoked Hay Ice Cream</h3>
+            <p>Infused with sweet orchard meadow hay, salted caramel reduction, and crisp sourdough wafers.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- STORY & REORGANIZED SERVICES (STEP 9.2) -->
+    <section class="section">
+      <div class="container">
+        <header class="section-header">
+          <span class="section-eyebrow">The Collective Experience</span>
+          <h2>A Living Table of Companionship</h2>
+          <p class="section-subtext">
+            We reject the isolation of traditional dining rooms in favor of communal discovery.
+          </p>
+        </header>
+
+        <div class="grid-3">
+          <article class="card">
+            <div class="card-icon"><i class="ri-restaurant-2-line"></i></div>
+            <h3>Chef's Counter Seats</h3>
+            <p>Interact directly with Executive Chef Arlo Vance as courses are plated with tweezers and fire embers.</p>
+            <a href="services.html" class="btn btn-outline">Explore Counter</a>
+          </article>
+
+          <article class="card">
+            <div class="card-icon"><i class="ri-wine-line"></i></div>
+            <h3>Low-Intervention Cellar</h3>
+            <p>Curated pairings of ancestral method sparkling pet-nats, orange wines, and un-sulfured pinot noirs.</p>
+            <a href="services.html" class="btn btn-outline">Cellar List</a>
+          </article>
+
+          <article class="card">
+            <div class="card-icon"><i class="ri-calendar-event-line"></i></div>
+            <h3>Full Buyouts</h3>
+            <p>Take over the entirety of the stone barn and grounds for wedding suppers, retreats, and harvest banquets.</p>
+            <a href="contact.html" class="btn btn-outline">Request Kit</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIAL / PATRON CALLOUT -->
+    <section class="section section-alt">
+      <div class="container">
+        <header class="section-header">
+          <span class="section-eyebrow">Patron Community</span>
+          <h2>Voices from Our Supper Club</h2>
+          <p class="section-subtext">
+            What our regulars cherish most about our agrarian dining room.
+          </p>
+        </header>
+
+        <div class="grid-3">
+          <article class="card">
+            <div class="card-icon"><i class="ri-chat-quote-line"></i></div>
+            <h3>“Like visiting family”</h3>
+            <p>“The warmth radiating from the hearth and the staff makes every visit feel intimate, celebratory, and genuinely authentic.”</p>
+            <span style="font-weight: var(--weight-bold-inline); color: var(--color-primary);">— David L., Valley Local</span>
+          </article>
+
+          <article class="card">
+            <div class="card-icon"><i class="ri-heart-line"></i></div>
+            <h3>“The sourdough changed me”</h3>
+            <p>“The 48-hour fermented heritage bread and salted house butter is worth the three-hour drive from the coast alone.”</p>
+            <span style="font-weight: var(--weight-bold-inline); color: var(--color-primary);">— Sarah G., Food Writer</span>
+          </article>
+
+          <article class="card">
+            <div class="card-icon"><i class="ri-seedling-fill"></i></div>
+            <h3>“Pure transparency”</h3>
+            <p>“Meeting the vegetable grower who dropped off the carrots two hours before our meal was a revelatory dining moment.”</p>
+            <span style="font-weight: var(--weight-bold-inline); color: var(--color-primary);">— Robert M., Architect</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA BANNER -->
+    <section class="section" style="padding-top: 0;">
+      <div class="container">
+        <div class="cta-banner">
+          <span class="section-eyebrow" style="color: var(--color-accent);">Join the Next Supper Club</span>
+          <h2>Claim Your Place at the Fireside</h2>
+          <p>
+            Seats for the forthcoming supper club release fill quickly. Register now or sign in to your guest portal for priority access.
+          </p>
+          <div style="display: flex; justify-content: center; gap: var(--space-3); flex-wrap: wrap;">
+            <a href="contact.html" class="btn btn-secondary">Reserve Supper Club</a>
+            <a href="dashboard.html" class="btn btn-outline" style="color: #FFFFFF; border-color: rgba(255,255,255,0.4);">
+              Guest Dashboard
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <a href="index.html" class="brand-logo" style="margin-bottom: var(--space-3);">
+            <i class="ri-fire-line brand-logo-icon"></i>
+            <span>Harvest & Hearth</span>
+          </a>
+          <p>
+            A seasonal sanctuary of regenerative cooking, heirloom biodiversity, and communal gatherings in the Highland Valley.
+          </p>
+          <div class="footer-socials">
+            <a href="#" class="btn-icon" aria-label="Instagram"><i class="ri-instagram-line"></i></a>
+            <a href="#" class="btn-icon" aria-label="YouTube"><i class="ri-youtube-line"></i></a>
+            <a href="#" class="btn-icon" aria-label="Spotify"><i class="ri-spotify-line"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <div class="footer-links">
+            <a href="index.html" class="footer-link">Home</a>
+            <a href="home2.html" class="footer-link">Home 2</a>
+            <a href="services.html" class="footer-link">Services</a>
+            <a href="about.html" class="footer-link">About the Farm</a>
+            <a href="blog.html" class="footer-link">Hearth Journal</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Supper Club</h4>
+          <div class="footer-links">
+            <a href="services.html#supper-club" class="footer-link">Membership Tiers</a>
+            <a href="services.html#menus" class="footer-link">Tasting Menus</a>
+            <a href="dashboard.html" class="footer-link">Guest Portal</a>
+            <a href="contact.html" class="footer-link">Private Bookings</a>
+            <a href="coming-soon.html" class="footer-link">Spring Equinox Drop</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>The Farmstead</h4>
+          <p>
+            742 Meadowbrook Valley Rd<br>
+            Highland Valley, CA 95476<br>
+            Thursday – Sunday | 17:30 – 23:00
+          </p>
+          <p style="font-size: var(--size-caption); color: var(--color-text-muted);">
+            Inquiries: reservations@harvestandhearth.com
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-copyright">
+        <p>© 2026 Harvest & Hearth Sanctuary. All rights reserved. Soil-to-table culinary collective.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+  <!-- Seasonal Explorer Interactive Script -->
+  <script>
+    const seasonData = {
+      autumn: [
+        {
+          title: "Wood-Roasted Red Kuri",
+          badge: "Valley Crop",
+          desc: "Glazed in estate wildflower honey, smoked brown butter, and pickled mountain berries with puffed buckwheat.",
+          img: "https://images.unsplash.com/photo-1506484381205-f7945653044d?q=80&w=600&auto=format&fit=crop"
+        },
+        {
+          title: "Golden Pine Chanterelles",
+          badge: "Wild Foraged",
+          desc: "Hand-foraged in the Douglas fir ridge, served over ancient emmer grain congee with egg yolk cured in kelp vinegar.",
+          img: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=600&auto=format&fit=crop"
+        },
+        {
+          title: "Smoked Hay Ice Cream",
+          badge: "Hearth Pastry",
+          desc: "Infused with sweet orchard meadow hay, salted caramel reduction, and crisp sourdough wafers.",
+          img: "https://images.unsplash.com/photo-1551218808-94e220e084d2?q=80&w=600&auto=format&fit=crop"
+        }
+      ],
+      winter: [
+        {
+          title: "Lacto-Fermented Sunchoke Broth",
+          badge: "Aged Cellar",
+          desc: "Silky 40-day fermented Jerusalem artichoke with foraged black truffles and roasted marrow toast.",
+          img: "https://images.unsplash.com/photo-1547592180-85f173990554?q=80&w=600&auto=format&fit=crop"
+        },
+        {
+          title: "Ember-Braised Heritage Venison",
+          badge: "Sustainable Hunt",
+          desc: "Slow-roasted for 14 hours over oak charcoal with preserved juniper berries, parsnip cream, and fir needle jus.",
+          img: "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=600&auto=format&fit=crop"
+        },
+        {
+          title: "Spruce Tip Pear Tartlet",
+          badge: "Cold Cellar",
+          desc: "Late harvest d'Anjou pears poached in spiced perry cider with candied spruce needles and rye crust.",
+          img: "https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=600&auto=format&fit=crop"
+        }
+      ],
+      spring: [
+        {
+          title: "Wild Ramp & Morels Velouté",
+          badge: "Spring Forage",
+          desc: "Freshly unearthed wild mountain ramps, sweet peas, and buttery spring morels with house curd.",
+          img: "https://images.unsplash.com/photo-1540420773420-3366772f4999?q=80&w=600&auto=format&fit=crop"
+        },
+        {
+          title: "Pasture Lamb with Green Garlic",
+          badge: "Estate Pasture",
+          desc: "Tender loin cooked over glowing fruitwood with nettle puree, baby radishes, and mint emulsion.",
+          img: "https://images.unsplash.com/photo-1565299585323-38d6b0865b47?q=80&w=600&auto=format&fit=crop"
+        },
+        {
+          title: "Elderflower Honey Panna Cotta",
+          badge: "Bloom Harvest",
+          desc: "Jersey cow milk infused with valley elderflowers, wild strawberries, and chamomile granita.",
+          img: "https://images.unsplash.com/photo-1488477181946-6428a0291777?q=80&w=600&auto=format&fit=crop"
+        }
+      ],
+      summer: [
+        {
+          title: "Heirloom Tomato Tartare",
+          badge: "Sun Ripened",
+          desc: "Twelve varieties of sun-warmed heirloom tomatoes with garden basil oil and smoked sea salt.",
+          img: "https://images.unsplash.com/photo-1592417817098-8f3d69109853?q=80&w=600&auto=format&fit=crop"
+        },
+        {
+          title: "Fire-Grilled Rainbow Trout",
+          badge: "Spring Fed",
+          desc: "Caught from local mountain streams, grilled on cedar planks with charred sweet corn and roasted peppers.",
+          img: "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?q=80&w=600&auto=format&fit=crop"
+        },
+        {
+          title: "Blackberry Verbena Galette",
+          badge: "Orchard Brambles",
+          desc: "Hand-picked wild blackberries in flaky spelt pastry with churned lemon verbena cream.",
+          img: "https://images.unsplash.com/photo-1519869325930-281384150729?q=80&w=600&auto=format&fit=crop"
+        }
+      ]
+    };
+
+    document.querySelectorAll('.season-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.season-btn').forEach(b => {
+          b.classList.remove('active');
+          b.classList.remove('btn-primary');
+          b.classList.add('btn-outline');
+        });
+        btn.classList.add('active');
+        btn.classList.remove('btn-outline');
+        btn.classList.add('btn-primary');
+
+        const season = btn.getAttribute('data-season');
+        const container = document.getElementById('season-cards-container');
+        const items = seasonData[season] || seasonData.autumn;
+
+        container.style.opacity = '0';
+        setTimeout(() => {
+          container.innerHTML = items.map(item => `
+            <article class="card">
+              <div class="card-media">
+                <img src="${item.img}" alt="${item.title}">
+              </div>
+              <span class="card-badge">${item.badge}</span>
+              <div class="card-icon"><i class="ri-leaf-line"></i></div>
+              <h3>${item.title}</h3>
+              <p>${item.desc}</p>
+            </article>
+          `).join('');
+          container.style.opacity = '1';
+        }, 200);
+      });
+    });
+  </script>
+</body>
+</html>

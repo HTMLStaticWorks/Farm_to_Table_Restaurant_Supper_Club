@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Harvest & Hearth — Farm-to-Table Restaurant & Supper Club</title>
+  <meta name="description" content="Experience hyper-seasonal dining, open-hearth cooking, and communal supper club evenings rooted in organic agriculture and local terroir.">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23BA5D38'><path d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z'/></svg>">
+
+  <!-- Core CSS & RTL Overrides -->
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+
+  <!-- JSON-LD Structured Data for Local Restaurant / Event Experience -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "Harvest & Hearth",
+    "image": "https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?q=80&w=1200&auto=format&fit=crop",
+    "description": "Artisanal farm-to-table dining and intimate seasonal supper club.",
+    "servesCuisine": "Farm-to-Table, Seasonal Nordic-Mediterranean, Organic",
+    "priceRange": "$$$$",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "742 Meadowbrook Valley Road",
+      "addressLocality": "Highland Valley",
+      "addressRegion": "CA",
+      "postalCode": "95476",
+      "addressCountry": "US"
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Thursday", "Friday", "Saturday", "Sunday"],
+        "opens": "17:30",
+        "closes": "23:00"
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- ==================== HEADER & NAVBAR (STEP 4) ==================== -->
+  <header class="site-header" id="site-header">
+    <div class="nav-container">
+      <!-- Logo -->
+      <a href="index.html" class="brand-logo">
+        <i class="ri-fire-line brand-logo-icon"></i>
+        <span>Harvest & Hearth</span>
+      </a>
+
+      <!-- Desktop Nav (>1024px) -->
+      <nav class="desktop-nav" aria-label="Main Navigation">
+        <a href="index.html" class="nav-link active">Home</a>
+        <a href="home2.html" class="nav-link">Home 2</a>
+        <a href="services.html" class="nav-link">Services</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="blog.html" class="nav-link">Blog</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+        <a href="dashboard.html" class="nav-link">Dashboard</a>
+      </nav>
+
+      <!-- Header Actions -->
+      <div class="header-actions">
+        <!-- RTL Toggle Button (Double Arrow ⇆, No text label) -->
+        <button type="button" class="btn-icon rtl-toggle-btn" aria-label="Toggle RTL layout" title="Switch text direction">
+          <i class="ri-arrow-left-right-line"></i>
+        </button>
+
+        <!-- Theme Toggle Button (Sun/Moon) -->
+        <button type="button" class="btn-icon theme-toggle-btn" aria-label="Toggle Dark / Light Theme" title="Toggle theme mode">
+          <i class="ri-moon-line"></i>
+        </button>
+
+        <!-- Login Button (Labeled exactly "Login") -->
+        <a href="login.html" class="btn btn-primary" id="header-login-btn">Login</a>
+
+        <!-- Hamburger Button (≤1024px) -->
+        <button type="button" class="hamburger-btn" aria-label="Open mobile navigation" aria-expanded="false" id="mobile-menu-trigger">
+          <i class="ri-menu-4-line"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer & Backdrop (≤1024px) -->
+  <div class="drawer-backdrop" id="drawer-backdrop"></div>
+  <aside class="mobile-drawer" id="mobile-drawer" aria-label="Mobile Navigation Drawer">
+    <div class="drawer-header">
+      <a href="index.html" class="brand-logo">
+        <i class="ri-fire-line brand-logo-icon"></i>
+        <span>Harvest & Hearth</span>
+      </a>
+      <button type="button" class="drawer-close" aria-label="Close navigation drawer" id="drawer-close-btn">
+        <i class="ri-close-line"></i>
+      </button>
+    </div>
+
+    <nav class="drawer-nav-list">
+      <a href="index.html" class="drawer-link active">Home <i class="ri-arrow-right-s-line"></i></a>
+      <a href="home2.html" class="drawer-link">Home 2 <i class="ri-arrow-right-s-line"></i></a>
+      <a href="services.html" class="drawer-link">Services <i class="ri-arrow-right-s-line"></i></a>
+      <a href="about.html" class="drawer-link">About <i class="ri-arrow-right-s-line"></i></a>
+      <a href="blog.html" class="drawer-link">Blog <i class="ri-arrow-right-s-line"></i></a>
+      <a href="contact.html" class="drawer-link">Contact <i class="ri-arrow-right-s-line"></i></a>
+      <a href="dashboard.html" class="drawer-link">Dashboard <i class="ri-arrow-right-s-line"></i></a>
+    </nav>
+
+    <div class="drawer-footer">
+      <div class="drawer-actions-row">
+        <!-- RTL Toggle inside drawer -->
+        <button type="button" class="btn-icon rtl-toggle-btn" aria-label="Toggle RTL layout" title="Switch text direction">
+          <i class="ri-arrow-left-right-line"></i>
+        </button>
+        <!-- Theme Toggle inside drawer (Step 6) -->
+        <button type="button" class="btn-icon theme-toggle-btn" aria-label="Toggle Dark / Light Theme" title="Toggle theme mode">
+          <i class="ri-moon-line"></i>
+        </button>
+      </div>
+      <a href="login.html" class="btn btn-primary" style="width: 100%;">Login</a>
+    </div>
+  </aside>
+
+  <!-- ==================== MAIN CONTENT ==================== -->
+  <main>
+    <!-- 1. HERO SECTION (STEP 9.1 & 11) -->
+    <section class="hero" id="hero">
+      <img src="https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?q=80&w=1600&auto=format&fit=crop" 
+           alt="Chefs preparing heirloom dishes over an open hearth in a rustic stone kitchen" 
+           class="hero-backdrop-img" 
+           loading="eager">
+      <div class="hero-overlay"></div>
+
+      <div class="container hero-content">
+        <div class="hero-badge">
+          <i class="ri-seedling-line"></i>
+          <span>Autumn Equinox Tasting Menu • Season XVI</span>
+        </div>
+
+        <h1 class="hero-title">Rooted in Earth. Cooked over Hearth.</h1>
+
+        <p class="hero-lead">
+          An intimate farm-to-table sanctuary celebrating regeneratively grown heirloom crops, wild foraged botanicals, and communal fireside supper clubs.
+        </p>
+
+        <div class="hero-actions">
+          <a href="contact.html" class="btn btn-secondary">
+            <span>Reserve a Table</span>
+            <i class="ri-calendar-check-line"></i>
+          </a>
+          <a href="services.html#menus" class="btn btn-outline" style="color: #FFFFFF; border-color: rgba(255,255,255,0.4);">
+            <span>Explore Menus</span>
+            <i class="ri-restaurant-line"></i>
+          </a>
+        </div>
+
+        <div class="hero-metrics">
+          <div class="hero-metric-item">
+            <div class="hero-metric-value" data-target="42" data-suffix=" Miles">0</div>
+            <div class="hero-metric-label">Max Sourcing Radius</div>
+          </div>
+          <div class="hero-metric-item">
+            <div class="hero-metric-value" data-target="100" data-suffix="%">0</div>
+            <div class="hero-metric-label">Regenerative & Organic</div>
+          </div>
+          <div class="hero-metric-item">
+            <div class="hero-metric-value" data-target="24" data-suffix=" Seats">0</div>
+            <div class="hero-metric-label">Intimate Communal Setting</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. SERVICES SECTION (STEP 9.1) -->
+    <section class="section" id="services">
+      <div class="container">
+        <header class="section-header">
+          <span class="section-eyebrow">Our Gastronomic Offerings</span>
+          <h2>Crafted Seasonal Dining Experiences</h2>
+          <p class="section-subtext">
+            From fireside tasting journeys to exclusive supper club evenings, every gathering connects our diners directly to the soil, the seasons, and the producers.
+          </p>
+        </header>
+
+        <div class="grid-3">
+          <!-- Card 1 -->
+          <article class="card">
+            <div class="card-media">
+              <img src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=800&auto=format&fit=crop" 
+                   alt="Wood-fired hearth roasting heirloom vegetables and tender game" 
+                   loading="lazy">
+            </div>
+            <span class="card-badge">Signature</span>
+            <div class="card-icon">
+              <i class="ri-fire-fill"></i>
+            </div>
+            <h3>Fireside Tasting Journey</h3>
+            <p>
+              A 7-course culinary exploration honoring the day's harvest, roasted over sustainable oak embers and paired with biodynamic wines.
+            </p>
+            <a href="services.html" class="btn btn-outline">Learn More</a>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="card">
+            <div class="card-media">
+              <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=800&auto=format&fit=crop" 
+                   alt="Long candlelit communal wooden table with wine glasses and fresh botanical centerpieces" 
+                   loading="lazy">
+            </div>
+            <span class="card-badge">Monthly</span>
+            <div class="card-icon">
+              <i class="ri-goblet-line"></i>
+            </div>
+            <h3>Supper Club Evenings</h3>
+            <p>
+              An intimate 24-seat communal dining gathering where farmers, winemakers, and guests converse over shared multi-course banquets.
+            </p>
+            <a href="services.html#supper-club" class="btn btn-outline">Join the Club</a>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="card">
+            <div class="card-media">
+              <img src="https://images.unsplash.com/photo-1500937386664-56d1dfef3854?q=80&w=800&auto=format&fit=crop" 
+                   alt="Sunset views over lush organic farm plots with wooden dining pavilions" 
+                   loading="lazy">
+            </div>
+            <span class="card-badge">Exclusive</span>
+            <div class="card-icon">
+              <i class="ri-community-line"></i>
+            </div>
+            <h3>Private Orchard Dinners</h3>
+            <p>
+              Bespoke celebrations hosted amidst our heritage apple orchards or within the glass greenhouse under star-lit countryside skies.
+            </p>
+            <a href="contact.html" class="btn btn-outline">Inquire Date</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. ABOUT SECTION (STEP 9.1) -->
+    <section class="section section-alt" id="about">
+      <div class="container">
+        <div class="grid-2">
+          <div class="story-image-wrap">
+            <img src="https://images.unsplash.com/photo-1595974482597-4b8da8879bc5?q=80&w=900&auto=format&fit=crop" 
+                 alt="Farmer harvesting vibrant organic heritage heirloom vegetables at sunrise" 
+                 loading="lazy">
+            <div class="story-badge-floating">
+              <i class="ri-award-line"></i>
+              <div>
+                <strong style="display: block; font-family: var(--font-heading); font-size: 1.15rem;">Michelin Green Star</strong>
+                <span style="font-size: var(--size-caption); color: var(--color-text-muted);">Committed to 100% Zero-Waste Gastronomy</span>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <header style="text-align: start; margin-bottom: var(--space-4);">
+              <span class="section-eyebrow">Our Philosophy</span>
+              <h2 style="text-align: start !important;">Honoring the Rhythm of Living Soil</h2>
+              <p class="section-subtext" style="text-align: start !important; margin: 0;">
+                Founded on twenty acres of heritage farmland in 2018, Harvest & Hearth was born from an uncompromised devotion to real food. We do not design menus around distant supply chains; our menus are written daily at 6:00 AM after walking the greenhouses and orchard rows.
+              </p>
+            </header>
+
+            <p style="margin-bottom: var(--space-4);">
+              Every cut of dry-aged heritage pork, every heirloom brassica, every drop of cold-pressed sunflower oil, and every loaf of wild-fermented sourdough can be traced directly to our hands or our neighbor farmers within 42 miles.
+            </p>
+
+            <div style="display: flex; gap: var(--space-3); margin-top: var(--space-5); flex-wrap: wrap;">
+              <a href="about.html" class="btn btn-primary">Discover Our Ethos</a>
+              <a href="contact.html" class="btn btn-outline">Visit the Farm</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. FEATURES & HIGHLIGHTS GRID (STEP 9.1) -->
+    <section class="section" id="highlights">
+      <div class="container">
+        <header class="section-header">
+          <span class="section-eyebrow">Pillars of Integrity</span>
+          <h2>Why Our Tables Resonate</h2>
+          <p class="section-subtext">
+            Four guiding commitments define every plate, glass, and interaction at Harvest & Hearth.
+          </p>
+        </header>
+
+        <div class="grid-4">
+          <!-- Item 1 -->
+          <article class="card">
+            <div class="card-icon">
+              <i class="ri-leaf-line"></i>
+            </div>
+            <h3>Certified Regenerative</h3>
+            <p>Cultivating topsoil biology, capturing carbon, and zero synthetic pesticides on all estate grounds.</p>
+          </article>
+
+          <!-- Item 2 -->
+          <article class="card">
+            <div class="card-icon">
+              <i class="ri-compass-3-line"></i>
+            </div>
+            <h3>Micro-Sourced Terroir</h3>
+            <p>Ingredients harvested exclusively within our 42-mile regional valley ecosystem.</p>
+          </article>
+
+          <!-- Item 3 -->
+          <article class="card">
+            <div class="card-icon">
+              <i class="ri-bread-line"></i>
+            </div>
+            <h3>Ancient Grains</h3>
+            <p>Heirloom wheats stone-milled daily on-site for 48-hour natural sourdough hearth loaves.</p>
+          </article>
+
+          <!-- Item 4 -->
+          <article class="card">
+            <div class="card-icon">
+              <i class="ri-drinks-line"></i>
+            </div>
+            <h3>Living Wines</h3>
+            <p>Unfiltered low-intervention wines and botanical ciders from biodynamic smallholders.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. TESTIMONIALS SECTION (STEP 9.1) -->
+    <section class="section section-alt" id="testimonials">
+      <div class="container">
+        <header class="section-header">
+          <span class="section-eyebrow">Guest Accolades</span>
+          <h2>Echoes from the Hearth</h2>
+          <p class="section-subtext">
+            Reflections from culinary critics, travelers, and members of our seasonal supper club.
+          </p>
+        </header>
+
+        <div class="testimonials-slider">
+          <div class="testimonial-track">
+            <!-- Slide 1 -->
+            <div class="testimonial-slide">
+              <div class="testimonial-stars">
+                <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i>
+              </div>
+              <blockquote class="testimonial-quote">
+                “Harvest & Hearth strips away the pretension of fine dining and replaces it with soul, smoke, and pure botanical alchemy. The wood-roasted sunchokes alone are worth the pilgrimage.”
+              </blockquote>
+              <div class="testimonial-author">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=200&auto=format&fit=crop" alt="Elena Vance" class="testimonial-avatar">
+                <div>
+                  <div class="testimonial-author-name">Elena Vance</div>
+                  <div class="testimonial-author-role">Culinary Editor, Gastronomica Quarterly</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="testimonial-slide">
+              <div class="testimonial-stars">
+                <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i>
+              </div>
+              <blockquote class="testimonial-quote">
+                “Sitting at the 24-person communal supper club table felt like discovering an ancient secret. By the third course, strangers had become lifelong friends over foraged chanterelles.”
+              </blockquote>
+              <div class="testimonial-author">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200&auto=format&fit=crop" alt="Marcus Thorne" class="testimonial-avatar">
+                <div>
+                  <div class="testimonial-author-name">Marcus Thorne</div>
+                  <div class="testimonial-author-role">Founding Supper Club Member</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="testimonial-slide">
+              <div class="testimonial-stars">
+                <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i>
+              </div>
+              <blockquote class="testimonial-quote">
+                “A standard-bearer for regenerative agriculture. Every wine pairing brought forth stories of forgotten orchards and wild mountain slopes.”
+              </blockquote>
+              <div class="testimonial-author">
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=200&auto=format&fit=crop" alt="Claire Fontaine" class="testimonial-avatar">
+                <div>
+                  <div class="testimonial-author-name">Claire Fontaine</div>
+                  <div class="testimonial-author-role">Master Sommelier & Guide Inspector</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Controls -->
+          <div class="slider-controls">
+            <button type="button" class="btn-icon slider-prev" aria-label="Previous review">
+              <i class="ri-arrow-left-s-line"></i>
+            </button>
+            <button type="button" class="btn-icon slider-next" aria-label="Next review">
+              <i class="ri-arrow-right-s-line"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. FULL-WIDTH CALL TO ACTION (STEP 9.1) -->
+    <section class="section" style="padding-top: 0;">
+      <div class="container">
+        <div class="cta-banner">
+          <span class="section-eyebrow" style="color: var(--color-accent);">Intimate Reservations</span>
+          <h2>Join Us at the Communal Table</h2>
+          <p>
+            Due to our commitment to fresh daily harvest quotas, reservations are released on the 1st of each month for the subsequent four weeks.
+          </p>
+          <div style="display: flex; justify-content: center; gap: var(--space-3); flex-wrap: wrap;">
+            <a href="contact.html" class="btn btn-secondary">Reserve Autumn Dinner</a>
+            <a href="services.html#supper-club" class="btn btn-outline" style="color: #FFFFFF; border-color: rgba(255,255,255,0.4);">
+              Supper Club Membership
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== FOOTER (STEP 10) ==================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Col 1 -->
+        <div class="footer-col">
+          <a href="index.html" class="brand-logo" style="margin-bottom: var(--space-3);">
+            <i class="ri-fire-line brand-logo-icon"></i>
+            <span>Harvest & Hearth</span>
+          </a>
+          <p>
+            A seasonal sanctuary of regenerative cooking, heirloom biodiversity, and communal gatherings in the Highland Valley.
+          </p>
+          <div class="footer-socials">
+            <a href="#" class="btn-icon" aria-label="Instagram"><i class="ri-instagram-line"></i></a>
+            <a href="#" class="btn-icon" aria-label="YouTube"><i class="ri-youtube-line"></i></a>
+            <a href="#" class="btn-icon" aria-label="Spotify"><i class="ri-spotify-line"></i></a>
+          </div>
+        </div>
+
+        <!-- Col 2 -->
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <div class="footer-links">
+            <a href="index.html" class="footer-link">Home</a>
+            <a href="home2.html" class="footer-link">Home 2</a>
+            <a href="services.html" class="footer-link">Services</a>
+            <a href="about.html" class="footer-link">About the Farm</a>
+            <a href="blog.html" class="footer-link">Hearth Journal</a>
+          </div>
+        </div>
+
+        <!-- Col 3 -->
+        <div class="footer-col">
+          <h4>Supper Club</h4>
+          <div class="footer-links">
+            <a href="services.html#supper-club" class="footer-link">Membership Tiers</a>
+            <a href="services.html#menus" class="footer-link">Tasting Menus</a>
+            <a href="dashboard.html" class="footer-link">Guest Portal</a>
+            <a href="contact.html" class="footer-link">Private Bookings</a>
+            <a href="coming-soon.html" class="footer-link">Spring Equinox Drop</a>
+          </div>
+        </div>
+
+        <!-- Col 4 -->
+        <div class="footer-col">
+          <h4>The Farmstead</h4>
+          <p>
+            742 Meadowbrook Valley Rd<br>
+            Highland Valley, CA 95476<br>
+            Thursday – Sunday | 17:30 – 23:00
+          </p>
+          <p style="font-size: var(--size-caption); color: var(--color-text-muted);">
+            Inquiries: reservations@harvestandhearth.com
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-copyright">
+        <p>© 2026 Harvest & Hearth Sanctuary. All rights reserved. Soil-to-table culinary collective.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Core JavaScript -->
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
