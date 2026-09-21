@@ -3982,6 +3982,12 @@ html[data-theme="dark"] .dash-dock-item.active {
   .dash-topbar-center {
     display: none;
   }
+  .dash-sidebar-toggle {
+    display: none !important;
+  }
+  .dash-hamburger-btn {
+    display: inline-flex !important;
+  }
   .dash-sidebar {
     position: fixed;
     top: 0;
@@ -4024,6 +4030,10 @@ html[data-theme="dark"] .dash-dock-item.active {
   .dash-topbar .role-switcher-tabs {
     display: none;
   }
+  .dash-site-btn,
+  .dash-logout-btn {
+    display: none !important;
+  }
   .dash-main-content {
     padding: var(--space-3);
     padding-bottom: 80px; /* Clearance for bottom dock */
@@ -4043,9 +4053,18 @@ html[data-theme="dark"] .dash-dock-item.active {
 }
 
 @media (max-width: 480px) {
+  .dash-topbar-right {
+    gap: 6px;
+  }
+  .dash-hamburger-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 1.35rem;
+  }
   .kpi-grid {
     grid-template-columns: 1fr;
   }
 }
+
 
 
