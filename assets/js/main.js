@@ -13,6 +13,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initFormValidation();
   initHeroAnimations();
   highlightActiveNavLink();
+  initBackToTop();
+  initFAQAccordion();
 });
 
 /* ==========================================================================
@@ -80,6 +82,7 @@ function enableRTL(enable) {
     document.documentElement.removeAttribute('dir');
     document.body.classList.remove('rtl');
   }
+  window.dispatchEvent(new Event('dirchange'));
 }
 
 /* ==========================================================================
@@ -189,6 +192,37 @@ function initTestimonialsSlider() {
       updateSlider();
     });
   }
+
+  // Touch swipe support for mobile and tablet devices
+  let touchStartX = 0;
+  let touchEndX = 0;
+  let touchStartY = 0;
+  let touchEndY = 0;
+
+  slider.addEventListener('touchstart', (e) => {
+    touchStartX = e.touches[0].clientX;
+    touchStartY = e.touches[0].clientY;
+  }, { passive: true });
+
+  slider.addEventListener('touchend', (e) => {
+    touchEndX = e.changedTouches[0].clientX;
+    touchEndY = e.changedTouches[0].clientY;
+    const diffX = touchStartX - touchEndX;
+    const diffY = touchStartY - touchEndY;
+    // Only trigger slide navigation if horizontal gesture is greater than vertical and > 35px
+    if (Math.abs(diffX) > 35 && Math.abs(diffX) > Math.abs(diffY)) {
+      const isRTL = document.documentElement.getAttribute('dir') === 'rtl';
+      if ((diffX > 0 && !isRTL) || (diffX < 0 && isRTL)) {
+        currentIndex = (currentIndex + 1) % totalSlides;
+      } else {
+        currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+      }
+      updateSlider();
+    }
+  }, { passive: true });
+
+  window.addEventListener('resize', updateSlider);
+  window.addEventListener('dirchange', updateSlider);
 }
 
 /* ==========================================================================
@@ -334,3 +368,67 @@ function initHeroAnimations() {
 
   metricValues.forEach(el => observer.observe(el));
 }
+
+/* ==========================================================================
+   7. BACK TO TOP BUTTON (ALL DEVICES)
+   ========================================================================== */
+function initBackToTop() {
+  let backToTopBtn = document.getElementById('back-to-top');
+  if (!backToTopBtn) {
+    backToTopBtn = document.createElement('button');
+    backToTopBtn.id = 'back-to-top';
+    backToTopBtn.className = 'back-to-top-btn';
+    backToTopBtn.setAttribute('type', 'button');
+    backToTopBtn.setAttribute('aria-label', 'Back to top');
+    backToTopBtn.setAttribute('title', 'Back to top');
+    backToTopBtn.innerHTML = '<i class="ri-arrow-up-line"></i>';
+    document.body.appendChild(backToTopBtn);
+  }
+
+  let isScrolling = false;
+  const toggleVisibility = () => {
+    if (window.scrollY > 300) {
+      backToTopBtn.classList.add('visible');
+    } else {
+      backToTopBtn.classList.remove('visible');
+    }
+    isScrolling = false;
+  };
+
+  window.addEventListener('scroll', () => {
+    if (!isScrolling) {
+      window.requestAnimationFrame(toggleVisibility);
+      isScrolling = true;
+    }
+  }, { passive: true });
+
+  toggleVisibility();
+
+  backToTopBtn.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+}
+
+/* ==========================================================================
+   10. FAQ ACCORDION (EXCLUSIVE EXPANSION)
+   ========================================================================== */
+function initFAQAccordion() {
+  const faqItems = document.querySelectorAll('.faq-item');
+  if (!faqItems.length) return;
+
+  faqItems.forEach(item => {
+    item.addEventListener('toggle', () => {
+      if (item.open) {
+        faqItems.forEach(otherItem => {
+          if (otherItem !== item && otherItem.open) {
+            otherItem.removeAttribute('open');
+          }
+        });
+      }
+    });
+  });
+}
+

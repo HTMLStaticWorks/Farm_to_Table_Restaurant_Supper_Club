@@ -1,10 +1,12 @@
 /**
  * HARVEST & HEARTH — DASHBOARD INTERACTIVITY
- * Supports dual-role views (Guest Portal & Kitchen/Admin Portal), tab switching,
- * reservation management, concierge chat messaging, dietary tag toggling, and service manifest filtering.
+ * Supports dual-role views (Guest Portal & Kitchen/Admin Portal), sidebar menu navigation,
+ * mobile drawer toggle, reservation management, concierge chat messaging, dietary tag toggling,
+ * and service manifest filtering across all devices.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+  initDashboardSidebar();
   initRoleSwitcher();
   initDashboardTabs();
   initReservationStatusUpdater();
@@ -14,50 +16,186 @@ document.addEventListener('DOMContentLoaded', () => {
   initManifestFilter();
 });
 
+/* ==========================================================================
+   1. DASHBOARD SIDEBAR TOGGLE & DRAWER (ALL DEVICES)
+   ========================================================================== */
+function initDashboardSidebar() {
+  const toggleBtn = document.getElementById('dashboard-sidebar-toggle');
+  const closeBtn = document.getElementById('dashboard-sidebar-close');
+  const backdrop = document.getElementById('dashboard-sidebar-backdrop');
+  const sidebar = document.getElementById('dashboard-sidebar');
+  const shell = document.querySelector('.dash-layout-shell');
+
+  if (toggleBtn && sidebar) {
+    toggleBtn.addEventListener('click', () => {
+      if (window.innerWidth <= 1024) {
+        sidebar.classList.toggle('active');
+        if (backdrop) backdrop.classList.toggle('active');
+        document.body.classList.toggle('dash-sidebar-open');
+      } else if (shell) {
+        // Desktop collapse toggle
+        shell.classList.toggle('sidebar-collapsed');
+      }
+    });
+  }
+
+  if (closeBtn && sidebar) {
+    closeBtn.addEventListener('click', closeDashboardSidebar);
+  }
+
+  if (backdrop) {
+    backdrop.addEventListener('click', closeDashboardSidebar);
+  }
+
+  // Handle window resize cleanly
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 1024) {
+      closeDashboardSidebar();
+    }
+  }, { passive: true });
+}
+
+function closeDashboardSidebar() {
+  const sidebar = document.getElementById('dashboard-sidebar');
+  const backdrop = document.getElementById('dashboard-sidebar-backdrop');
+  if (sidebar) sidebar.classList.remove('active');
+  if (backdrop) backdrop.classList.remove('active');
+  document.body.classList.remove('dash-sidebar-open');
+}
+
+/* ==========================================================================
+   2. ROLE SWITCHER (GUEST SANCTUARY VS KITCHEN ADMIN)
+   ========================================================================== */
 function initRoleSwitcher() {
   const roleButtons = document.querySelectorAll('.role-tab-btn');
-  const guestView = document.getElementById('guest-dashboard-view');
-  const adminView = document.getElementById('admin-dashboard-view');
+  const mobileAdminToggle = document.getElementById('mobile-dock-admin-toggle');
 
   roleButtons.forEach(btn => {
     btn.addEventListener('click', () => {
-      roleButtons.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-
       const targetRole = btn.getAttribute('data-role');
-      if (targetRole === 'admin') {
-        if (guestView) guestView.style.display = 'none';
-        if (adminView) adminView.style.display = 'block';
-      } else {
-        if (adminView) adminView.style.display = 'none';
-        if (guestView) guestView.style.display = 'block';
+      setDashboardRole(targetRole);
+    });
+  });
+
+  if (mobileAdminToggle) {
+    mobileAdminToggle.addEventListener('click', () => {
+      const adminView = document.getElementById('admin-dashboard-view');
+      const isCurrentlyAdmin = adminView && adminView.style.display !== 'none';
+      setDashboardRole(isCurrentlyAdmin ? 'guest' : 'admin');
+    });
+  }
+
+  // Handle sidebar items targeting admin sections directly
+  const adminNavItems = document.querySelectorAll('[data-role-target="admin"]');
+  adminNavItems.forEach(item => {
+    item.addEventListener('click', (e) => {
+      e.preventDefault();
+      setDashboardRole('admin');
+      const targetHref = item.getAttribute('href');
+      if (targetHref && targetHref.startsWith('#')) {
+        const targetEl = document.querySelector(targetHref);
+        if (targetEl) {
+          targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
       }
+      closeDashboardSidebar();
     });
   });
 }
 
+function setDashboardRole(role) {
+  const guestView = document.getElementById('guest-dashboard-view');
+  const adminView = document.getElementById('admin-dashboard-view');
+  const roleButtons = document.querySelectorAll('.role-tab-btn');
+  const mobileAdminToggle = document.getElementById('mobile-dock-admin-toggle');
+
+  roleButtons.forEach(b => {
+    if (b.getAttribute('data-role') === role) {
+      b.classList.add('active');
+    } else {
+      b.classList.remove('active');
+    }
+  });
+
+  if (role === 'admin') {
+    if (guestView) guestView.style.display = 'none';
+    if (adminView) adminView.style.display = 'block';
+    if (mobileAdminToggle) mobileAdminToggle.classList.add('active');
+    document.querySelectorAll('[data-tab-target]').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('[data-role-target="admin"]').forEach(item => item.classList.add('active'));
+  } else {
+    if (adminView) adminView.style.display = 'none';
+    if (guestView) guestView.style.display = 'block';
+    if (mobileAdminToggle) mobileAdminToggle.classList.remove('active');
+    document.querySelectorAll('[data-role-target="admin"]').forEach(item => item.classList.remove('active'));
+    // Restore default or current guest tab
+    const activeGuestTab = document.querySelector('.dash-nav-tab.active') || document.querySelector('[data-tab-target="guest-tab-bookings"]');
+    if (activeGuestTab) {
+      const tabTarget = activeGuestTab.getAttribute('data-tab-target');
+      switchDashboardTab(tabTarget);
+    }
+  }
+
+  closeDashboardSidebar();
+}
+
+/* ==========================================================================
+   3. GUEST DASHBOARD TAB SWITCHING (ALL DEVICES & CONTROLS)
+   ========================================================================== */
 function initDashboardTabs() {
-  const tabLinks = document.querySelectorAll('.dash-nav-tab');
+  const tabLinks = document.querySelectorAll('[data-tab-target]');
   tabLinks.forEach(tab => {
     tab.addEventListener('click', (e) => {
       e.preventDefault();
-      const parentContainer = tab.closest('.dashboard-view-container');
-      if (!parentContainer) return;
-
-      parentContainer.querySelectorAll('.dash-nav-tab').forEach(t => t.classList.remove('active'));
-      tab.classList.add('active');
-
       const targetId = tab.getAttribute('data-tab-target');
-      parentContainer.querySelectorAll('.dash-tab-pane').forEach(pane => {
-        pane.style.display = 'none';
-      });
-
-      const targetPane = document.getElementById(targetId);
-      if (targetPane) {
-        targetPane.style.display = 'block';
-      }
+      switchDashboardTab(targetId);
     });
   });
+}
+
+function switchDashboardTab(targetId) {
+  if (!targetId) return;
+
+  // Make sure we are in Guest view
+  const guestView = document.getElementById('guest-dashboard-view');
+  const adminView = document.getElementById('admin-dashboard-view');
+  if (guestView) guestView.style.display = 'block';
+  if (adminView) adminView.style.display = 'none';
+
+  // Sync role buttons
+  document.querySelectorAll('.role-tab-btn').forEach(btn => {
+    if (btn.getAttribute('data-role') === 'guest') {
+      btn.classList.add('active');
+    } else {
+      btn.classList.remove('active');
+    }
+  });
+  const mobileAdminToggle = document.getElementById('mobile-dock-admin-toggle');
+  if (mobileAdminToggle) mobileAdminToggle.classList.remove('active');
+
+  // Update active state across navigation elements linking to this tab
+  document.querySelectorAll('[data-tab-target]').forEach(t => {
+    if (t.classList.contains('dash-nav-tab') || t.classList.contains('sidebar-link') || t.classList.contains('dock-item')) {
+      if (t.getAttribute('data-tab-target') === targetId) {
+        t.classList.add('active');
+      } else {
+        t.classList.remove('active');
+      }
+    }
+  });
+
+  // Display target tab pane
+  const panes = document.querySelectorAll('#guest-dashboard-view .dash-tab-pane');
+  panes.forEach(pane => {
+    pane.style.display = 'none';
+  });
+
+  const targetPane = document.getElementById(targetId);
+  if (targetPane) {
+    targetPane.style.display = 'block';
+  }
+
+  closeDashboardSidebar();
 }
 
 function initReservationStatusUpdater() {

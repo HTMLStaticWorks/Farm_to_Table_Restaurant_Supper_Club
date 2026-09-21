@@ -13,70 +13,181 @@
 </head>
 <body>
 
-  <!-- ==================== MAIN CONTENT ==================== -->
-  <main class="dashboard-page">
-    <div class="container">
-      <!-- Toolbar with Portal Switcher & Quick Navigation -->
-      <div class="dashboard-toolbar">
-        <div style="display: flex; align-items: center; gap: var(--space-4); flex-wrap: wrap;">
-          <a href="index.html" class="brand-logo" title="Back to Harvest & Hearth">
-            <i class="ri-fire-line brand-logo-icon"></i>
-            <span>Harvest & Hearth</span>
-          </a>
-          <span style="font-size: 0.75rem; background-color: var(--color-surface-subtle); padding: 4px 10px; border-radius: var(--radius-global); border: 1px solid var(--color-border); color: var(--color-text-muted); font-weight: var(--weight-bold-inline);">
-            <i class="ri-shield-star-line" style="color: var(--color-secondary);"></i> Sanctuary Portal
-          </span>
-        </div>
+  <div class="dashboard-page">
+    <!-- ==================== PROPER TOP NAVIGATION BAR ==================== -->
+    <header class="dash-topbar" id="dash-topbar">
+      <div class="dash-topbar-left">
+        <button type="button" class="dash-sidebar-toggle" id="dashboard-sidebar-toggle" aria-label="Toggle navigation sidebar" title="Toggle navigation sidebar menu">
+          <i class="ri-menu-2-line"></i>
+        </button>
+        <a href="index.html" class="brand-logo" title="Back to Harvest & Hearth">
+          <i class="ri-fire-line brand-logo-icon"></i>
+          <span>Harvest & Hearth</span>
+        </a>
+        <span class="dash-portal-pill">
+          <i class="ri-shield-star-line"></i> Sanctuary Portal
+        </span>
+      </div>
 
-        <!-- Role View Switcher -->
-        <div class="role-switcher-tabs" aria-label="Portal View Switcher">
-          <button type="button" class="role-tab-btn active" data-role="guest" id="switch-to-guest">
-            <i class="ri-user-smile-line"></i> Guest Portal
-          </button>
-          <button type="button" class="role-tab-btn" data-role="admin" id="switch-to-admin">
-            <i class="ri-restaurant-line"></i> Kitchen & Admin
-          </button>
-        </div>
-
-        <!-- User Badge & Utility Controls -->
-        <div style="display: flex; align-items: center; gap: var(--space-3); flex-wrap: wrap;">
-          <div class="dashboard-user-info" style="cursor: default;">
-            <div style="position: relative;">
-              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=150&auto=format&fit=crop" 
-                   alt="User Avatar" class="dashboard-avatar">
-              <span style="position: absolute; bottom: 2px; right: 2px; width: 12px; height: 12px; background-color: var(--color-success); border: 2px solid var(--color-surface); border-radius: 50%;"></span>
-            </div>
-            <div>
-              <strong style="font-size: 0.95rem; display: block; line-height: 1.2;">Claire Delacroix</strong>
-              <span style="font-size: var(--size-caption); color: var(--color-secondary); font-weight: var(--weight-bold-inline);">
-                <i class="ri-vip-crown-fill"></i> Hearth Fellow (Tier II)
-              </span>
-            </div>
-          </div>
-
-          <div style="display: flex; align-items: center; gap: var(--space-2);">
-            <button type="button" class="btn-icon rtl-toggle-btn" aria-label="Toggle RTL layout" title="Switch text direction">
-              <i class="ri-arrow-left-right-line"></i>
-            </button>
-            <button type="button" class="btn-icon theme-toggle-btn" aria-label="Toggle Dark / Light Theme" title="Toggle theme mode">
-              <i class="ri-moon-line"></i>
-            </button>
-            <a href="index.html" class="btn btn-outline" style="padding: 0.45rem 0.9rem; font-size: 0.85rem;" title="Return to Website">
-              <i class="ri-home-line"></i> <span>Home</span>
-            </a>
-            <a href="login.html" class="btn btn-outline" style="padding: 0.45rem 0.9rem; font-size: 0.85rem; color: var(--color-error); border-color: var(--color-error);" title="Sign out of dashboard">
-              <i class="ri-logout-box-r-line"></i> <span>Logout</span>
-            </a>
-          </div>
+      <div class="dash-topbar-center">
+        <div class="dash-search-box">
+          <i class="ri-search-line"></i>
+          <input type="text" id="dash-global-search" class="dash-search-input" placeholder="Search reservations, cellar, dishes, suppliers...">
         </div>
       </div>
 
-      <!-- ==================== GUEST DASHBOARD VIEW ==================== -->
-      <div id="guest-dashboard-view" class="dashboard-view-container">
+      <div class="dash-topbar-right">
+        <!-- Dual Role Switcher -->
+        <div class="role-switcher-tabs" aria-label="Portal View Switcher">
+          <button type="button" class="role-tab-btn active" data-role="guest" id="top-switch-to-guest">
+            <i class="ri-user-smile-line"></i> <span>Guest</span>
+          </button>
+          <button type="button" class="role-tab-btn" data-role="admin" id="top-switch-to-admin">
+            <i class="ri-restaurant-line"></i> <span>Kitchen Admin</span>
+          </button>
+        </div>
+
+        <!-- Direction & Theme Toggles -->
+        <button type="button" class="btn-icon rtl-toggle-btn" aria-label="Toggle RTL layout" title="Switch text direction">
+          <i class="ri-arrow-left-right-line"></i>
+        </button>
+        <button type="button" class="btn-icon theme-toggle-btn" aria-label="Toggle Dark / Light Theme" title="Toggle theme mode">
+          <i class="ri-moon-line"></i>
+        </button>
+
+        <!-- Quick Link to Public Site -->
+        <a href="index.html" class="btn btn-outline" style="padding: 0.45rem 0.85rem; font-size: 0.85rem;" title="Return to Public Site">
+          <i class="ri-home-4-line"></i> <span>Site</span>
+        </a>
+
+        <!-- Sign Out -->
+        <a href="login.html" class="btn-icon" style="color: var(--color-error);" title="Sign out of Sanctuary">
+          <i class="ri-logout-box-r-line"></i>
+        </a>
+      </div>
+    </header>
+
+    <!-- ==================== DASHBOARD SHELL (SIDEBAR + MAIN CONTENT) ==================== -->
+    <div class="dash-layout-shell">
+      <!-- Mobile Sidebar Backdrop -->
+      <div class="dash-sidebar-backdrop" id="dashboard-sidebar-backdrop"></div>
+
+      <!-- Dedicated Sidebar Menu (Compulsory on All Devices) -->
+      <aside class="dash-sidebar" id="dashboard-sidebar" aria-label="Dashboard Navigation Sidebar">
+        <!-- User Profile Card -->
+        <div class="sidebar-user-card">
+          <div class="sidebar-user-profile">
+            <div class="sidebar-avatar-wrap">
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=150&auto=format&fit=crop" 
+                   alt="Claire Delacroix" class="sidebar-avatar">
+              <span class="sidebar-status-dot" title="Active Patron"></span>
+            </div>
+            <div>
+              <div class="sidebar-user-name">Claire Delacroix</div>
+              <div class="sidebar-user-tier"><i class="ri-vip-crown-fill"></i> Hearth Fellow (II)</div>
+            </div>
+          </div>
+          <button type="button" class="dash-sidebar-close" id="dashboard-sidebar-close" aria-label="Close sidebar menu">
+            <i class="ri-close-line"></i>
+          </button>
+        </div>
+
+        <!-- Sidebar Role Switcher (Visible inside drawer on mobile) -->
+        <div class="sidebar-role-toggle" style="padding: var(--space-3) var(--space-3) 0 var(--space-3);">
+          <div class="role-switcher-tabs" style="width: 100%;" aria-label="Sidebar Portal Switcher">
+            <button type="button" class="role-tab-btn active" data-role="guest" style="flex: 1; justify-content: center;">
+              <i class="ri-user-smile-line"></i> Guest
+            </button>
+            <button type="button" class="role-tab-btn" data-role="admin" style="flex: 1; justify-content: center;">
+              <i class="ri-restaurant-line"></i> Kitchen
+            </button>
+          </div>
+        </div>
+
+        <!-- Navigation Menu Items -->
+        <nav class="sidebar-nav-list" aria-label="Sidebar Primary Navigation">
+          <div class="sidebar-section-title">Guest Sanctuary</div>
+          <a href="#guest-tab-bookings" class="sidebar-nav-item active" data-tab-target="guest-tab-bookings">
+            <i class="ri-ticket-2-line"></i>
+            <span class="sidebar-link-text">My Reservations</span>
+            <span class="sidebar-badge">2</span>
+          </a>
+          <a href="#guest-tab-profile" class="sidebar-nav-item" data-tab-target="guest-tab-profile">
+            <i class="ri-user-settings-line"></i>
+            <span class="sidebar-link-text">Dietary Profile</span>
+          </a>
+          <a href="#guest-tab-saved" class="sidebar-nav-item" data-tab-target="guest-tab-saved">
+            <i class="ri-goblet-line"></i>
+            <span class="sidebar-link-text">Cellar & Menus</span>
+            <span class="sidebar-badge pill-accent">3</span>
+          </a>
+          <a href="#guest-tab-messages" class="sidebar-nav-item" data-tab-target="guest-tab-messages">
+            <i class="ri-chat-1-line"></i>
+            <span class="sidebar-link-text">Chef Concierge</span>
+            <span class="sidebar-badge pill-success">1</span>
+          </a>
+
+          <div class="sidebar-section-title">Kitchen & Operations</div>
+          <a href="#manifest-section" class="sidebar-nav-item" data-role-target="admin">
+            <i class="ri-file-list-3-line"></i>
+            <span class="sidebar-link-text">Service Manifest</span>
+            <span class="sidebar-badge">24</span>
+          </a>
+          <a href="#kpi-section" class="sidebar-nav-item" data-role-target="admin">
+            <i class="ri-dashboard-line"></i>
+            <span class="sidebar-link-text">Hearth KPIs</span>
+          </a>
+          <a href="#inflow-section" class="sidebar-nav-item" data-role-target="admin">
+            <i class="ri-plant-line"></i>
+            <span class="sidebar-link-text">Farm Inflow Log</span>
+          </a>
+          <a href="#hearth-temp-section" class="sidebar-nav-item" data-role-target="admin">
+            <i class="ri-fire-line"></i>
+            <span class="sidebar-link-text">Oven Temperatures</span>
+          </a>
+
+          <div class="sidebar-section-title">Public Restaurant</div>
+          <a href="index.html" class="sidebar-nav-item">
+            <i class="ri-home-4-line"></i>
+            <span class="sidebar-link-text">Home Sanctuary</span>
+          </a>
+          <a href="services.html" class="sidebar-nav-item">
+            <i class="ri-restaurant-2-line"></i>
+            <span class="sidebar-link-text">Dining Offerings</span>
+          </a>
+          <a href="about.html" class="sidebar-nav-item">
+            <i class="ri-compass-3-line"></i>
+            <span class="sidebar-link-text">About the Farm</span>
+          </a>
+          <a href="contact.html" class="sidebar-nav-item">
+            <i class="ri-mail-line"></i>
+            <span class="sidebar-link-text">Contact & Booking</span>
+          </a>
+        </nav>
+
+        <!-- Sidebar Footer -->
+        <div class="sidebar-footer">
+          <div class="sidebar-footer-card">
+            <div style="font-weight: var(--weight-bold-inline); color: var(--color-text); margin-bottom: 2px;">
+              <i class="ri-cloud-windy-line" style="color: var(--color-secondary);"></i> Autumn Harvest 2026
+            </div>
+            <span style="font-size: 0.72rem; color: var(--color-success); font-weight: bold;">
+              <i class="ri-check-line"></i> Kitchen Synchronized
+            </span>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main Dashboard Fluid Content -->
+      <main class="dash-main-content">
+        <!-- ==================== GUEST DASHBOARD VIEW ==================== -->
+        <div id="guest-dashboard-view" class="dashboard-view-container">
         <!-- Luxury Welcome Banner -->
         <div class="dash-welcome-banner">
           <div>
-            <span class="section-eyebrow" style="margin-bottom: var(--space-1); display: inline-block;">Autumn Fellowship • Patron Member</span>
+            <span class="portal-patron-tag" style="margin-bottom: var(--space-2); display: inline-flex;">
+              <i class="ri-shield-star-line"></i> Autumn Fellowship • Patron Member
+            </span>
             <h1 style="font-size: clamp(1.6rem, 3vw, 2.2rem); margin-bottom: var(--space-2); text-align: start !important;">
               Welcome home to the Hearth, Claire
             </h1>
@@ -84,10 +195,10 @@
               Your fireside seats for <em>The Autumn Equinox Supper Club</em> are reserved for Saturday, Nov 14th. Chef Arlo has cellared a rare 2019 Highland Valley Pinot magnum in honor of your anniversary.
             </p>
             <div style="display: flex; gap: var(--space-2); flex-wrap: wrap;">
-              <a href="#guest-tab-bookings" class="btn btn-secondary dash-nav-tab" data-tab-target="guest-tab-bookings" style="padding: 0.5rem 1.15rem; font-size: 0.88rem;">
-                <i class="ri-ticket-2-line"></i> View Seating Pass
+              <a href="#guest-tab-bookings" class="btn btn-secondary" data-tab-target="guest-tab-bookings" style="padding: 0.5rem 1.15rem; font-size: 0.88rem; color: #FFFFFF !important;">
+                <i class="ri-ticket-2-line" style="color: #FFFFFF !important;"></i> View Seating Pass
               </a>
-              <a href="#guest-tab-messages" class="btn btn-outline dash-nav-tab" data-tab-target="guest-tab-messages" style="padding: 0.5rem 1.15rem; font-size: 0.88rem;">
+              <a href="#guest-tab-messages" class="btn btn-outline" data-tab-target="guest-tab-messages" style="padding: 0.5rem 1.15rem; font-size: 0.88rem;">
                 <i class="ri-chat-1-line"></i> Message Chef Arlo
               </a>
             </div>
@@ -327,55 +438,55 @@
             </a>
           </div>
 
-          <div class="grid-3">
+          <div class="grid-3" style="align-items: stretch;">
             <!-- Saved Menu Card 1 -->
-            <article class="card" style="align-items: flex-start; text-align: start; padding: 0; overflow: hidden;">
-              <div style="width: 100%; height: 180px; overflow: hidden;">
+            <article class="card" style="align-items: stretch; text-align: start; padding: 0; overflow: hidden; display: flex; flex-direction: column; height: 100%;">
+              <div style="width: 100%; height: 180px; overflow: hidden; flex-shrink: 0;">
                 <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=600&auto=format&fit=crop" 
                      alt="Foraged Morel Symphony" style="width: 100%; height: 100%; object-fit: cover;">
               </div>
-              <div style="padding: var(--space-5); width: 100%;">
-                <span class="card-badge" style="position: static; display: inline-block; margin-bottom: var(--space-2);">Spring 2026</span>
-                <h3 style="font-size: 1.25rem; margin-bottom: var(--space-1);">Act VII: Foraged Morel Symphony</h3>
-                <p style="font-size: 0.92rem; margin-bottom: var(--space-3);">Wild morels, green garlic velouté, and estate churned raw butter.</p>
-                <div style="border-top: 1px solid var(--color-border); padding-top: var(--space-2); font-size: 0.85rem; color: var(--color-secondary); font-weight: var(--weight-bold-inline);">
+              <div style="padding: var(--space-5); width: 100%; display: flex; flex-direction: column; flex: 1;">
+                <span class="card-badge" style="position: static; display: inline-block; margin-bottom: var(--space-2); align-self: flex-start;">Spring 2026</span>
+                <h3 style="font-size: 1.25rem; margin-bottom: var(--space-2); min-height: 3.2rem; line-height: 1.35;">Act VII: Foraged Morel Symphony</h3>
+                <p style="font-size: 0.92rem; margin-bottom: var(--space-4); color: var(--color-text-muted); flex: 1;">Wild morels, green garlic velouté, and estate churned raw butter.</p>
+                <div class="cellar-card-cta">
                   <i class="ri-goblet-line"></i> Domaine Belluard 'Les Perles' Gringet
                 </div>
               </div>
             </article>
 
             <!-- Saved Menu Card 2 -->
-            <article class="card" style="align-items: flex-start; text-align: start; padding: 0; overflow: hidden;">
-              <div style="width: 100%; height: 180px; overflow: hidden;">
+            <article class="card" style="align-items: stretch; text-align: start; padding: 0; overflow: hidden; display: flex; flex-direction: column; height: 100%;">
+              <div style="width: 100%; height: 180px; overflow: hidden; flex-shrink: 0;">
                 <img src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?q=80&w=600&auto=format&fit=crop" 
                      alt="Cedar Plank Mountain Trout" style="width: 100%; height: 100%; object-fit: cover;">
               </div>
-              <div style="padding: var(--space-5); width: 100%;">
-                <span class="card-badge" style="position: static; display: inline-block; margin-bottom: var(--space-2);">Summer 2026</span>
-                <h3 style="font-size: 1.25rem; margin-bottom: var(--space-1);">Act III: Cedar Plank Mountain Trout</h3>
-                <p style="font-size: 0.92rem; margin-bottom: var(--space-3);">Spring-fed trout roasted over glowing cedar embers with charred lemon.</p>
-                <div style="border-top: 1px solid var(--color-border); padding-top: var(--space-2); font-size: 0.85rem; color: var(--color-secondary); font-weight: var(--weight-bold-inline);">
+              <div style="padding: var(--space-5); width: 100%; display: flex; flex-direction: column; flex: 1;">
+                <span class="card-badge" style="position: static; display: inline-block; margin-bottom: var(--space-2); align-self: flex-start;">Summer 2026</span>
+                <h3 style="font-size: 1.25rem; margin-bottom: var(--space-2); min-height: 3.2rem; line-height: 1.35;">Act III: Cedar Plank Mountain Trout</h3>
+                <p style="font-size: 0.92rem; margin-bottom: var(--space-4); color: var(--color-text-muted); flex: 1;">Spring-fed trout roasted over glowing cedar embers with charred lemon.</p>
+                <div class="cellar-card-cta">
                   <i class="ri-goblet-line"></i> Gut Oggau 'Theodora' Natural White
                 </div>
               </div>
             </article>
 
             <!-- Cellar Locker Card 3 (Centered in tablet view!) -->
-            <article class="card" style="align-items: flex-start; text-align: start; padding: var(--space-5); border-color: var(--color-secondary); box-shadow: var(--shadow-hover);">
-              <div style="display: flex; justify-content: space-between; width: 100%; margin-bottom: var(--space-3);">
+            <article class="card" style="align-items: stretch; text-align: start; padding: var(--space-5); border-color: var(--color-secondary); box-shadow: var(--shadow-hover); display: flex; flex-direction: column; height: 100%;">
+              <div style="display: flex; justify-content: space-between; width: 100%; margin-bottom: var(--space-3); align-items: center;">
                 <span class="badge-status confirmed"><i class="ri-lock-line"></i> Vault Active</span>
                 <span style="font-size: 0.85rem; color: var(--color-secondary); font-weight: var(--weight-bold-inline);">Locker #42</span>
               </div>
-              <h3 style="font-size: 1.25rem; margin-bottom: var(--space-1);">Estate Cellar Allocation</h3>
+              <h3 style="font-size: 1.25rem; margin-bottom: var(--space-2); min-height: 3.2rem; line-height: 1.35;">Estate Cellar Allocation</h3>
               <p style="font-size: 0.92rem; color: var(--color-text-muted); margin-bottom: var(--space-3);">
                 14 bottles currently resting in temperature-controlled cave chamber at 54°F / 70% humidity.
               </p>
-              <ul style="font-size: 0.85rem; width: 100%; display: flex; flex-direction: column; gap: 6px; margin-bottom: var(--space-4);">
+              <ul style="font-size: 0.85rem; width: 100%; display: flex; flex-direction: column; gap: 6px; margin-bottom: var(--space-4); flex: 1;">
                 <li><i class="ri-checkbox-circle-fill" style="color: var(--color-secondary);"></i> <strong>6x</strong> 2019 Highland Valley Pinot Noir Magnum</li>
                 <li><i class="ri-checkbox-circle-fill" style="color: var(--color-secondary);"></i> <strong>4x</strong> 2021 Sunstone Amphora Skin-Contact Orange</li>
                 <li><i class="ri-checkbox-circle-fill" style="color: var(--color-secondary);"></i> <strong>4x</strong> 2023 Ancestral Pet-Nat Sparkling Cider</li>
               </ul>
-              <button type="button" class="btn btn-outline" style="width: 100%; padding: 0.5rem; font-size: 0.85rem;">
+              <button type="button" class="btn btn-outline" style="width: 100%; padding: 0.5rem; font-size: 0.85rem; margin-top: auto;">
                 <i class="ri-file-list-3-line"></i> Request Bottle Retrieval
               </button>
             </article>
@@ -439,7 +550,7 @@
       <!-- ==================== ADMIN / KITCHEN DASHBOARD VIEW ==================== -->
       <div id="admin-dashboard-view" class="dashboard-view-container" style="display: none;">
         <!-- KPI Cards Grid -->
-        <div class="kpi-grid">
+        <div class="kpi-grid" id="kpi-section">
           <div class="kpi-card">
             <div class="kpi-icon"><i class="ri-user-heart-line"></i></div>
             <div class="kpi-value">482</div>
@@ -478,7 +589,7 @@
         </div>
 
         <!-- Service Manifest Table with Live Filter & Search -->
-        <div class="dashboard-table-wrap">
+        <div class="dashboard-table-wrap" id="manifest-section">
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-4); flex-wrap: wrap; gap: var(--space-3);">
             <div>
               <h2 style="font-size: 1.5rem; margin: 0; text-align: start !important;">Tonight's Service Manifest (Nov 14)</h2>
@@ -523,7 +634,7 @@
                 </td>
                 <td>2 Guests</td>
                 <td>18:30 • Table 1 (Hearth)</td>
-                <td><span style="background: rgba(186, 93, 56, 0.1); color: var(--color-secondary); padding: 2px 6px; border-radius: 4px; font-size: 0.75rem; font-weight: bold;">Pescatarian, No Tree Nuts</span></td>
+                <td><span class="dietary-note-pill">Pescatarian, No Tree Nuts</span></td>
                 <td><span class="badge-status confirmed">Confirmed</span></td>
                 <td>
                   <select class="form-select status-select" style="padding: 0.3rem 0.5rem; font-size: 0.85rem;">
@@ -600,7 +711,7 @@
         <!-- Supplier & Produce Tracker + Hearth Oven Status -->
         <div class="grid-2" style="gap: var(--space-5);">
           <!-- Morning Farm Inflow Tracker -->
-          <div style="background-color: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-global); padding: var(--space-5); box-shadow: var(--shadow-global);">
+          <div id="inflow-section" style="background-color: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-global); padding: var(--space-5); box-shadow: var(--shadow-global);">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-3);">
               <h3 style="font-size: 1.25rem; color: var(--color-secondary); margin: 0; text-align: start !important;">
                 Morning Farm Inflow & Quality Control
@@ -635,7 +746,7 @@
           </div>
 
           <!-- Hearth Oven Temperatures with Live Gauges -->
-          <div style="background-color: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-global); padding: var(--space-5); box-shadow: var(--shadow-global);">
+          <div id="hearth-temp-section" style="background-color: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-global); padding: var(--space-5); box-shadow: var(--shadow-global);">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-3);">
               <h3 style="font-size: 1.25rem; color: var(--color-secondary); margin: 0; text-align: start !important;">
                 6-Ton Stone Hearth Roasting Zones
@@ -673,9 +784,39 @@
             </div>
           </div>
         </div>
-      </div>
+        </div>
+      </main>
     </div>
-  </main>
+
+    <!-- ==================== MOBILE BOTTOM QUICK DOCK (ALL DEVICES / MOBILE UX) ==================== -->
+    <nav class="dash-mobile-dock" aria-label="Mobile Dashboard Quick Dock">
+      <button type="button" class="dash-dock-item active" data-tab-target="guest-tab-bookings" aria-label="Reservations">
+        <i class="ri-ticket-2-line"></i>
+        <span>Passes</span>
+      </button>
+      <button type="button" class="dash-dock-item" data-tab-target="guest-tab-profile" aria-label="Dietary">
+        <i class="ri-user-settings-line"></i>
+        <span>Dietary</span>
+      </button>
+      <button type="button" class="dash-dock-item" data-tab-target="guest-tab-saved" aria-label="Cellar">
+        <i class="ri-goblet-line"></i>
+        <span>Cellar</span>
+      </button>
+      <button type="button" class="dash-dock-item" data-tab-target="guest-tab-messages" aria-label="Concierge">
+        <i class="ri-chat-1-line"></i>
+        <span>Concierge</span>
+      </button>
+      <button type="button" class="dash-dock-item" id="mobile-dock-admin-toggle" aria-label="Kitchen Admin">
+        <i class="ri-restaurant-line"></i>
+        <span>Kitchen</span>
+      </button>
+    </nav>
+  </div>
+
+  <!-- Back to Top Button (All Devices) -->
+  <button type="button" class="back-to-top-btn" id="back-to-top" aria-label="Back to top" title="Back to top">
+    <i class="ri-arrow-up-line"></i>
+  </button>
 
   <script src="assets/js/main.js"></script>
   <script src="assets/js/dashboard.js"></script>

@@ -13,11 +13,31 @@
 </head>
 <body class="auth-page-body">
 
-  <main class="auth-card">
-    <div class="auth-logo">
-      <i class="ri-fire-line" style="color: var(--color-secondary);"></i>
-      <span>Harvest & Hearth</span>
+  <!-- Top Navigation Bar with Theme & RTL Toggles (All Devices) -->
+  <header class="auth-topbar" aria-label="Authentication Navigation">
+    <a href="index.html" class="auth-back-link" title="Return to Homepage">
+      <i class="ri-arrow-left-line"></i>
+      <span>Back to Hearth</span>
+    </a>
+
+    <div class="auth-topbar-actions">
+      <!-- RTL Toggle Button (Double Arrow ⇄, No text label) -->
+      <button type="button" class="btn-icon rtl-toggle-btn" aria-label="Toggle RTL layout" title="Switch text direction">
+        <i class="ri-arrow-left-right-line"></i>
+      </button>
+
+      <!-- Theme Toggle Button (Sun/Moon) -->
+      <button type="button" class="btn-icon theme-toggle-btn" aria-label="Toggle Dark / Light Theme" title="Toggle theme mode">
+        <i class="ri-moon-line"></i>
+      </button>
     </div>
+  </header>
+
+  <main class="auth-card">
+    <a href="index.html" class="brand-logo auth-logo" title="Return to Homepage">
+      <i class="ri-fire-line brand-logo-icon"></i>
+      <span>Harvest & Hearth</span>
+    </a>
 
     <div class="auth-header">
       <h2>Welcome Back</h2>
@@ -41,15 +61,21 @@
         <span class="form-error-msg">Please enter a valid email address.</span>
       </div>
 
-      <div class="form-group">
-        <div style="display: flex; justify-content: space-between; align-items: center;">
-          <label class="form-label" for="login-password">
-            Password <span class="required-star">*</span>
-          </label>
-          <a href="#" style="font-size: var(--size-caption); color: var(--color-secondary);">Forgot?</a>
-        </div>
+      <div class="form-group" style="margin-bottom: var(--space-3);">
+        <label class="form-label" for="login-password">
+          Password <span class="required-star">*</span>
+        </label>
         <input type="password" id="login-password" name="password" class="form-input" placeholder="••••••••" required>
         <span class="form-error-msg">Password must be at least 8 characters.</span>
+      </div>
+
+      <!-- Remember Me Checkbox & Forgot Text Placed Below Text Box -->
+      <div class="auth-extra-row">
+        <label class="form-checkbox-label" for="login-remember" style="margin: 0; align-items: center; cursor: pointer;">
+          <input type="checkbox" id="login-remember" name="remember" style="cursor: pointer;">
+          <span style="font-size: var(--size-caption);">Remember me</span>
+        </label>
+        <a href="#" class="auth-forgot-link">Forgot?</a>
       </div>
 
       <!-- Primary Login Button (Labeled exactly "Login") -->
@@ -86,6 +112,11 @@
       </div>
     </form>
   </main>
+
+  <!-- Back to Top Button (All Devices) -->
+  <button type="button" class="back-to-top-btn" id="back-to-top" aria-label="Back to top" title="Back to top">
+    <i class="ri-arrow-up-line"></i>
+  </button>
 
   <script src="assets/js/main.js"></script>
   <script>

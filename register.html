@@ -13,11 +13,31 @@
 </head>
 <body class="auth-page-body">
 
-  <main class="auth-card" style="max-width: 480px; padding: var(--space-5) var(--space-5);">
-    <div class="auth-logo">
-      <i class="ri-fire-line" style="color: var(--color-secondary);"></i>
-      <span>Harvest & Hearth</span>
+  <!-- Top Navigation Bar with Theme & RTL Toggles (All Devices) -->
+  <header class="auth-topbar" aria-label="Authentication Navigation">
+    <a href="index.html" class="auth-back-link" title="Return to Homepage">
+      <i class="ri-arrow-left-line"></i>
+      <span>Back to Hearth</span>
+    </a>
+
+    <div class="auth-topbar-actions">
+      <!-- RTL Toggle Button (Double Arrow ⇄, No text label) -->
+      <button type="button" class="btn-icon rtl-toggle-btn" aria-label="Toggle RTL layout" title="Switch text direction">
+        <i class="ri-arrow-left-right-line"></i>
+      </button>
+
+      <!-- Theme Toggle Button (Sun/Moon) -->
+      <button type="button" class="btn-icon theme-toggle-btn" aria-label="Toggle Dark / Light Theme" title="Toggle theme mode">
+        <i class="ri-moon-line"></i>
+      </button>
     </div>
+  </header>
+
+  <main class="auth-card" style="max-width: 440px; padding: var(--space-5) var(--space-5);">
+    <a href="index.html" class="brand-logo auth-logo" title="Return to Homepage">
+      <i class="ri-fire-line brand-logo-icon"></i>
+      <span>Harvest & Hearth</span>
+    </a>
 
     <div class="auth-header" style="margin-bottom: var(--space-4);">
       <h2>Create Your Account</h2>
@@ -49,22 +69,20 @@
         <span class="form-error-msg">Please enter a valid email.</span>
       </div>
 
-      <div class="grid-2" style="gap: var(--space-2); margin-bottom: 0;">
-        <div class="form-group" style="margin-bottom: var(--space-2);">
-          <label class="form-label" for="reg-password">
-            Password <span class="required-star">*</span>
-          </label>
-          <input type="password" id="reg-password" name="password" class="form-input" placeholder="Min 8 chars" required>
-          <span class="form-error-msg">Min 8 characters.</span>
-        </div>
+      <div class="form-group" style="margin-bottom: var(--space-3);">
+        <label class="form-label" for="reg-password">
+          Password <span class="required-star">*</span>
+        </label>
+        <input type="password" id="reg-password" name="password" class="form-input" placeholder="Min 8 chars" required>
+        <span class="form-error-msg">Min 8 characters.</span>
+      </div>
 
-        <div class="form-group" style="margin-bottom: var(--space-2);">
-          <label class="form-label" for="reg-confirm-password">
-            Confirm Password <span class="required-star">*</span>
-          </label>
-          <input type="password" id="reg-confirm-password" name="confirm_password" class="form-input" placeholder="Re-type password" required>
-          <span class="form-error-msg">Must match password.</span>
-        </div>
+      <div class="form-group" style="margin-bottom: var(--space-3);">
+        <label class="form-label" for="reg-confirm-password">
+          Confirm Password <span class="required-star">*</span>
+        </label>
+        <input type="password" id="reg-confirm-password" name="confirm_password" class="form-input" placeholder="Re-type password" required>
+        <span class="form-error-msg">Must match password.</span>
       </div>
 
       <div class="form-group" style="margin-bottom: var(--space-3);">
@@ -107,6 +125,11 @@
       </div>
     </form>
   </main>
+
+  <!-- Back to Top Button (All Devices) -->
+  <button type="button" class="back-to-top-btn" id="back-to-top" aria-label="Back to top" title="Back to top">
+    <i class="ri-arrow-up-line"></i>
+  </button>
 
   <script src="assets/js/main.js"></script>
   <script>
