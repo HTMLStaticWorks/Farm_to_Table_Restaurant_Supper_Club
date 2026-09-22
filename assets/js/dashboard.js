@@ -14,7 +14,13 @@ document.addEventListener('DOMContentLoaded', () => {
   initDietaryTags();
   initConciergeChat();
   initManifestFilter();
+  initTopbarScroll();
 });
+
+function getTopbarHeight() {
+  const topbar = document.getElementById('dash-topbar');
+  return topbar ? topbar.offsetHeight : 72;
+}
 
 /* ==========================================================================
    1. DASHBOARD SIDEBAR TOGGLE & DRAWER (ALL DEVICES)
@@ -119,8 +125,7 @@ function initRoleSwitcher() {
       if (targetHref && targetHref.startsWith('#')) {
         const targetEl = document.querySelector(targetHref);
         if (targetEl) {
-          const topbarHeight = 76;
-          const y = targetEl.getBoundingClientRect().top + window.pageYOffset - topbarHeight;
+          const y = targetEl.getBoundingClientRect().top + window.pageYOffset - getTopbarHeight() - 16;
           window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
         }
       }
@@ -157,8 +162,7 @@ function setDashboardRole(role, activateFirstAdmin = true) {
       if (firstAdminItem) firstAdminItem.classList.add('active');
 
       if (adminView) {
-        const topbarHeight = 76;
-        const y = adminView.getBoundingClientRect().top + window.pageYOffset - topbarHeight;
+        const y = adminView.getBoundingClientRect().top + window.pageYOffset - getTopbarHeight() - 16;
         window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
       }
     }
@@ -268,8 +272,7 @@ function switchDashboardTab(targetId, shouldScroll = false) {
       const tabsBar = document.querySelector('.dash-tabs-bar');
       const scrollTarget = tabsBar || targetPane;
       if (scrollTarget) {
-        const topbarHeight = 76;
-        const y = scrollTarget.getBoundingClientRect().top + window.pageYOffset - topbarHeight;
+        const y = scrollTarget.getBoundingClientRect().top + window.pageYOffset - getTopbarHeight() - 16;
         window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
       }
     }
@@ -406,5 +409,24 @@ function initManifestFilter() {
 
   if (searchInput) searchInput.addEventListener('input', filterRows);
   if (timeFilter) timeFilter.addEventListener('change', filterRows);
+}
+
+/* ==========================================================================
+   8. TOPBAR SCROLL STATE
+   ========================================================================== */
+function initTopbarScroll() {
+  const topbar = document.getElementById('dash-topbar');
+  if (!topbar) return;
+
+  function onScroll() {
+    if (window.scrollY > 10) {
+      topbar.classList.add('scrolled');
+    } else {
+      topbar.classList.remove('scrolled');
+    }
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
 }
 

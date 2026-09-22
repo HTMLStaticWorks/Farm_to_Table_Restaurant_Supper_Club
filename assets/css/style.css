@@ -73,6 +73,7 @@
   --container-max: 1280px;
   --transition-smooth: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   --header-height: 84px;
+  --dash-topbar-height: 72px;
 }
 
 /* ==========================================================================
@@ -3650,13 +3651,13 @@ html[data-theme="dark"] [style*="color: var(--color-primary)"] {
 
 /* Dedicated Top Navigation Bar */
 .dash-topbar {
-  position: sticky;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
   width: 100%;
   box-sizing: border-box;
-  height: 72px;
+  height: var(--dash-topbar-height);
   background-color: var(--color-surface);
   border-bottom: 1px solid var(--color-border);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
@@ -3666,8 +3667,11 @@ html[data-theme="dark"] [style*="color: var(--color-primary)"] {
   justify-content: space-between;
   padding-inline: var(--space-5);
   gap: var(--space-3);
-  overflow: hidden;
-  transition: background-color 0.35s ease, border-color 0.35s ease;
+  transition: background-color 0.35s ease, border-color 0.35s ease, box-shadow 0.25s ease;
+}
+
+.dash-topbar.scrolled {
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
 }
 
 .dash-topbar-left {
@@ -3676,7 +3680,6 @@ html[data-theme="dark"] [style*="color: var(--color-primary)"] {
   gap: var(--space-3);
   flex-shrink: 0;
   min-width: 0;
-  overflow: hidden;
 }
 
 /* Desktop sidebar toggle — hidden (sidebar always visible on desktop) */
@@ -3751,7 +3754,8 @@ html[data-theme="dark"] .dash-topbar .brand-logo span {
   display: flex;
   flex: 1;
   position: relative;
-  min-height: calc(100vh - 72px);
+  min-height: calc(100vh - var(--dash-topbar-height));
+  padding-top: var(--dash-topbar-height);
 }
 
 /* Mobile Sidebar Backdrop */
@@ -3779,18 +3783,31 @@ html[data-theme="dark"] .dash-topbar .brand-logo span {
   border-inline-end: 1px solid var(--color-border);
   display: flex;
   flex-direction: column;
-  height: calc(100vh - 72px);
-  position: sticky;
-  top: 72px;
+  height: calc(100vh - var(--dash-topbar-height));
+  position: fixed;
+  top: var(--dash-topbar-height);
+  left: 0;
+  bottom: 0;
   overflow-y: auto;
   scrollbar-width: thin;
   transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-  z-index: 1060;
+  z-index: 990;
+}
+
+[dir="rtl"] .dash-sidebar,
+body.rtl .dash-sidebar {
+  left: auto;
+  right: 0;
 }
 
 /* Desktop Collapsed Sidebar State */
 .dash-layout-shell.sidebar-collapsed .dash-sidebar {
   width: 80px;
+}
+
+.dash-layout-shell.sidebar-collapsed .dash-main-content {
+  margin-inline-start: 80px;
+  width: calc(100% - 80px);
 }
 
 .dash-layout-shell.sidebar-collapsed .sidebar-user-card,
@@ -4010,8 +4027,9 @@ html[data-theme="dark"] .sidebar-nav-item.active i {
   min-width: 0;
   padding: var(--space-6);
   max-width: 1400px;
-  margin-inline: auto;
-  width: 100%;
+  margin-inline-start: 280px;
+  margin-inline-end: auto;
+  width: calc(100% - 280px);
 }
 
 /* Mobile Bottom Quick Dock */
@@ -4097,6 +4115,7 @@ html[data-theme="dark"] .dash-dock-item.active {
     box-shadow: 10px 0 30px rgba(0, 0, 0, 0.25);
     transform: translateX(-100%);
     z-index: 1100;
+    width: 280px;
   }
   [dir="rtl"] .dash-sidebar,
   body.rtl .dash-sidebar {
@@ -4112,13 +4131,19 @@ html[data-theme="dark"] .dash-dock-item.active {
     display: block;
   }
   .dash-main-content {
+    margin-inline-start: 0 !important;
+    margin-inline-end: auto !important;
+    width: 100% !important;
     padding: var(--space-4);
   }
 }
 
 @media (max-width: 768px) {
+  :root {
+    --dash-topbar-height: 64px;
+  }
   .dash-topbar {
-    height: 64px;
+    height: var(--dash-topbar-height);
     padding-inline: var(--space-4);
     gap: var(--space-2);
   }
@@ -4142,6 +4167,9 @@ html[data-theme="dark"] .dash-dock-item.active {
     gap: var(--space-2);
   }
   .dash-main-content {
+    margin-inline-start: 0 !important;
+    margin-inline-end: auto !important;
+    width: 100% !important;
     padding: var(--space-3);
     padding-bottom: 80px;
   }
@@ -4160,8 +4188,11 @@ html[data-theme="dark"] .dash-dock-item.active {
 }
 
 @media (max-width: 480px) {
+  :root {
+    --dash-topbar-height: 58px;
+  }
   .dash-topbar {
-    height: 58px;
+    height: var(--dash-topbar-height);
     padding-inline: var(--space-3);
   }
   .dash-topbar .brand-logo {
