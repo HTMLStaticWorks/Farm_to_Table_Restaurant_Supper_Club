@@ -280,6 +280,26 @@ body.rtl .course-item-tag {
   margin-inline-start: auto !important;
 }
 
+/* Menu Dishes and Dietary RTL */
+[dir="rtl"] .menu-dish-body,
+body.rtl .menu-dish-body {
+  text-align: right;
+}
+
+[dir="rtl"] .farm-partner-card,
+body.rtl .farm-partner-card,
+[dir="rtl"] .supper-date-card,
+body.rtl .supper-date-card {
+  text-align: right;
+}
+
+[dir="rtl"] .harvest-calendar-table th,
+[dir="rtl"] .harvest-calendar-table td,
+body.rtl .harvest-calendar-table th,
+body.rtl .harvest-calendar-table td {
+  text-align: right;
+}
+
 
 
 

@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menus & Seasonal Offerings — Harvest & Hearth</title>
+  <meta name="description" content="Explore current Brunch, Dinner, and Drinks menus at Harvest & Hearth. Hyper-seasonal, wood-fired dishes with clear Gluten-Free (GF), Vegan, and Dairy-Free (DF) options.">
+  
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23BA5D38'><path d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z'/></svg>">
+
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+</head>
+<body>
+
+  <!-- ==================== HEADER & NAVBAR ==================== -->
+  <header class="site-header" id="site-header">
+    <div class="nav-container">
+      <a href="index.html" class="brand-logo">
+        <i class="ri-fire-line brand-logo-icon"></i>
+        <span>Harvest & Hearth</span>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="desktop-nav" aria-label="Main Navigation">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link">About Us</a>
+        <a href="menu.html" class="nav-link active">Menus</a>
+        <a href="supper-club.html" class="nav-link">Supper Club</a>
+        <a href="ingredients.html" class="nav-link">Our Ingredients</a>
+        <a href="contact.html" class="nav-link">Contact Us</a>
+      </nav>
+
+      <!-- Header Actions -->
+      <div class="header-actions">
+        <button type="button" class="btn-icon rtl-toggle-btn" aria-label="Toggle RTL layout" title="Switch text direction">
+          <i class="ri-arrow-left-right-line"></i>
+        </button>
+        <button type="button" class="btn-icon theme-toggle-btn" aria-label="Toggle Dark / Light Theme" title="Toggle theme mode">
+          <i class="ri-moon-line"></i>
+        </button>
+        <a href="contact.html" class="btn btn-primary" id="header-reserve-btn">Book a Table</a>
+        <button type="button" class="hamburger-btn" aria-label="Open mobile navigation" aria-expanded="false" id="mobile-menu-trigger">
+          <i class="ri-menu-4-line"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="drawer-backdrop" id="drawer-backdrop"></div>
+  <aside class="mobile-drawer" id="mobile-drawer" aria-label="Mobile Navigation Drawer">
+    <div class="drawer-header">
+      <a href="index.html" class="brand-logo">
+        <i class="ri-fire-line brand-logo-icon"></i>
+        <span>Harvest & Hearth</span>
+      </a>
+      <button type="button" class="drawer-close" aria-label="Close navigation drawer" id="drawer-close-btn">
+        <i class="ri-close-line"></i>
+      </button>
+    </div>
+
+    <nav class="drawer-nav-list">
+      <a href="index.html" class="drawer-link">Home <i class="ri-arrow-right-s-line"></i></a>
+      <a href="about.html" class="drawer-link">About Us <i class="ri-arrow-right-s-line"></i></a>
+      <a href="menu.html" class="drawer-link active">Menus <i class="ri-arrow-right-s-line"></i></a>
+      <a href="supper-club.html" class="drawer-link">Supper Club <i class="ri-arrow-right-s-line"></i></a>
+      <a href="ingredients.html" class="drawer-link">Our Ingredients <i class="ri-arrow-right-s-line"></i></a>
+      <a href="contact.html" class="drawer-link">Contact Us <i class="ri-arrow-right-s-line"></i></a>
+      <a href="dashboard.html" class="drawer-link" style="opacity: 0.75; font-size: 0.95rem;">Guest Portal <i class="ri-arrow-right-s-line"></i></a>
+    </nav>
+
+    <div class="drawer-footer">
+      <div class="drawer-actions-row">
+        <button type="button" class="btn-icon rtl-toggle-btn" aria-label="Toggle RTL layout" title="Switch text direction">
+          <i class="ri-arrow-left-right-line"></i>
+        </button>
+        <button type="button" class="btn-icon theme-toggle-btn" aria-label="Toggle Dark / Light Theme" title="Toggle theme mode">
+          <i class="ri-moon-line"></i>
+        </button>
+      </div>
+      <a href="contact.html" class="btn btn-primary" style="width: 100%;">Book a Table</a>
+    </div>
+  </aside>
+
+  <!-- ==================== MAIN CONTENT ==================== -->
+  <main>
+    <!-- PAGE HERO -->
+    <section class="section" style="padding-top: calc(var(--header-height) + var(--space-6)); padding-bottom: var(--space-4);">
+      <div class="container">
+        <header class="section-header">
+          <span class="section-eyebrow">Hyper-Seasonal Daily Curation</span>
+          <h1>Our Seasonal Menus</h1>
+          <p class="section-subtext">
+            Written each morning following walks through our greenhouses and conversations with neighbor farmers. Cooked exclusively over live wood-fire embers.
+          </p>
+        </header>
+
+        <!-- MENU CONTROLS & DIETARY FILTERS -->
+        <div class="menu-controls-wrapper">
+          <!-- Meal Category Tabs -->
+          <div class="menu-tabs-nav" role="tablist" aria-label="Menu categories">
+            <button type="button" class="menu-tab-btn active" data-target-category="all">
+              <i class="ri-apps-line"></i> All Offerings
+            </button>
+            <button type="button" class="menu-tab-btn" data-target-category="brunch">
+              <i class="ri-sun-cloudy-line"></i> Weekend Brunch
+            </button>
+            <button type="button" class="menu-tab-btn" data-target-category="dinner">
+              <i class="ri-fire-line"></i> Hearth Dinner
+            </button>
+            <button type="button" class="menu-tab-btn" data-target-category="drinks">
+              <i class="ri-goblet-line"></i> Drinks & Cellar
+            </button>
+          </div>
+
+          <!-- Dietary Filter Pills -->
+          <div class="dietary-filters-bar" aria-label="Dietary preferences filter">
+            <span class="dietary-filter-label"><i class="ri-filter-3-line"></i> Filter Dietary:</span>
+            <button type="button" class="dietary-filter-btn active" data-target-dietary="all">All</button>
+            <button type="button" class="dietary-filter-btn" data-target-dietary="gf">Gluten-Free (GF)</button>
+            <button type="button" class="dietary-filter-btn" data-target-dietary="vegan">Vegan</button>
+            <button type="button" class="dietary-filter-btn" data-target-dietary="df">Dairy-Free (DF)</button>
+          </div>
+        </div>
+
+        <!-- DIETARY LEGEND -->
+        <div style="display: flex; justify-content: center; align-items: center; gap: var(--space-3); flex-wrap: wrap; margin-bottom: var(--space-6); font-size: 0.85rem; color: var(--color-text-muted);">
+          <span><span class="dietary-badge gf">GF</span> Gluten-Free</span>
+          <span><span class="dietary-badge vegan">Vegan</span> 100% Plant-Based</span>
+          <span><span class="dietary-badge df">DF</span> Dairy-Free</span>
+          <span><span class="dietary-badge nf">NF</span> Nut-Free</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- DISHES GRID SECTION -->
+    <section class="section" style="padding-top: 0;">
+      <div class="container">
+        
+        <div id="menu-no-results" style="display: none; text-align: center; padding: var(--space-8) var(--space-4);">
+          <i class="ri-restaurant-line" style="font-size: 3rem; color: var(--color-accent); margin-bottom: var(--space-3); display: block;"></i>
+          <h3>No dishes match the selected dietary criteria.</h3>
+          <p>Please select another dietary filter or speak to our kitchen team for bespoke adaptations.</p>
+        </div>
+
+        <div class="menu-dishes-grid" id="dishes-grid">
+
+          <!-- ══════ BRUNCH ITEMS ══════ -->
+
+          <!-- Dish 1 -->
+          <article class="menu-dish-card" data-category="brunch" data-dietary="gf df">
+            <div class="menu-dish-media">
+              <img src="https://images.unsplash.com/photo-1590301157890-4810ed352733?q=80&w=600&auto=format&fit=crop" 
+                   alt="Cast iron skillet with shakshuka, fresh farm eggs, and herbs" loading="lazy">
+            </div>
+            <div class="menu-dish-body">
+              <div class="menu-dish-header">
+                <h3 class="menu-dish-name">Farmstead Hearth Shakshuka</h3>
+                <span class="menu-dish-price">$22</span>
+              </div>
+              <p class="menu-dish-desc">
+                Slow-roasted heritage tomatoes, pasture-raised duck eggs, wild za'atar, charred scallions, and wilted rainbow chard.
+              </p>
+              <div class="menu-dish-footer">
+                <span class="menu-dish-origin"><i class="ri-map-pin-2-line"></i> Meadowbrook Plot 4</span>
+                <div class="menu-dish-badges">
+                  <span class="dietary-badge gf">GF</span>
+                  <span class="dietary-badge df">DF</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Dish 2 -->
+          <article class="menu-dish-card" data-category="brunch" data-dietary="gf vegan df">
+            <div class="menu-dish-media">
+              <img src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=600&auto=format&fit=crop" 
+                   alt="Wood-roasted golden potatoes, beets and herbs in rustic bowl" loading="lazy">
+            </div>
+            <div class="menu-dish-body">
+              <div class="menu-dish-header">
+                <h3 class="menu-dish-name">Embered Root & Potato Hash</h3>
+                <span class="menu-dish-price">$19</span>
+              </div>
+              <p class="menu-dish-desc">
+                Crisped Yukon Golds, salt-roasted Chioggia beets, caramelized sweet leeks, cold-pressed herb oil, and fermented mustard seed.
+              </p>
+              <div class="menu-dish-footer">
+                <span class="menu-dish-origin"><i class="ri-map-pin-2-line"></i> Valley Root Collective</span>
+                <div class="menu-dish-badges">
+                  <span class="dietary-badge gf">GF</span>
+                  <span class="dietary-badge vegan">Vegan</span>
+                  <span class="dietary-badge df">DF</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Dish 3 -->
+          <article class="menu-dish-card" data-category="brunch" data-dietary="df">
+            <div class="menu-dish-media">
+              <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=600&auto=format&fit=crop" 
+                   alt="Artisan stone-ground sourdough loaf with hearth crust" loading="lazy">
+            </div>
+            <div class="menu-dish-body">
+              <div class="menu-dish-header">
+                <h3 class="menu-dish-name">Red Fife Hearth Toast & Honey</h3>
+                <span class="menu-dish-price">$16</span>
+              </div>
+              <p class="menu-dish-desc">
+                48-hour wild sourdough toasted over applewood embers, raw wildflower honeycomb, and whipped cultured house-churned butter.
+              </p>
+              <div class="menu-dish-footer">
+                <span class="menu-dish-origin"><i class="ri-map-pin-2-line"></i> Estate Mill & Apiary</span>
+                <div class="menu-dish-badges">
+                  <span class="dietary-badge df">DF Avail</span>
+                  <span class="dietary-badge nf">NF</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Dish 4 -->
+          <article class="menu-dish-card" data-category="brunch" data-dietary="gf df nf">
+            <div class="menu-dish-media">
+              <img src="https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?q=80&w=600&auto=format&fit=crop" 
+                   alt="Smoked trout plate with delicate herbs and pickled vegetables" loading="lazy">
+            </div>
+            <div class="menu-dish-body">
+              <div class="menu-dish-header">
+                <h3 class="menu-dish-name">Smoked Valley Trout Tartine</h3>
+                <span class="menu-dish-price">$26</span>
+              </div>
+              <p class="menu-dish-desc">
+                Applewood-smoked creek trout, lacto-fermented organic cucumbers, shaved radish, dill blossom, and fermented shallot vinaigrette.
+              </p>
+              <div class="menu-dish-footer">
+                <span class="menu-dish-origin"><i class="ri-map-pin-2-line"></i> Clear Creek Fishery (19 mi)</span>
+                <div class="menu-dish-badges">
+                  <span class="dietary-badge gf">GF</span>
+                  <span class="dietary-badge df">DF</span>
+                  <span class="dietary-badge nf">NF</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Dish 5 -->
+          <article class="menu-dish-card" data-category="brunch" data-dietary="gf vegan df">
+            <div class="menu-dish-media">
+              <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?q=80&w=600&auto=format&fit=crop" 
+                   alt="Wild berry crêpes with fresh fruits" loading="lazy">
+            </div>
+            <div class="menu-dish-body">
+              <div class="menu-dish-header">
+                <h3 class="menu-dish-name">Highland Buckwheat Galette</h3>
+                <span class="menu-dish-price">$21</span>
+              </div>
+              <p class="menu-dish-desc">
+                Heirloom buckwheat crêpe, wild mountain blackberry coulis, roasted hazelnut butter, and warm maple reduction.
+              </p>
+              <div class="menu-dish-footer">
+                <span class="menu-dish-origin"><i class="ri-map-pin-2-line"></i> Mountain Ridge Berries</span>
+                <div class="menu-dish-badges">
+                  <span class="dietary-badge gf">GF</span>
+                  <span class="dietary-badge vegan">Vegan</span>
+                  <span class="dietary-badge df">DF</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+
+          <!-- ══════ DINNER ITEMS ══════ -->
+
+          <!-- Dish 6 -->
+          <article class="menu-dish-card" data-category="dinner" data-dietary="gf df">
+            <div class="menu-dish-media">
+              <img src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=600&auto=format&fit=crop" 
+                   alt="Chioggia beets with goat curd and edible flowers" loading="lazy">
+            </div>
+            <div class="menu-dish-body">
+              <div class="menu-dish-header">
+                <h3 class="menu-dish-name">Salt-Baked Chioggia Beets</h3>
+                <span class="menu-dish-price">$21</span>
+              </div>
+              <p class="menu-dish-desc">
+                Enclosed in living clay and hearth embers, whipped valley goat curd, pickled green spruce tips, and toasted pumpkin seed brittle.
+              </p>
+              <div class="menu-dish-footer">
+                <span class="menu-dish-origin"><i class="ri-map-pin-2-line"></i> Meadowbrook Plots</span>
+                <div class="menu-dish-badges">
+                  <span class="dietary-badge gf">GF</span>
+                  <span class="dietary-badge df">DF Avail</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Dish 7 -->
+          <article class="menu-dish-card" data-category="dinner" data-dietary="vegan df nf">
+            <div class="menu-dish-media">
+              <img src="https://images.unsplash.com/photo-1547496502-affa22d38842?q=80&w=600&auto=format&fit=crop" 
+                   alt="Wild mushroom congee with scallions" loading="lazy">
+            </div>
+            <div class="menu-dish-body">
+              <div class="menu-dish-header">
+                <h3 class="menu-dish-name">Foraged Chanterelle Congee</h3>
+                <span class="menu-dish-price">$26</span>
+              </div>
+              <p class="menu-dish-desc">
+                Slow-simmered ancient emmer grains, mountain golden chanterelles, lacto-fermented black garlic, and crispy leek straw.
+              </p>
+              <div class="menu-dish-footer">
+                <span class="menu-dish-origin"><i class="ri-map-pin-2-line"></i> North Ridge Foraged</span>
+                <div class="menu-dish-badges">
+                  <span class="dietary-badge vegan">Vegan</span>
+                  <span class="dietary-badge df">DF</span>
+                  <span class="dietary-badge nf">NF</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Dish 8 -->
+          <article class="menu-dish-card" data-category="dinner" data-dietary="gf vegan df">
+            <div class="menu-dish-media">
+              <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?q=80&w=600&auto=format&fit=crop" 
+                   alt="Wood-roasted sunchokes and autumn vegetables in natural pottery" loading="lazy">
+            </div>
+            <div class="menu-dish-body">
+              <div class="menu-dish-header">
+                <h3 class="menu-dish-name">Embered Sunchoke Velouté</h3>
+                <span class="menu-dish-price">$23</span>
+              </div>
+              <p class="menu-dish-desc">
+                Oak-roasted sunchokes, crispy parsnip ribbons, cold-pressed sunflower seed milk, and freshly shaved coastal winter truffle.
+              </p>
+              <div class="menu-dish-footer">
+                <span class="menu-dish-origin"><i class="ri-map-pin-2-line"></i> Heritage Sunchoke Row</span>
+                <div class="menu-dish-badges">
+                  <span class="dietary-badge gf">GF</span>
+                  <span class="dietary-badge vegan">Vegan</span>
+                  <span class="dietary-badge df">DF</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Dish 9 -->
+          <article class="menu-dish-card" data-category="dinner" data-dietary="gf df nf">
+            <div class="menu-dish-media">
+              <img src="https://images.unsplash.com/photo-1514944298352-fae06a382104?q=80&w=600&auto=format&fit=crop" 
+                   alt="Gourmet fire-roasted duck breast with reduction sauce and microgreens" loading="lazy">
+            </div>
+            <div class="menu-dish-body">
+              <div class="menu-dish-header">
+                <h3 class="menu-dish-name">Fire-Roasted Valley Duck</h3>
+                <span class="menu-dish-price">$48</span>
+              </div>
+              <p class="menu-dish-desc">
+                14-day dry-aged duck breast, charred sweet baby leeks, fermented autumn damson plum glaze, and roasted duck bone jus.
+              </p>
+              <div class="menu-dish-footer">
+                <span class="menu-dish-origin"><i class="ri-map-pin-2-line"></i> Sonoma Valley Pastures (31 mi)</span>
+                <div class="menu-dish-badges">
+                  <span class="dietary-badge gf">GF</span>
+                  <span class="dietary-badge df">DF</span>
+                  <span class="dietary-badge nf">NF</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Dish 10 -->
+          <article class="menu-dish-card" data-category="dinner" data-dietary="gf df">
+            <div class="menu-dish-media">
+              <img src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=600&auto=format&fit=crop" 
+                   alt="Wood-roasted heritage pork loin with glazed apples" loading="lazy">
+            </div>
+            <div class="menu-dish-body">
+              <div class="menu-dish-header">
+                <h3 class="menu-dish-name">Oak-Smoked Heritage Pork Loin</h3>
+                <span class="menu-dish-price">$46</span>
+              </div>
+              <p class="menu-dish-desc">
+                Pasture-raised Berkshire pork roasted on embers, spiced Gravenstein apple puree, braised cavolo nero, and wild thyme broth.
+              </p>
+              <div class="menu-dish-footer">
+                <span class="menu-dish-origin"><i class="ri-map-pin-2-line"></i> Oak Hill Heritage Farm</span>
+                <div class="menu-dish-badges">
+                  <span class="dietary-badge gf">GF</span>
+                  <span class="dietary-badge df">DF</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Dish 11 -->
+          <article class="menu-dish-card" data-category="dinner" data-dietary="gf vegan df">
+            <div class="menu-dish-media">
+              <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=600&auto=format&fit=crop" 
+                   alt="Charred Romanesco and heirloom brassicas with vibrant romesco sauce" loading="lazy">
+            </div>
+            <div class="menu-dish-body">
+              <div class="menu-dish-header">
+                <h3 class="menu-dish-name">Charred Brassicas & Romesco</h3>
+                <span class="menu-dish-price">$28</span>
+              </div>
+              <p class="menu-dish-desc">
+                Wood-fired Romanesco florets, purple sprouting broccoli, smoked bell pepper & sunflower seed romesco, lemon balm oil.
+              </p>
+              <div class="menu-dish-footer">
+                <span class="menu-dish-origin"><i class="ri-map-pin-2-line"></i> Greenhouse Row 7</span>
+                <div class="menu-dish-badges">
+                  <span class="dietary-badge gf">GF</span>
+                  <span class="dietary-badge vegan">Vegan</span>
+                  <span class="dietary-badge df">DF</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Dish 12 -->
+          <article class="menu-dish-card" data-category="dinner" data-dietary="gf nf">
+            <div class="menu-dish-media">
+              <img src="https://images.unsplash.com/photo-1558030006-450675393462?q=80&w=600&auto=format&fit=crop" 
+                   alt="Prime dry-aged steak cut over oak charcoal embers" loading="lazy">
+            </div>
+            <div class="menu-dish-body">
+              <div class="menu-dish-header">
+                <h3 class="menu-dish-name">45-Day Dry-Aged Valley Ribeye</h3>
+                <span class="menu-dish-price">$62</span>
+              </div>
+              <p class="menu-dish-desc">
+                Grass-fed local steer cooked over white oak coals, smoked bone marrow herb butter, charred king oyster mushrooms, and sea salt.
+              </p>
+              <div class="menu-dish-footer">
+                <span class="menu-dish-origin"><i class="ri-map-pin-2-line"></i> Valley Ranch (29 mi)</span>
+                <div class="menu-dish-badges">
+                  <span class="dietary-badge gf">GF</span>
+                  <span class="dietary-badge nf">NF</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+
+          <!-- ══════ DRINKS & LIVING WINES ══════ -->
+
+          <!-- Drink 13 -->
+          <article class="menu-dish-card" data-category="drinks" data-dietary="gf vegan df nf">
+            <div class="menu-dish-media">
+              <img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?q=80&w=600&auto=format&fit=crop" 
+                   alt="Glass of skin-contact orange wine glowing amber in candle light" loading="lazy">
+            </div>
+            <div class="menu-dish-body">
+              <div class="menu-dish-header">
+                <h3 class="menu-dish-name">Skin-Contact Orange Malvasia</h3>
+                <span class="menu-dish-price">$19 / Gl</span>
+              </div>
+              <p class="menu-dish-desc">
+                28 days macerated on skins. Unfiltered, zero sulfur added. Apricot pith, wild thyme, and vibrant volcanic minerality.
+              </p>
+              <div class="menu-dish-footer">
+                <span class="menu-dish-origin"><i class="ri-goblet-line"></i> Donkey & Goat (22 mi)</span>
+                <div class="menu-dish-badges">
+                  <span class="dietary-badge gf">GF</span>
+                  <span class="dietary-badge vegan">Vegan</span>
+                  <span class="dietary-badge df">DF</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Drink 14 -->
+          <article class="menu-dish-card" data-category="drinks" data-dietary="gf vegan df nf">
+            <div class="menu-dish-media">
+              <img src="https://images.unsplash.com/photo-1558001373-7b93ee48ffa0?q=80&w=600&auto=format&fit=crop" 
+                   alt="Sparkling natural Pet-Nat wine in flute glass" loading="lazy">
+            </div>
+            <div class="menu-dish-body">
+              <div class="menu-dish-header">
+                <h3 class="menu-dish-name">Pet-Nat Sparkling Rosé 2023</h3>
+                <span class="menu-dish-price">$21 / Gl</span>
+              </div>
+              <p class="menu-dish-desc">
+                Ancestral method biodynamic Pinot Noir. Tart wild strawberry, hibiscus blossom, and lively natural effervescence.
+              </p>
+              <div class="menu-dish-footer">
+                <span class="menu-dish-origin"><i class="ri-goblet-line"></i> Sonoma Mountain Biodynamic</span>
+                <div class="menu-dish-badges">
+                  <span class="dietary-badge gf">GF</span>
+                  <span class="dietary-badge vegan">Vegan</span>
+                  <span class="dietary-badge df">DF</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Drink 15 -->
+          <article class="menu-dish-card" data-category="drinks" data-dietary="gf vegan df nf">
+            <div class="menu-dish-media">
+              <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=600&auto=format&fit=crop" 
+                   alt="Craft cocktail with smoked rosemary sprig and clear ice sphere" loading="lazy">
+            </div>
+            <div class="menu-dish-body">
+              <div class="menu-dish-header">
+                <h3 class="menu-dish-name">Ember & Rosemary Bourbon</h3>
+                <span class="menu-dish-price">$20</span>
+              </div>
+              <p class="menu-dish-desc">
+                Small-batch rye infused over hearth oak coals, burnt estate rosemary sprig, raw maple syrup, and aromatic bitters.
+              </p>
+              <div class="menu-dish-footer">
+                <span class="menu-dish-origin"><i class="ri-fire-line"></i> Hearth Smoked In-House</span>
+                <div class="menu-dish-badges">
+                  <span class="dietary-badge gf">GF</span>
+                  <span class="dietary-badge vegan">Vegan</span>
+                  <span class="dietary-badge df">DF</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Drink 16 -->
+          <article class="menu-dish-card" data-category="drinks" data-dietary="gf vegan df nf">
+            <div class="menu-dish-media">
+              <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?q=80&w=600&auto=format&fit=crop" 
+                   alt="Vibrant cold-pressed green botanical drink with fresh mint garnish" loading="lazy">
+            </div>
+            <div class="menu-dish-body">
+              <div class="menu-dish-header">
+                <h3 class="menu-dish-name">Garden Mint & Apple Elixir (0% ABV)</h3>
+                <span class="menu-dish-price">$14</span>
+              </div>
+              <p class="menu-dish-desc">
+                Zero-proof distilled botanicals, garden spearmint, cold-pressed green apples, wildflower honeycomb syrup, sparkling water.
+              </p>
+              <div class="menu-dish-footer">
+                <span class="menu-dish-origin"><i class="ri-leaf-line"></i> Estate Herb Garden</span>
+                <div class="menu-dish-badges">
+                  <span class="dietary-badge gf">GF</span>
+                  <span class="dietary-badge vegan">Vegan</span>
+                  <span class="dietary-badge df">DF</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ALLERGEN & CHEF'S NOTE SECTION -->
+    <section class="section section-alt">
+      <div class="container">
+        <div class="grid-2" style="align-items: center;">
+          <div>
+            <span class="section-eyebrow">Dietary Integrity & Care</span>
+            <h2 style="text-align: start !important;">Tailored to Your Health & Philosophy</h2>
+            <p style="margin-bottom: var(--space-4);">
+              Because we prepare every single course from raw, whole ingredients harvested that morning, our culinary brigade can comfortably accommodate celiac, vegan, dairy-free, and complex allergy requirements with 24 hours notice.
+            </p>
+            <ul style="display: flex; flex-direction: column; gap: var(--space-2); margin-bottom: var(--space-4); font-size: 0.95rem;">
+              <li><i class="ri-check-line" style="color: var(--color-success); margin-inline-end: 6px;"></i> Dedicated gluten-free hearth cookware and clean prep station.</li>
+              <li><i class="ri-check-line" style="color: var(--color-success); margin-inline-end: 6px;"></i> 100% seed-oil free: we cook solely with cold-pressed olive oil, sunflower oil, or lard.</li>
+              <li><i class="ri-check-line" style="color: var(--color-success); margin-inline-end: 6px;"></i> Zero artificial thickeners, gums, or refined white sugars.</li>
+            </ul>
+            <a href="contact.html" class="btn btn-secondary">Reserve with Dietary Notes</a>
+          </div>
+
+          <div style="background: var(--color-surface); padding: var(--space-5); border: 1px solid var(--color-border); border-radius: var(--radius-global); box-shadow: var(--shadow-global);">
+            <div style="display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-4);">
+              <i class="ri-restaurant-2-line" style="font-size: 2.2rem; color: var(--color-secondary);"></i>
+              <div>
+                <strong style="font-family: var(--font-heading); font-size: 1.2rem; display: block;">Chef's Seasonal Tasting Progression</strong>
+                <span style="font-size: 0.85rem; color: var(--color-text-muted);">Available Thursday through Sunday Evenings</span>
+              </div>
+            </div>
+            <p style="font-size: 0.92rem; margin-bottom: var(--space-4);">
+              Seeking an unhurried culinary voyage? Experience our 7-course blind tasting menu paired with natural and biodynamic regional vintages.
+            </p>
+            <div style="display: flex; justify-content: space-between; align-items: center; padding-top: var(--space-3); border-top: 1px solid var(--color-border);">
+              <span style="font-weight: 700; font-size: 1.15rem; color: var(--color-primary);">$145 per guest</span>
+              <a href="contact.html" class="btn btn-outline">Book Tasting</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CALL TO ACTION BANNER -->
+    <section class="section" style="padding-top: 0;">
+      <div class="container">
+        <div class="cta-banner">
+          <span class="section-eyebrow" style="color: var(--color-accent);">Join Our Table</span>
+          <h2>Ready to Taste the Living Earth?</h2>
+          <p>
+            Reservations open 30 days in advance. Communal Supper Club evenings take place twice monthly.
+          </p>
+          <div style="display: flex; justify-content: center; gap: var(--space-3); flex-wrap: wrap;">
+            <a href="contact.html" class="btn btn-secondary">
+              <span>Book a Table</span>
+              <i class="ri-calendar-check-line"></i>
+            </a>
+            <a href="supper-club.html" class="btn btn-outline btn-outline-light">
+              <span>Join the Supper Club</span>
+              <i class="ri-goblet-line"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <a href="index.html" class="brand-logo" style="margin-bottom: var(--space-3);">
+            <i class="ri-fire-line brand-logo-icon"></i>
+            <span>Harvest & Hearth</span>
+          </a>
+          <p>
+            A seasonal sanctuary of regenerative cooking, heirloom biodiversity, and communal gatherings in the Highland Valley.
+          </p>
+          <div class="footer-socials">
+            <a href="#" class="btn-icon" aria-label="Instagram"><i class="ri-instagram-line"></i></a>
+            <a href="#" class="btn-icon" aria-label="YouTube"><i class="ri-youtube-line"></i></a>
+            <a href="#" class="btn-icon" aria-label="Email"><i class="ri-mail-line"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <div class="footer-col-title">Navigation</div>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="menu.html">Menus</a></li>
+            <li><a href="supper-club.html">Supper Club</a></li>
+            <li><a href="ingredients.html">Our Ingredients</a></li>
+            <li><a href="contact.html">Contact & Bookings</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <div class="footer-col-title">Dining Hours</div>
+          <p style="font-size: 0.95rem; margin-bottom: var(--space-2);">
+            <strong>Weekend Brunch:</strong><br>Saturday & Sunday: 10:00 AM – 2:30 PM
+          </p>
+          <p style="font-size: 0.95rem; margin-bottom: var(--space-2);">
+            <strong>Hearth Dinner:</strong><br>Thursday – Sunday: 5:30 PM – 10:30 PM
+          </p>
+          <p style="font-size: 0.95rem;">
+            <strong>Supper Club:</strong><br>Select Alternate Saturdays: 7:00 PM
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <div class="footer-col-title">Farmstead Location</div>
+          <p style="font-size: 0.95rem; margin-bottom: var(--space-3);">
+            742 Meadowbrook Valley Road<br>
+            Highland Valley, CA 95476<br>
+            (42 miles north of the city)
+          </p>
+          <a href="contact.html" class="btn btn-outline btn-outline-light" style="width: 100%;">Get Directions</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-copyright">
+          © 2026 Harvest & Hearth Restaurant & Supper Club. Certified Regenerative & Michelin Green Star.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Core JavaScript -->
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

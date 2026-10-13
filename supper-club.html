@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Supper Club — Harvest & Hearth</title>
+  <meta name="description" content="Experience our intimate 24-seat communal Supper Club. Hyper-seasonal multi-course banquets, winemaker collaborations, and fireside fellowship in the Highland Valley.">
+  
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23BA5D38'><path d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z'/></svg>">
+
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+</head>
+<body>
+
+  <!-- ==================== HEADER & NAVBAR ==================== -->
+  <header class="site-header" id="site-header">
+    <div class="nav-container">
+      <a href="index.html" class="brand-logo">
+        <i class="ri-fire-line brand-logo-icon"></i>
+        <span>Harvest & Hearth</span>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="desktop-nav" aria-label="Main Navigation">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link">About Us</a>
+        <a href="menu.html" class="nav-link">Menus</a>
+        <a href="supper-club.html" class="nav-link active">Supper Club</a>
+        <a href="ingredients.html" class="nav-link">Our Ingredients</a>
+        <a href="contact.html" class="nav-link">Contact Us</a>
+      </nav>
+
+      <!-- Header Actions -->
+      <div class="header-actions">
+        <button type="button" class="btn-icon rtl-toggle-btn" aria-label="Toggle RTL layout" title="Switch text direction">
+          <i class="ri-arrow-left-right-line"></i>
+        </button>
+        <button type="button" class="btn-icon theme-toggle-btn" aria-label="Toggle Dark / Light Theme" title="Toggle theme mode">
+          <i class="ri-moon-line"></i>
+        </button>
+        <a href="#join-club" class="btn btn-primary" id="header-join-btn">Join the Club</a>
+        <button type="button" class="hamburger-btn" aria-label="Open mobile navigation" aria-expanded="false" id="mobile-menu-trigger">
+          <i class="ri-menu-4-line"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="drawer-backdrop" id="drawer-backdrop"></div>
+  <aside class="mobile-drawer" id="mobile-drawer" aria-label="Mobile Navigation Drawer">
+    <div class="drawer-header">
+      <a href="index.html" class="brand-logo">
+        <i class="ri-fire-line brand-logo-icon"></i>
+        <span>Harvest & Hearth</span>
+      </a>
+      <button type="button" class="drawer-close" aria-label="Close navigation drawer" id="drawer-close-btn">
+        <i class="ri-close-line"></i>
+      </button>
+    </div>
+
+    <nav class="drawer-nav-list">
+      <a href="index.html" class="drawer-link">Home <i class="ri-arrow-right-s-line"></i></a>
+      <a href="about.html" class="drawer-link">About Us <i class="ri-arrow-right-s-line"></i></a>
+      <a href="menu.html" class="drawer-link">Menus <i class="ri-arrow-right-s-line"></i></a>
+      <a href="supper-club.html" class="drawer-link active">Supper Club <i class="ri-arrow-right-s-line"></i></a>
+      <a href="ingredients.html" class="drawer-link">Our Ingredients <i class="ri-arrow-right-s-line"></i></a>
+      <a href="contact.html" class="drawer-link">Contact Us <i class="ri-arrow-right-s-line"></i></a>
+      <a href="dashboard.html" class="drawer-link" style="opacity: 0.75; font-size: 0.95rem;">Guest Portal <i class="ri-arrow-right-s-line"></i></a>
+    </nav>
+
+    <div class="drawer-footer">
+      <div class="drawer-actions-row">
+        <button type="button" class="btn-icon rtl-toggle-btn" aria-label="Toggle RTL layout" title="Switch text direction">
+          <i class="ri-arrow-left-right-line"></i>
+        </button>
+        <button type="button" class="btn-icon theme-toggle-btn" aria-label="Toggle Dark / Light Theme" title="Toggle theme mode">
+          <i class="ri-moon-line"></i>
+        </button>
+      </div>
+      <a href="#join-club" class="btn btn-primary" style="width: 100%;">Join the Club</a>
+    </div>
+  </aside>
+
+  <!-- ==================== MAIN CONTENT ==================== -->
+  <main>
+    <!-- SUPPER CLUB HERO -->
+    <section class="section" style="padding-top: calc(var(--header-height) + var(--space-6)); padding-bottom: var(--space-6);">
+      <div class="container">
+        <header class="section-header">
+          <span class="section-eyebrow">The Communal Gathering</span>
+          <h1>The Harvest & Hearth Supper Club</h1>
+          <p class="section-subtext">
+            An unhurried 24-seat feast where strangers gather as neighbors, local growers break bread with diners, and cellar wines flow until midnight.
+          </p>
+        </header>
+
+        <!-- Split Media Hero Showcase -->
+        <div class="grid-2" style="align-items: center; margin-top: var(--space-5);">
+          <div>
+            <div class="hero-badge" style="margin-bottom: var(--space-3);">
+              <i class="ri-goblet-fill" style="color: var(--color-secondary);"></i>
+              <span>Alternate Saturday Evenings • 7:00 PM Prompt</span>
+            </div>
+            <h2 style="text-align: start !important; margin-bottom: var(--space-3);">A Return to the Ancient Ritual of Feasting</h2>
+            <p style="margin-bottom: var(--space-3);">
+              In an era of rushed meals and digital distraction, the Supper Club is our intentional antidote. We seat twenty-four guests along a single 40-foot hand-hewn oak table carved from estate timber.
+            </p>
+            <p style="margin-bottom: var(--space-4);">
+              There is no table turnover. No menu choices to debate. You arrive at dusk, receive a wild botanical aperitif by the outdoor hearth fire, and take your seat for an eight-course shared banquet celebrating that week's harvest pinnacle.
+            </p>
+            <div style="display: flex; gap: var(--space-3); flex-wrap: wrap;">
+              <a href="#schedule" class="btn btn-secondary">
+                <span>View Banquet Dates</span>
+                <i class="ri-calendar-event-line"></i>
+              </a>
+              <a href="#join-club" class="btn btn-outline">
+                <span>Join Patron Guild</span>
+                <i class="ri-vip-crown-line"></i>
+              </a>
+            </div>
+          </div>
+
+          <div style="position: relative;">
+            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=900&auto=format&fit=crop" 
+                 alt="Candlelit communal supper club table with smiling guests and wine glasses" 
+                 style="border-radius: var(--radius-global); box-shadow: var(--shadow-hover); width: 100%; height: 420px; object-fit: cover;">
+            
+            <div style="position: absolute; bottom: -16px; right: 16px; background: var(--color-surface); padding: 12px 20px; border-radius: var(--radius-global); border: 1px solid var(--color-border); box-shadow: var(--shadow-global); display: flex; align-items: center; gap: 12px;">
+              <i class="ri-group-line" style="font-size: 1.8rem; color: var(--color-secondary);"></i>
+              <div>
+                <strong style="display: block; font-size: 1rem; color: var(--color-text);">Strict 24 Guests</strong>
+                <span style="font-size: 0.8rem; color: var(--color-text-muted);">Intimate Communal Setting</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Communal Seating Graphic -->
+        <div class="communal-seating-box">
+          <span class="section-eyebrow">The Communal Layout</span>
+          <h3 style="margin-bottom: var(--space-2);">One Long Table. Twenty-Four Stories.</h3>
+          <p style="max-width: 620px; margin: 0 auto var(--space-4); font-size: 0.95rem;">
+            Seating is open and convivial. Winemakers and resident foragers are seated among guests to share stories behind the evening's pairings and wild harvests.
+          </p>
+
+          <div class="communal-table-graphic">
+            <!-- Row of 12 seats top -->
+            <div class="communal-seats-row">
+              <span class="communal-seat-dot" title="Seat 1">1</span>
+              <span class="communal-seat-dot" title="Seat 2">2</span>
+              <span class="communal-seat-dot" title="Seat 3">3</span>
+              <span class="communal-seat-dot" title="Seat 4">4</span>
+              <span class="communal-seat-dot" title="Seat 5">5</span>
+              <span class="communal-seat-dot" title="Seat 6">6</span>
+              <span class="communal-seat-dot" title="Seat 7">7</span>
+              <span class="communal-seat-dot" title="Seat 8">8</span>
+              <span class="communal-seat-dot" title="Seat 9">9</span>
+              <span class="communal-seat-dot" title="Seat 10">10</span>
+              <span class="communal-seat-dot" title="Seat 11">11</span>
+              <span class="communal-seat-dot" title="Seat 12">12</span>
+            </div>
+
+            <!-- The table plank -->
+            <div class="communal-table-plank">
+              <span>✦ The Heritage Hearth Timber Table ✦</span>
+            </div>
+
+            <!-- Row of 12 seats bottom -->
+            <div class="communal-seats-row">
+              <span class="communal-seat-dot" title="Seat 13">13</span>
+              <span class="communal-seat-dot" title="Seat 14">14</span>
+              <span class="communal-seat-dot" title="Seat 15">15</span>
+              <span class="communal-seat-dot" title="Seat 16">16</span>
+              <span class="communal-seat-dot" title="Seat 17">17</span>
+              <span class="communal-seat-dot" title="Seat 18">18</span>
+              <span class="communal-seat-dot" title="Seat 19">19</span>
+              <span class="communal-seat-dot" title="Seat 20">20</span>
+              <span class="communal-seat-dot" title="Seat 21">21</span>
+              <span class="communal-seat-dot" title="Seat 22">22</span>
+              <span class="communal-seat-dot" title="Seat 23">23</span>
+              <span class="communal-seat-dot" title="Seat 24">24</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4 PILLARS OF SUPPER CLUB -->
+    <section class="section section-alt">
+      <div class="container">
+        <header class="section-header">
+          <span class="section-eyebrow">The Experience Elements</span>
+          <h2>What Makes Our Evenings Unforgettable</h2>
+          <p class="section-subtext">
+            Four guiding rituals that distinguish our Supper Club from traditional restaurant reservations.
+          </p>
+        </header>
+
+        <div class="grid-4">
+          <article class="card">
+            <div class="card-icon"><i class="ri-sparkling-line"></i></div>
+            <h3>Hearthside Welcome</h3>
+            <p>Arrive at 7:00 PM for outdoor fireside botanical elixirs, wood-roasted appetizers, and introductions under orchard trees.</p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon"><i class="ri-restaurant-line"></i></div>
+            <h3>8-Course Shared Feast</h3>
+            <p>Heirloom dishes served in handcrafted ceramic platters passed along the table, creating natural camaraderie and delight.</p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon"><i class="ri-goblet-line"></i></div>
+            <h3>Winemaker Dialogue</h3>
+            <p>Featured natural vintners pour rare library magnums and explain the soil geology behind every grape variety.</p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon"><i class="ri-fire-line"></i></div>
+            <h3>Midnight Hearth Embers</h3>
+            <p>End the evening with estate herbal infusions, roasted marshmallow chocolates over embers, and warm fireside conversation.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- UPCOMING BANQUETS SCHEDULE (#schedule) -->
+    <section class="section" id="schedule">
+      <div class="container">
+        <header class="section-header">
+          <span class="section-eyebrow">Reserve Your Seat</span>
+          <h2>Upcoming Supper Club Banquets</h2>
+          <p class="section-subtext">
+            Tickets are released on the 1st of each month. Seats are strictly limited to 24 guests per evening.
+          </p>
+        </header>
+
+        <div class="supper-dates-grid">
+          <!-- Banquet 1 -->
+          <article class="supper-date-card">
+            <span class="supper-date-badge"><i class="ri-calendar-line"></i> Saturday, Oct 24, 2026 • 7:00 PM</span>
+            <h3 style="margin-bottom: var(--space-2);">Autumn Equinox Hearth Banquet</h3>
+            <p style="font-size: 0.92rem; margin-bottom: var(--space-3); color: var(--color-text-muted);">
+              Celebrating heirloom squashes roasted in embers, Berkshire cider-glazed pork, pine-needle smoked trout, and skin-contact orange wines.
+            </p>
+            <div style="margin-top: auto; padding-top: var(--space-3); border-top: 1px solid var(--color-border); display: flex; justify-content: space-between; align-items: center;">
+              <div>
+                <strong style="font-size: 1.15rem; color: var(--color-primary);">$165 / seat</strong>
+                <span class="supper-seats-left" style="display: block;"><i class="ri-fire-fill"></i> Only 4 seats left</span>
+              </div>
+              <a href="contact.html?experience=supper-club&date=oct24" class="btn btn-secondary">Reserve Seats</a>
+            </div>
+          </article>
+
+          <!-- Banquet 2 -->
+          <article class="supper-date-card">
+            <span class="supper-date-badge"><i class="ri-calendar-line"></i> Saturday, Nov 21, 2026 • 7:00 PM</span>
+            <h3 style="margin-bottom: var(--space-2);">Winter Solstice Root & Truffle Feast</h3>
+            <p style="font-size: 0.92rem; margin-bottom: var(--space-3); color: var(--color-text-muted);">
+              Clay-baked Chioggia roots, braised heritage beef shank, freshly unearthed black winter truffles, and biodynamic Syrah reserves.
+            </p>
+            <div style="margin-top: auto; padding-top: var(--space-3); border-top: 1px solid var(--color-border); display: flex; justify-content: space-between; align-items: center;">
+              <div>
+                <strong style="font-size: 1.15rem; color: var(--color-primary);">$175 / seat</strong>
+                <span class="supper-seats-left" style="display: block;"><i class="ri-fire-fill"></i> 6 seats left</span>
+              </div>
+              <a href="contact.html?experience=supper-club&date=nov21" class="btn btn-secondary">Reserve Seats</a>
+            </div>
+          </article>
+
+          <!-- Banquet 3 -->
+          <article class="supper-date-card">
+            <span class="supper-date-badge"><i class="ri-calendar-line"></i> Saturday, Dec 19, 2026 • 7:00 PM</span>
+            <h3 style="margin-bottom: var(--space-2);">The Frost, Forage & Ferment Night</h3>
+            <p style="font-size: 0.92rem; margin-bottom: var(--space-3); color: var(--color-text-muted);">
+              A multi-course exploration of 12-month cellar lacto-ferments, wild mountain game, heirloom grains, and estate hard apple ciders.
+            </p>
+            <div style="margin-top: auto; padding-top: var(--space-3); border-top: 1px solid var(--color-border); display: flex; justify-content: space-between; align-items: center;">
+              <div>
+                <strong style="font-size: 1.15rem; color: var(--color-primary);">$165 / seat</strong>
+                <span style="font-size: 0.85rem; color: var(--color-success); display: block;"><i class="ri-check-line"></i> 11 seats open</span>
+              </div>
+              <a href="contact.html?experience=supper-club&date=dec19" class="btn btn-outline">Reserve Seats</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- MEMBERSHIP TIERS (#join-club) -->
+    <section class="section section-alt" id="join-club">
+      <div class="container">
+        <header class="section-header">
+          <span class="section-eyebrow">Guild Memberships</span>
+          <h2>Join the Supper Club Collective</h2>
+          <p class="section-subtext">
+            Guarantee your place at our table each season while supporting our regenerative farm plots and soil health initiatives.
+          </p>
+        </header>
+
+        <div class="grid-3">
+          <!-- Tier 1 -->
+          <article class="card">
+            <span class="card-badge card-badge-center">Essential</span>
+            <div class="card-icon"><i class="ri-user-star-line"></i></div>
+            <h3>Patron Member</h3>
+            <p class="card-price">$95 / quarter</p>
+            <ul style="text-align: start; width: 100%; margin-bottom: var(--space-4); font-size: 0.95rem; display: flex; flex-direction: column; gap: var(--space-2);">
+              <li><i class="ri-check-line" style="color: var(--color-success);"></i> 48-Hour advance ticket window</li>
+              <li><i class="ri-check-line" style="color: var(--color-success);"></i> 1 Seasonal heirloom pantry box</li>
+              <li><i class="ri-check-line" style="color: var(--color-success);"></i> Dietary preferences auto-saved</li>
+              <li><i class="ri-check-line" style="color: var(--color-success);"></i> Access to private member journal</li>
+            </ul>
+            <a href="contact.html?tier=patron" class="btn btn-outline" style="width: 100%;">Apply for Patron</a>
+          </article>
+
+          <!-- Tier 2 -->
+          <article class="card" style="border-color: var(--color-secondary); box-shadow: var(--shadow-hover);">
+            <span class="card-badge card-badge-center card-badge-featured">Most Beloved</span>
+            <div class="card-icon card-icon-featured"><i class="ri-vip-crown-line"></i></div>
+            <h3>Hearth Fellow</h3>
+            <p class="card-price featured">$220 / quarter</p>
+            <ul style="text-align: start; width: 100%; margin-bottom: var(--space-4); font-size: 0.95rem; display: flex; flex-direction: column; gap: var(--space-2);">
+              <li><i class="ri-check-line" style="color: var(--color-success);"></i> Guaranteed 2 seats at each monthly feast</li>
+              <li><i class="ri-check-line" style="color: var(--color-success);"></i> Complimentary biodynamic wine pairings</li>
+              <li><i class="ri-check-line" style="color: var(--color-success);"></i> Bi-monthly curated artisan wine allocation</li>
+              <li><i class="ri-check-line" style="color: var(--color-success);"></i> Invitations to private solstice walks</li>
+            </ul>
+            <a href="contact.html?tier=fellow" class="btn btn-secondary" style="width: 100%;">Join Fellow Tier</a>
+          </article>
+
+          <!-- Tier 3 -->
+          <article class="card">
+            <span class="card-badge card-badge-center">Agrarian Guild</span>
+            <div class="card-icon"><i class="ri-shield-star-line"></i></div>
+            <h3>Founding Guild</h3>
+            <p class="card-price">$500 / quarter</p>
+            <ul style="text-align: start; width: 100%; margin-bottom: var(--space-4); font-size: 0.95rem; display: flex; flex-direction: column; gap: var(--space-2);">
+              <li><i class="ri-check-line" style="color: var(--color-success);"></i> Unlimited priority table reservations</li>
+              <li><i class="ri-check-line" style="color: var(--color-success);"></i> 1 Complimentary orchard feast for 6 guests</li>
+              <li><i class="ri-check-line" style="color: var(--color-success);"></i> Personalized cellar wine storage locker</li>
+              <li><i class="ri-check-line" style="color: var(--color-success);"></i> Annual harvest banquet gala invitation</li>
+            </ul>
+            <a href="contact.html?tier=founding" class="btn btn-outline" style="width: 100%;">Inquire Guild</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ ACCORDION SECTION -->
+    <section class="section">
+      <div class="container" style="max-width: 840px;">
+        <header class="section-header">
+          <span class="section-eyebrow">Common Inquiries</span>
+          <h2>Supper Club Etiquette & Questions</h2>
+          <p class="section-subtext">
+            Everything you need to know before joining our communal table.
+          </p>
+        </header>
+
+        <div class="faq-accordion">
+          <details class="faq-item" open>
+            <summary class="faq-summary">
+              <span class="faq-summary-text"><i class="ri-question-line"></i> What is the dress code for Supper Club evenings?</span>
+              <i class="ri-arrow-down-s-line faq-chevron"></i>
+            </summary>
+            <div class="faq-body">
+              <p>We recommend countryside refined: warm layers, sensible footwear for our gravel paths and greenhouse tour, and casual elegance. Ties and formal jackets are never required.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-summary">
+              <span class="faq-summary-text"><i class="ri-question-line"></i> Can dietary restrictions be accommodated at a shared banquet?</span>
+              <i class="ri-arrow-down-s-line faq-chevron"></i>
+            </summary>
+            <div class="faq-body">
+              <p>Yes. Although dishes are served family-style, our brigade prepares individual portions of gluten-free, vegan, dairy-free, and allergy-sensitive courses alongside the communal service when requested upon reservation.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-summary">
+              <span class="faq-summary-text"><i class="ri-question-line"></i> Can I attend as a solo diner or party of two?</span>
+              <i class="ri-arrow-down-s-line faq-chevron"></i>
+            </summary>
+            <div class="faq-body">
+              <p>Absolutely. Over half our attendees arrive solo or as couples. The communal table format is designed specifically to make conversation effortless and inviting.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <a href="index.html" class="brand-logo" style="margin-bottom: var(--space-3);">
+            <i class="ri-fire-line brand-logo-icon"></i>
+            <span>Harvest & Hearth</span>
+          </a>
+          <p>
+            A seasonal sanctuary of regenerative cooking, heirloom biodiversity, and communal gatherings in the Highland Valley.
+          </p>
+          <div class="footer-socials">
+            <a href="#" class="btn-icon" aria-label="Instagram"><i class="ri-instagram-line"></i></a>
+            <a href="#" class="btn-icon" aria-label="YouTube"><i class="ri-youtube-line"></i></a>
+            <a href="#" class="btn-icon" aria-label="Email"><i class="ri-mail-line"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <div class="footer-col-title">Navigation</div>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="menu.html">Menus</a></li>
+            <li><a href="supper-club.html">Supper Club</a></li>
+            <li><a href="ingredients.html">Our Ingredients</a></li>
+            <li><a href="contact.html">Contact & Bookings</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <div class="footer-col-title">Dining Hours</div>
+          <p style="font-size: 0.95rem; margin-bottom: var(--space-2);">
+            <strong>Weekend Brunch:</strong><br>Saturday & Sunday: 10:00 AM – 2:30 PM
+          </p>
+          <p style="font-size: 0.95rem; margin-bottom: var(--space-2);">
+            <strong>Hearth Dinner:</strong><br>Thursday – Sunday: 5:30 PM – 10:30 PM
+          </p>
+          <p style="font-size: 0.95rem;">
+            <strong>Supper Club:</strong><br>Select Alternate Saturdays: 7:00 PM
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <div class="footer-col-title">Farmstead Location</div>
+          <p style="font-size: 0.95rem; margin-bottom: var(--space-3);">
+            742 Meadowbrook Valley Road<br>
+            Highland Valley, CA 95476<br>
+            (42 miles north of the city)
+          </p>
+          <a href="contact.html" class="btn btn-outline btn-outline-light" style="width: 100%;">Get Directions</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-copyright">
+          © 2026 Harvest & Hearth Restaurant & Supper Club. Certified Regenerative & Michelin Green Star.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Core JavaScript -->
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

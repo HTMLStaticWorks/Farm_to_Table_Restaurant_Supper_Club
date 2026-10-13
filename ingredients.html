@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Ingredients & Farm Sourcing — Harvest & Hearth</title>
+  <meta name="description" content="Discover our fresh ingredient sourcing, 42-mile local grower collective, living soil ethos, and interactive seasonal harvest calendar at Harvest & Hearth.">
+  
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23BA5D38'><path d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z'/></svg>">
+
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+</head>
+<body>
+
+  <!-- ==================== HEADER & NAVBAR ==================== -->
+  <header class="site-header" id="site-header">
+    <div class="nav-container">
+      <a href="index.html" class="brand-logo">
+        <i class="ri-fire-line brand-logo-icon"></i>
+        <span>Harvest & Hearth</span>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="desktop-nav" aria-label="Main Navigation">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link">About Us</a>
+        <a href="menu.html" class="nav-link">Menus</a>
+        <a href="supper-club.html" class="nav-link">Supper Club</a>
+        <a href="ingredients.html" class="nav-link active">Our Ingredients</a>
+        <a href="contact.html" class="nav-link">Contact Us</a>
+      </nav>
+
+      <!-- Header Actions -->
+      <div class="header-actions">
+        <button type="button" class="btn-icon rtl-toggle-btn" aria-label="Toggle RTL layout" title="Switch text direction">
+          <i class="ri-arrow-left-right-line"></i>
+        </button>
+        <button type="button" class="btn-icon theme-toggle-btn" aria-label="Toggle Dark / Light Theme" title="Toggle theme mode">
+          <i class="ri-moon-line"></i>
+        </button>
+        <a href="contact.html" class="btn btn-primary" id="header-reserve-btn">Book a Table</a>
+        <button type="button" class="hamburger-btn" aria-label="Open mobile navigation" aria-expanded="false" id="mobile-menu-trigger">
+          <i class="ri-menu-4-line"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="drawer-backdrop" id="drawer-backdrop"></div>
+  <aside class="mobile-drawer" id="mobile-drawer" aria-label="Mobile Navigation Drawer">
+    <div class="drawer-header">
+      <a href="index.html" class="brand-logo">
+        <i class="ri-fire-line brand-logo-icon"></i>
+        <span>Harvest & Hearth</span>
+      </a>
+      <button type="button" class="drawer-close" aria-label="Close navigation drawer" id="drawer-close-btn">
+        <i class="ri-close-line"></i>
+      </button>
+    </div>
+
+    <nav class="drawer-nav-list">
+      <a href="index.html" class="drawer-link">Home <i class="ri-arrow-right-s-line"></i></a>
+      <a href="about.html" class="drawer-link">About Us <i class="ri-arrow-right-s-line"></i></a>
+      <a href="menu.html" class="drawer-link">Menus <i class="ri-arrow-right-s-line"></i></a>
+      <a href="supper-club.html" class="drawer-link">Supper Club <i class="ri-arrow-right-s-line"></i></a>
+      <a href="ingredients.html" class="drawer-link active">Our Ingredients <i class="ri-arrow-right-s-line"></i></a>
+      <a href="contact.html" class="drawer-link">Contact Us <i class="ri-arrow-right-s-line"></i></a>
+      <a href="dashboard.html" class="drawer-link" style="opacity: 0.75; font-size: 0.95rem;">Guest Portal <i class="ri-arrow-right-s-line"></i></a>
+    </nav>
+
+    <div class="drawer-footer">
+      <div class="drawer-actions-row">
+        <button type="button" class="btn-icon rtl-toggle-btn" aria-label="Toggle RTL layout" title="Switch text direction">
+          <i class="ri-arrow-left-right-line"></i>
+        </button>
+        <button type="button" class="btn-icon theme-toggle-btn" aria-label="Toggle Dark / Light Theme" title="Toggle theme mode">
+          <i class="ri-moon-line"></i>
+        </button>
+      </div>
+      <a href="contact.html" class="btn btn-primary" style="width: 100%;">Book a Table</a>
+    </div>
+  </aside>
+
+  <!-- ==================== MAIN CONTENT ==================== -->
+  <main>
+    <!-- PAGE HERO -->
+    <section class="section" style="padding-top: calc(var(--header-height) + var(--space-6)); padding-bottom: var(--space-6);">
+      <div class="container">
+        <header class="section-header">
+          <span class="section-eyebrow">Living Soil & Provenance</span>
+          <h1>Our Ingredients & Terroir</h1>
+          <p class="section-subtext">
+            We do not believe in anonymous food. Every seed, leaf, root, and cut of meat served at our tables is nurtured within our 42-mile regional bio-district.
+          </p>
+        </header>
+
+        <!-- Sourcing Metrics Grid -->
+        <div class="grid-4" style="margin-top: var(--space-5);">
+          <div class="card">
+            <div class="card-icon"><i class="ri-compass-3-line"></i></div>
+            <div style="font-family: var(--font-heading); font-size: 2.2rem; font-weight: 700; color: var(--color-primary); margin-bottom: 4px;">42 Miles</div>
+            <p style="margin: 0; font-size: 0.95rem;">Our strict maximum sourcing radius from hearth to farm.</p>
+          </div>
+
+          <div class="card">
+            <div class="card-icon"><i class="ri-seedling-line"></i></div>
+            <div style="font-family: var(--font-heading); font-size: 2.2rem; font-weight: 700; color: var(--color-primary); margin-bottom: 4px;">100%</div>
+            <p style="margin: 0; font-size: 0.95rem;">Regenerative & organic soil practices with zero synthetic chemicals.</p>
+          </div>
+
+          <div class="card">
+            <div class="card-icon"><i class="ri-leaf-line"></i></div>
+            <div style="font-family: var(--font-heading); font-size: 2.2rem; font-weight: 700; color: var(--color-primary); margin-bottom: 4px;">28 Varieties</div>
+            <p style="margin: 0; font-size: 0.95rem;">Heirloom and endangered heritage seeds revived in estate greenhouses.</p>
+          </div>
+
+          <div class="card">
+            <div class="card-icon"><i class="ri-recycle-line"></i></div>
+            <div style="font-family: var(--font-heading); font-size: 2.2rem; font-weight: 700; color: var(--color-primary); margin-bottom: 4px;">Zero Waste</div>
+            <p style="margin: 0; font-size: 0.95rem;">100% of kitchen organic trims composted back into the living soil.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- THE FARM-TO-TABLE CONCEPT EXPLAINED -->
+    <section class="section section-alt">
+      <div class="container">
+        <div class="grid-2" style="align-items: center;">
+          <div class="story-image-wrap">
+            <img src="https://images.unsplash.com/photo-1595974482597-4b8da8879bc5?q=80&w=900&auto=format&fit=crop" 
+                 alt="Farmer cradling rich dark organic compost and heirloom root crops" loading="lazy">
+            <div class="story-badge-floating">
+              <i class="ri-earth-line"></i>
+              <div>
+                <strong style="display: block; font-family: var(--font-heading); font-size: 1.15rem;">Living Soil Philosophy</strong>
+                <span style="font-size: var(--size-caption); color: var(--color-text-muted);">Rich in fungal mycorrhizae & natural minerals</span>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <span class="section-eyebrow">The Farm-to-Table Concept</span>
+            <h2 style="text-align: start !important;">True Nourishment Begins Beneath the Ground</h2>
+            <p style="margin-bottom: var(--space-3);">
+              The modern food industry treats ingredients as commodities to be shipped in refrigeration across thousands of miles. At Harvest & Hearth, we believe an ingredient's flavor is indivisible from the health of the soil that fed it.
+            </p>
+            <p style="margin-bottom: var(--space-4);">
+              By practicing regenerative agriculture—planting multi-species cover crops, eliminating deep tillage, and cultivating diverse microbial life—our heritage vegetables contain demonstrably higher mineral density, vibrant natural sugars, and unmistakable vitality.
+            </p>
+            <div style="display: flex; gap: var(--space-3); flex-wrap: wrap;">
+              <a href="menu.html" class="btn btn-primary">Taste the Results</a>
+              <a href="contact.html" class="btn btn-outline">Schedule a Farm Walk</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MEET OUR GROWERS COLLECTIVE -->
+    <section class="section">
+      <div class="container">
+        <header class="section-header">
+          <span class="section-eyebrow">The 42-Mile Terroir</span>
+          <h2>Our Local Growers & Foragers</h2>
+          <p class="section-subtext">
+            Every dish honors the hands that cultivated it. Meet the smallholders, millers, and foragers who feed our dining room.
+          </p>
+        </header>
+
+        <div class="grid-3">
+          <!-- Partner 1 -->
+          <article class="farm-partner-card">
+            <div class="farm-partner-header">
+              <span class="farm-partner-radius"><i class="ri-map-pin-range-line"></i> 0.0 Miles (On-Site)</span>
+              <span style="font-size: 0.8rem; font-weight: 700; color: var(--color-success);">Estate Plots</span>
+            </div>
+            <h3 style="font-size: 1.35rem; margin-bottom: var(--space-2);">Meadowbrook Organic Plots</h3>
+            <p style="font-size: 0.92rem; margin-bottom: var(--space-3); color: var(--color-text-muted);">
+              Twenty acres of intensive biodynamic cultivation. Produces our daily heirloom Chioggia beets, rainbow chard, purple Romanesco, edible blossoms, and greenhouse microgreens.
+            </p>
+            <div style="margin-top: auto; padding-top: var(--space-3); border-top: 1px dashed var(--color-border); font-size: 0.82rem; color: var(--color-primary); font-weight: 600;">
+              <i class="ri-seedling-line"></i> Lead Horticulturist: Clara Lindqvist
+            </div>
+          </article>
+
+          <!-- Partner 2 -->
+          <article class="farm-partner-card">
+            <div class="farm-partner-header">
+              <span class="farm-partner-radius"><i class="ri-map-pin-range-line"></i> 12 Miles West</span>
+              <span style="font-size: 0.8rem; font-weight: 700; color: var(--color-secondary);">Ancient Grains</span>
+            </div>
+            <h3 style="font-size: 1.35rem; margin-bottom: var(--space-2);">Red Fife Heritage Mill</h3>
+            <p style="font-size: 0.92rem; margin-bottom: var(--space-3); color: var(--color-text-muted);">
+              Family-run water-powered stone mill reviving landrace wheats, ancient emmer, and rye. Milled cold every Tuesday for our 48-hour sourdough loaves and hearth pastries.
+            </p>
+            <div style="margin-top: auto; padding-top: var(--space-3); border-top: 1px dashed var(--color-border); font-size: 0.82rem; color: var(--color-primary); font-weight: 600;">
+              <i class="ri-bread-line"></i> Master Miller: Thomas Brennan
+            </div>
+          </article>
+
+          <!-- Partner 3 -->
+          <article class="farm-partner-card">
+            <div class="farm-partner-header">
+              <span class="farm-partner-radius"><i class="ri-map-pin-range-line"></i> 18 Miles North</span>
+              <span style="font-size: 0.8rem; font-weight: 700; color: var(--color-accent);">Wild Botanicals</span>
+            </div>
+            <h3 style="font-size: 1.35rem; margin-bottom: var(--space-2);">North Ridge Wild Foragers</h3>
+            <p style="font-size: 0.92rem; margin-bottom: var(--space-3); color: var(--color-text-muted);">
+              A sustainable guild harvesting wild mountain chanterelles, black pine truffles, spruce tips, wild watercress, and seasonal mountain berries without disturbing forest roots.
+            </p>
+            <div style="margin-top: auto; padding-top: var(--space-3); border-top: 1px dashed var(--color-border); font-size: 0.82rem; color: var(--color-primary); font-weight: 600;">
+              <i class="ri-compass-line"></i> Forager Lead: Maya O'Connor
+            </div>
+          </article>
+
+          <!-- Partner 4 -->
+          <article class="farm-partner-card">
+            <div class="farm-partner-header">
+              <span class="farm-partner-radius"><i class="ri-map-pin-range-line"></i> 19 Miles East</span>
+              <span style="font-size: 0.8rem; font-weight: 700; color: var(--color-secondary);">Spring Waters</span>
+            </div>
+            <h3 style="font-size: 1.35rem; margin-bottom: var(--space-2);">Clear Creek Fishery</h3>
+            <p style="font-size: 0.92rem; margin-bottom: var(--space-3); color: var(--color-text-muted);">
+              Glacial run-off streams providing sustainable rainbow trout and brook charr. Reared with natural water oxygenation and harvested on day-of-service.
+            </p>
+            <div style="margin-top: auto; padding-top: var(--space-3); border-top: 1px dashed var(--color-border); font-size: 0.82rem; color: var(--color-primary); font-weight: 600;">
+              <i class="ri-drop-line"></i> Stream Master: Liam Hayes
+            </div>
+          </article>
+
+          <!-- Partner 5 -->
+          <article class="farm-partner-card">
+            <div class="farm-partner-header">
+              <span class="farm-partner-radius"><i class="ri-map-pin-range-line"></i> 22 Miles South</span>
+              <span style="font-size: 0.8rem; font-weight: 700; color: var(--color-secondary);">Natural Wines</span>
+            </div>
+            <h3 style="font-size: 1.35rem; margin-bottom: var(--space-2);">Donkey & Goat Biodynamic</h3>
+            <p style="font-size: 0.92rem; margin-bottom: var(--space-3); color: var(--color-text-muted);">
+              Pioneering natural winemakers producing unfined, unfiltered skin-contact orange wines and field blends farmed according to celestial and soil rhythms.
+            </p>
+            <div style="margin-top: auto; padding-top: var(--space-3); border-top: 1px dashed var(--color-border); font-size: 0.82rem; color: var(--color-primary); font-weight: 600;">
+              <i class="ri-goblet-line"></i> Vintners: Tracey & Jared Brandt
+            </div>
+          </article>
+
+          <!-- Partner 6 -->
+          <article class="farm-partner-card">
+            <div class="farm-partner-header">
+              <span class="farm-partner-radius"><i class="ri-map-pin-range-line"></i> 31 Miles Northwest</span>
+              <span style="font-size: 0.8rem; font-weight: 700; color: var(--color-success);">Pasture Raised</span>
+            </div>
+            <h3 style="font-size: 1.35rem; margin-bottom: var(--space-2);">Oak Hill Heritage Farm</h3>
+            <p style="font-size: 0.92rem; margin-bottom: var(--space-3); color: var(--color-text-muted);">
+              Woodland pasture where heritage Berkshire pigs and pasture-raised ducks graze freely under ancient oaks on fallen acorns and heritage Gravenstein apples.
+            </p>
+            <div style="margin-top: auto; padding-top: var(--space-3); border-top: 1px dashed var(--color-border); font-size: 0.82rem; color: var(--color-primary); font-weight: 600;">
+              <i class="ri-user-smile-line"></i> Stewards: The Thorne Family
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEASONAL HARVEST CALENDAR TABLE -->
+    <section class="section section-alt">
+      <div class="container">
+        <header class="section-header">
+          <span class="section-eyebrow">The Agricultural Cycle</span>
+          <h2>Four Seasons Harvest Calendar</h2>
+          <p class="section-subtext">
+            What our land provides across the natural year. Our menus change continuously as crops enter and leave their seasonal peak.
+          </p>
+        </header>
+
+        <div class="harvest-calendar-table-wrap">
+          <table class="harvest-calendar-table">
+            <thead>
+              <tr>
+                <th style="width: 20%;">Season</th>
+                <th style="width: 25%;">Produce & Greens</th>
+                <th style="width: 25%;">Forest & Foraged</th>
+                <th style="width: 30%;">Hearth & Cellar Focus</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>🌱 Spring</strong><br><span style="font-size: 0.82rem; color: var(--color-text-muted);">March – May</span></td>
+                <td>Green asparagus, wild pea tendrils, French breakfast radishes, baby leeks, young sorrel.</td>
+                <td>Black morel mushrooms, tender stinging nettles, wild wood garlic ramps, spruce buds.</td>
+                <td>Whole wood-fired baby lamb, sheep milk labneh, birch sap reductions, Pet-Nat sparklings.</td>
+              </tr>
+              <tr>
+                <td><strong>☀️ Summer</strong><br><span style="font-size: 0.82rem; color: var(--color-text-muted);">June – August</span></td>
+                <td>Heirloom Sungold tomatoes, sweet bi-color corn, zucchini blossoms, lemon verbena.</td>
+                <td>Wild mountain blackberries, elderflower blossoms, wood sorrel, elderberries.</td>
+                <td>Open flame whole trout, smoked heirloom peppers, raw honey cold treats, orange macerations.</td>
+              </tr>
+              <tr>
+                <td><strong>🍂 Autumn</strong><br><span style="font-size: 0.82rem; color: var(--color-text-muted);">Sept – Nov</span></td>
+                <td>Chioggia beets, honeynut & kabocha squashes, Romanesco, rainbow chard, parsnips.</td>
+                <td>Golden chanterelles, porcini, pine mushrooms, wild mountain cranberries.</td>
+                <td>Oak-roasted heritage pork, aged duck breast, damson plum glazes, skin-contact Malvasia.</td>
+              </tr>
+              <tr>
+                <td><strong>❄️ Winter</strong><br><span style="font-size: 0.82rem; color: var(--color-text-muted);">Dec – Feb</span></td>
+                <td>Cavolo nero, Jerusalem artichokes, purple winter cabbage, greenhouse brassicas.</td>
+                <td>Coastal black truffles, wild juniper berries, dried chanterelles, winter roots.</td>
+                <td>Lacto-fermented cellar preserves, 45-day dry-aged beef, warm sourdough congee, aged Syrah.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- CALL TO ACTION BANNER -->
+    <section class="section" style="padding-top: 0;">
+      <div class="container">
+        <div class="cta-banner">
+          <span class="section-eyebrow" style="color: var(--color-accent);">Experience the Terroir</span>
+          <h2>Taste This Week's Harvest</h2>
+          <p>
+            Explore our daily offerings or reserve a table to experience our living soil philosophy firsthand.
+          </p>
+          <div style="display: flex; justify-content: center; gap: var(--space-3); flex-wrap: wrap;">
+            <a href="menu.html" class="btn btn-secondary">
+              <span>View Current Menus</span>
+              <i class="ri-restaurant-line"></i>
+            </a>
+            <a href="contact.html" class="btn btn-outline btn-outline-light">
+              <span>Book a Table</span>
+              <i class="ri-calendar-check-line"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <a href="index.html" class="brand-logo" style="margin-bottom: var(--space-3);">
+            <i class="ri-fire-line brand-logo-icon"></i>
+            <span>Harvest & Hearth</span>
+          </a>
+          <p>
+            A seasonal sanctuary of regenerative cooking, heirloom biodiversity, and communal gatherings in the Highland Valley.
+          </p>
+          <div class="footer-socials">
+            <a href="#" class="btn-icon" aria-label="Instagram"><i class="ri-instagram-line"></i></a>
+            <a href="#" class="btn-icon" aria-label="YouTube"><i class="ri-youtube-line"></i></a>
+            <a href="#" class="btn-icon" aria-label="Email"><i class="ri-mail-line"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <div class="footer-col-title">Navigation</div>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="menu.html">Menus</a></li>
+            <li><a href="supper-club.html">Supper Club</a></li>
+            <li><a href="ingredients.html">Our Ingredients</a></li>
+            <li><a href="contact.html">Contact & Bookings</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <div class="footer-col-title">Dining Hours</div>
+          <p style="font-size: 0.95rem; margin-bottom: var(--space-2);">
+            <strong>Weekend Brunch:</strong><br>Saturday & Sunday: 10:00 AM – 2:30 PM
+          </p>
+          <p style="font-size: 0.95rem; margin-bottom: var(--space-2);">
+            <strong>Hearth Dinner:</strong><br>Thursday – Sunday: 5:30 PM – 10:30 PM
+          </p>
+          <p style="font-size: 0.95rem;">
+            <strong>Supper Club:</strong><br>Select Alternate Saturdays: 7:00 PM
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <div class="footer-col-title">Farmstead Location</div>
+          <p style="font-size: 0.95rem; margin-bottom: var(--space-3);">
+            742 Meadowbrook Valley Road<br>
+            Highland Valley, CA 95476<br>
+            (42 miles north of the city)
+          </p>
+          <a href="contact.html" class="btn btn-outline btn-outline-light" style="width: 100%;">Get Directions</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-copyright">
+          © 2026 Harvest & Hearth Restaurant & Supper Club. Certified Regenerative & Michelin Green Star.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Core JavaScript -->
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

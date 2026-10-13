@@ -81,6 +81,8 @@
    ========================================================================== */
 html[data-theme="dark"] {
   color-scheme: dark;
+  /* Maintain primary brand color consistent in both dark and light mode */
+  --color-primary: #253324;
   --color-bg: #111711;
   --color-surface: #182218;
   --color-surface-subtle: #202D20;
@@ -375,14 +377,16 @@ html[data-theme="dark"] .portal-patron-tag i {
 }
 
 html[data-theme="dark"] .btn-primary {
-  background-color: var(--color-accent);
-  color: #141A13;
-  border-color: var(--color-accent);
+  background-color: var(--color-primary);
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.22);
 }
 
 html[data-theme="dark"] .btn-primary:hover {
-  background-color: #E6B587;
-  color: #141A13;
+  background-color: #1a2519;
+  border-color: rgba(255, 255, 255, 0.38);
+  color: #FFFFFF;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
 }
 
 .btn-secondary,
@@ -3633,8 +3637,9 @@ html[data-theme="dark"] strong {
   color: var(--color-text);
 }
 
-html[data-theme="dark"] [style*="color: var(--color-primary)"] {
-  color: var(--color-text) !important;
+/* Ensure primary color identity is preserved consistently in dark theme */
+html[data-theme="dark"] .text-primary {
+  color: var(--color-primary);
 }
 
 /* ==========================================================================
@@ -4226,6 +4231,490 @@ html[data-theme="dark"] .dash-dock-item.active {
   .kpi-grid {
     grid-template-columns: 1fr;
   }
+}
+
+/* ==========================================================================
+   22. ENHANCED DIETARY BADGES, MENUS & SUPPER CLUB STYLING
+   ========================================================================== */
+
+/* Dietary Badges: GF, Vegan, DF, NF */
+.dietary-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0.2rem 0.58rem;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  line-height: 1;
+  transition: var(--transition-smooth);
+}
+
+.dietary-badge.gf {
+  background-color: rgba(212, 163, 115, 0.18);
+  color: #9E642A;
+  border: 1px solid rgba(212, 163, 115, 0.45);
+}
+
+.dietary-badge.vegan {
+  background-color: rgba(46, 125, 70, 0.14);
+  color: #246B3B;
+  border: 1px solid rgba(46, 125, 70, 0.35);
+}
+
+.dietary-badge.df {
+  background-color: rgba(186, 93, 56, 0.14);
+  color: #933E1D;
+  border: 1px solid rgba(186, 93, 56, 0.35);
+}
+
+.dietary-badge.nf {
+  background-color: rgba(75, 85, 99, 0.12);
+  color: #374151;
+  border: 1px solid rgba(75, 85, 99, 0.28);
+}
+
+html[data-theme="dark"] .dietary-badge.gf {
+  background-color: rgba(212, 163, 115, 0.24);
+  color: #F6D0A7;
+  border-color: rgba(212, 163, 115, 0.45);
+}
+
+html[data-theme="dark"] .dietary-badge.vegan {
+  background-color: rgba(74, 222, 128, 0.18);
+  color: #6EE7B7;
+  border-color: rgba(74, 222, 128, 0.38);
+}
+
+html[data-theme="dark"] .dietary-badge.df {
+  background-color: rgba(230, 122, 80, 0.22);
+  color: #FFA07A;
+  border-color: rgba(230, 122, 80, 0.45);
+}
+
+html[data-theme="dark"] .dietary-badge.nf {
+  background-color: rgba(156, 173, 154, 0.18);
+  color: #D1D5DB;
+  border-color: rgba(156, 173, 154, 0.35);
+}
+
+/* Menu Controls & Filters */
+.menu-controls-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+
+.menu-tabs-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+  background: var(--color-surface);
+  padding: 6px;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+}
+
+.menu-tab-btn {
+  padding: 0.65rem 1.45rem;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.92rem;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  border: 1px solid transparent;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.menu-tab-btn:hover {
+  color: var(--color-text);
+}
+
+.menu-tab-btn.active {
+  background-color: var(--color-primary);
+  color: #FFFFFF !important;
+  box-shadow: 0 4px 12px rgba(37, 51, 36, 0.25);
+}
+
+html[data-theme="dark"] .menu-tab-btn.active {
+  background-color: var(--color-primary);
+  color: #FFFFFF !important;
+  border-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+}
+
+.dietary-filters-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.dietary-filter-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  margin-inline-end: 4px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.dietary-filter-btn {
+  padding: 0.35rem 0.95rem;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  background: var(--color-surface-subtle);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.dietary-filter-btn:hover {
+  border-color: var(--color-secondary);
+}
+
+.dietary-filter-btn.active {
+  background-color: var(--color-secondary);
+  border-color: var(--color-secondary);
+  color: #FFFFFF !important;
+}
+
+/* Menu Dishes Grid & Cards */
+.menu-dishes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: var(--space-5);
+}
+
+.menu-dish-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-global);
+  box-shadow: var(--shadow-global);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: var(--transition-smooth);
+  position: relative;
+}
+
+.menu-dish-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--color-accent);
+}
+
+.menu-dish-media {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+  background-color: var(--color-surface-subtle);
+}
+
+.menu-dish-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.menu-dish-card:hover .menu-dish-media img {
+  transform: scale(1.06);
+}
+
+.menu-dish-body {
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  text-align: left;
+}
+
+.menu-dish-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--space-2);
+  margin-bottom: var(--space-2);
+}
+
+.menu-dish-name {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: var(--weight-h3);
+  color: var(--color-text);
+  margin: 0;
+}
+
+.menu-dish-price {
+  font-family: var(--font-heading);
+  font-size: 1.18rem;
+  font-weight: 600;
+  color: var(--color-secondary);
+  white-space: nowrap;
+}
+
+.menu-dish-desc {
+  font-size: 0.92rem;
+  color: var(--color-text-muted);
+  line-height: 1.55;
+  margin-bottom: var(--space-3);
+  flex-grow: 1;
+}
+
+.menu-dish-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  padding-top: var(--space-3);
+  border-top: 1px dashed var(--color-border);
+}
+
+.menu-dish-origin {
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.menu-dish-origin i {
+  color: var(--color-secondary);
+}
+
+.menu-dish-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+/* Farm Partner & Sourcing Cards */
+.farm-partner-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-global);
+  box-shadow: var(--shadow-global);
+  padding: var(--space-5);
+  text-align: left;
+  transition: var(--transition-smooth);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.farm-partner-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-secondary);
+  box-shadow: var(--shadow-hover);
+}
+
+.farm-partner-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-3);
+}
+
+.farm-partner-radius {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--color-secondary);
+  background: rgba(186, 93, 56, 0.1);
+  padding: 0.2rem 0.65rem;
+  border-radius: 999px;
+}
+
+/* Harvest Calendar Table */
+.harvest-calendar-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: var(--radius-global);
+  box-shadow: var(--shadow-global);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+}
+
+.harvest-calendar-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.harvest-calendar-table th,
+.harvest-calendar-table td {
+  padding: var(--space-4);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.harvest-calendar-table th {
+  background: var(--color-surface-subtle);
+  font-family: var(--font-heading);
+  color: var(--color-text);
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+
+.harvest-calendar-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* Supper Club Schedule Cards */
+.supper-dates-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: var(--space-5);
+}
+
+.supper-date-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-global);
+  box-shadow: var(--shadow-global);
+  padding: var(--space-5);
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  transition: var(--transition-smooth);
+}
+
+.supper-date-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--color-accent);
+}
+
+.supper-date-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  background: rgba(37, 51, 36, 0.1);
+  color: var(--color-primary);
+  margin-bottom: var(--space-3);
+  align-self: flex-start;
+}
+
+html[data-theme="dark"] .supper-date-badge {
+  background: rgba(255, 255, 255, 0.12);
+  color: #FFFFFF;
+}
+
+.supper-seats-left {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #B83A2E;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Communal Seating Visual Guide */
+.communal-seating-box {
+  background: var(--color-surface-subtle);
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius-global);
+  padding: var(--space-5);
+  margin-top: var(--space-6);
+  text-align: center;
+}
+
+.communal-table-graphic {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  max-width: 600px;
+  margin: var(--space-4) auto;
+}
+
+.communal-table-plank {
+  height: 48px;
+  width: 100%;
+  background: #BA5D38;
+  background: linear-gradient(90deg, #8E4022 0%, #BA5D38 50%, #8E4022 100%);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+}
+
+.communal-seats-row {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  gap: 8px;
+}
+
+.communal-seat-dot {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--color-surface);
+  border: 2px solid var(--color-accent);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.65rem;
+  color: var(--color-text);
+  font-weight: 700;
+  transition: transform 0.2s ease;
+}
+
+.communal-seat-dot:hover {
+  transform: scale(1.25);
+  background: var(--color-primary);
+  color: #FFFFFF;
+}
+
+/* Quick Jump & Filter Animation */
+.menu-dish-card.hidden {
+  display: none !important;
+}
+
+@keyframes fadeInItem {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.menu-dish-card.fade-in {
+  animation: fadeInItem 0.35s ease forwards;
 }
 
 

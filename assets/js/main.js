@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initBackToTop();
   initFAQAccordion();
   initPasswordToggle();
+  initMenuFilters();
 });
 
 /* ==========================================================================
@@ -462,4 +463,68 @@ function initPasswordToggle() {
     });
   });
 }
+
+/* ==========================================================================
+   12. MENU TABS & DIETARY FILTER SYSTEM
+   ========================================================================== */
+function initMenuFilters() {
+  const categoryBtns = document.querySelectorAll('.menu-tab-btn');
+  const dietaryBtns = document.querySelectorAll('.dietary-filter-btn');
+  const dishCards = document.querySelectorAll('.menu-dish-card');
+
+  if (!dishCards.length) return;
+
+  let currentCategory = 'all';
+  let currentDietary = 'all';
+
+  function applyFilters() {
+    let visibleCount = 0;
+    dishCards.forEach(card => {
+      const cardCategory = card.getAttribute('data-category') || 'all';
+      const cardDietary = (card.getAttribute('data-dietary') || '').toLowerCase().split(' ');
+
+      const categoryMatches = (currentCategory === 'all' || cardCategory === currentCategory);
+      const dietaryMatches = (currentDietary === 'all' || cardDietary.includes(currentDietary));
+
+      if (categoryMatches && dietaryMatches) {
+        card.classList.remove('hidden');
+        card.classList.add('fade-in');
+        visibleCount++;
+      } else {
+        card.classList.add('hidden');
+        card.classList.remove('fade-in');
+      }
+    });
+
+    const noResultsMsg = document.getElementById('menu-no-results');
+    if (noResultsMsg) {
+      if (visibleCount === 0) {
+        noResultsMsg.style.display = 'block';
+      } else {
+        noResultsMsg.style.display = 'none';
+      }
+    }
+  }
+
+  categoryBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      categoryBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentCategory = btn.getAttribute('data-target-category') || 'all';
+      applyFilters();
+    });
+  });
+
+  dietaryBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      dietaryBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentDietary = (btn.getAttribute('data-target-dietary') || 'all').toLowerCase();
+      applyFilters();
+    });
+  });
+}
+
 
