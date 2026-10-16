@@ -581,6 +581,7 @@ html[data-theme="dark"] .site-header {
   padding-inline: var(--space-4);
   max-width: var(--container-max);
   margin-inline: auto;
+  position: relative;
 }
 
 /* Brand Logo */
@@ -595,6 +596,7 @@ html[data-theme="dark"] .site-header {
   letter-spacing: -0.02em;
   text-decoration: none;
   flex-shrink: 0;
+  min-width: 200px;
 }
 
 html[data-theme="dark"] .brand-logo {
@@ -610,7 +612,9 @@ html[data-theme="dark"] .brand-logo {
 .desktop-nav {
   display: flex;
   align-items: center;
-  gap: var(--space-4);
+  justify-content: center;
+  gap: clamp(0.75rem, 1.35vw, var(--space-4));
+  margin-inline: auto;
 }
 
 .nav-link {
@@ -646,8 +650,10 @@ html[data-theme="dark"] .brand-logo {
 .header-actions {
   display: flex;
   align-items: center;
+  justify-content: flex-end;
   gap: var(--space-3);
   flex-shrink: 0;
+  min-width: 200px;
 }
 
 /* Hamburger Trigger (≤ 1024px) */
@@ -968,47 +974,61 @@ html[data-theme="dark"] .drawer-close:hover {
   color: #FFFFFF;
 }
 
+/* Hero Badge (Home 1 and Hero sections with photo backdrops) - Always Crisp White & Golden */
+.hero .hero-badge,
+.page-hero .hero-badge,
 .hero-badge {
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
-  padding: 0.4rem 1rem;
+  padding: 0.45rem 1.1rem;
   border-radius: var(--radius-global);
-  background-color: rgba(255, 255, 255, 0.15);
+  background-color: rgba(255, 255, 255, 0.18) !important;
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  color: #FFFFFF;
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.35) !important;
+  color: #FFFFFF !important;
   font-size: var(--size-caption);
-  font-weight: var(--weight-bold-inline);
+  font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   margin-bottom: var(--space-4);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
   animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
-/* Light / general content styling for hero badge outside .hero */
-.section .hero-badge,
-:not(.hero):not(.page-hero) > * .hero-badge,
-:not(.hero):not(.page-hero) .hero-badge {
-  background-color: rgba(186, 93, 56, 0.12);
-  border: 1px solid rgba(186, 93, 56, 0.28);
+.hero .hero-badge *,
+.page-hero .hero-badge *,
+.hero-badge * {
+  color: #FFFFFF !important;
+}
+
+.hero .hero-badge i,
+.page-hero .hero-badge i,
+.hero-badge i {
+  color: var(--color-accent) !important;
+}
+
+/* Light theme content styling for hero badge used only inside normal white/cream sections */
+.section:not(.hero):not(.page-hero) .hero-badge {
+  background-color: rgba(186, 93, 56, 0.12) !important;
+  border: 1px solid rgba(186, 93, 56, 0.28) !important;
+  color: #933E1D !important;
+  box-shadow: none;
+}
+
+.section:not(.hero):not(.page-hero) .hero-badge * {
   color: #933E1D !important;
 }
 
-.section .hero-badge *,
-:not(.hero):not(.page-hero) .hero-badge * {
-  color: #933E1D !important;
-}
-
-html[data-theme="dark"] .section .hero-badge,
-html[data-theme="dark"] :not(.hero):not(.page-hero) .hero-badge {
-  background-color: rgba(212, 163, 115, 0.18);
-  border-color: rgba(212, 163, 115, 0.4);
+html[data-theme="dark"] .section:not(.hero):not(.page-hero) .hero-badge {
+  background-color: rgba(212, 163, 115, 0.18) !important;
+  border-color: rgba(212, 163, 115, 0.4) !important;
   color: #F6D0A7 !important;
+  box-shadow: none;
 }
 
-html[data-theme="dark"] .section .hero-badge *,
-html[data-theme="dark"] :not(.hero):not(.page-hero) .hero-badge * {
+html[data-theme="dark"] .section:not(.hero):not(.page-hero) .hero-badge * {
   color: #F6D0A7 !important;
 }
 
@@ -1753,6 +1773,45 @@ html[data-theme="dark"] .footer-col h4 {
   margin-top: var(--space-3);
 }
 
+/* Footer "Get Directions" Button (Task 2: 100% visible in light & dark themes) */
+.site-footer .btn-outline,
+.site-footer .btn-outline-light,
+.footer-directions-btn {
+  background-color: transparent !important;
+  color: var(--color-primary) !important;
+  border: 1px solid var(--color-border) !important;
+  font-weight: var(--weight-btn);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-smooth);
+}
+
+.site-footer .btn-outline:hover,
+.site-footer .btn-outline-light:hover,
+.footer-directions-btn:hover {
+  background-color: var(--color-secondary) !important;
+  border-color: var(--color-secondary) !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 4px 14px rgba(186, 93, 56, 0.25);
+  transform: translateY(-2px);
+}
+
+html[data-theme="dark"] .site-footer .btn-outline,
+html[data-theme="dark"] .site-footer .btn-outline-light,
+html[data-theme="dark"] .footer-directions-btn {
+  color: var(--color-text) !important;
+  border-color: var(--color-border) !important;
+}
+
+html[data-theme="dark"] .site-footer .btn-outline:hover,
+html[data-theme="dark"] .site-footer .btn-outline-light:hover,
+html[data-theme="dark"] .footer-directions-btn:hover {
+  background-color: var(--color-secondary) !important;
+  border-color: var(--color-secondary) !important;
+  color: #FFFFFF !important;
+}
+
 .footer-copyright {
   border-top: 1px solid var(--color-border);
   padding-top: var(--space-4);
@@ -1880,21 +1939,38 @@ html[data-theme="dark"] .form-textarea {
 }
 
 /* Date input calendar picker indicator */
+input[type="date"] {
+  position: relative;
+}
+
 input[type="date"]::-webkit-calendar-picker-indicator {
   cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
   opacity: 0.8;
-  transition: opacity 0.2s ease, filter 0.2s ease;
+  transition: opacity 0.2s ease, filter 0.2s ease, transform var(--transition-fast);
 }
 
 input[type="date"]::-webkit-calendar-picker-indicator:hover {
   opacity: 1;
+  transform: scale(1.08);
+}
+
+html[data-theme="dark"] input[type="date"],
+html[data-theme="dark"] .form-input[type="date"] {
+  color-scheme: dark !important;
 }
 
 html[data-theme="dark"] input[type="date"]::-webkit-calendar-picker-indicator,
 html[data-theme="dark"] .form-input[type="date"]::-webkit-calendar-picker-indicator {
-  filter: invert(1) brightness(1.2) !important;
-  opacity: 0.95;
+  filter: brightness(0) invert(1) !important;
+  opacity: 1 !important;
   cursor: pointer;
+}
+
+html:not([data-theme="dark"]) input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: none;
+  opacity: 0.75;
 }
 
 html[data-theme="dark"] .form-select option,
@@ -1907,36 +1983,6 @@ html:not([data-theme="dark"]) .form-select option,
 html:not([data-theme="dark"]) .form-select optgroup {
   background-color: #FFFFFF !important;
   color: #1E271D !important;
-}
-
-/* Calendar Date Input Picker Indicator in Light & Dark Mode */
-input[type="date"] {
-  position: relative;
-}
-
-input[type="date"]::-webkit-calendar-picker-indicator {
-  cursor: pointer;
-  padding: 4px;
-  border-radius: 4px;
-  transition: transform var(--transition-fast), filter var(--transition-fast), opacity var(--transition-fast);
-}
-
-input[type="date"]::-webkit-calendar-picker-indicator:hover {
-  transform: scale(1.1);
-}
-
-html[data-theme="dark"] input[type="date"] {
-  color-scheme: dark;
-}
-
-html[data-theme="dark"] input[type="date"]::-webkit-calendar-picker-indicator {
-  filter: invert(1) brightness(1.2);
-  opacity: 0.9;
-}
-
-html:not([data-theme="dark"]) input[type="date"]::-webkit-calendar-picker-indicator {
-  filter: none;
-  opacity: 0.75;
 }
 
 .form-textarea {
@@ -2019,9 +2065,6 @@ html[data-theme="dark"] .form-textarea:focus {
   gap: var(--space-2);
 }
 
-/* ==========================================================================
-   11. AUTH PAGES — DEDICATED TOPBAR WITH THEME & RTL CONTROLS (ALL DEVICES)
-   ========================================================================== */
 .auth-page-body {
   min-height: 100vh;
   display: flex;
@@ -2029,21 +2072,21 @@ html[data-theme="dark"] .form-textarea:focus {
   align-items: center;
   justify-content: center;
   background-color: var(--color-bg);
-  padding: calc(var(--space-6) + 36px) var(--space-4) var(--space-6);
+  padding: var(--space-6) var(--space-4);
   overflow-x: hidden;
   overflow-y: auto;
   position: relative;
   box-sizing: border-box;
 }
 
-/* Auth Top Navigation Bar (Fixed for universal device access) */
+/* Auth Top Navigation Bar (Hidden per Point 4) */
 .auth-topbar {
+  display: none !important;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   width: 100%;
-  display: flex;
   justify-content: flex-end;
   align-items: center;
   padding: var(--space-3) var(--space-6);
@@ -2133,8 +2176,7 @@ html[data-theme="dark"] .auth-back-link:hover {
     height: 42px;
   }
   .auth-page-body {
-    padding-top: calc(var(--space-5) + 40px);
-    padding-inline: var(--space-3);
+    padding: var(--space-5) var(--space-3);
   }
   .auth-card {
     padding: var(--space-5) var(--space-3);
@@ -3781,9 +3823,10 @@ html[data-theme="dark"] .text-primary {
 .dash-topbar-left {
   display: flex;
   align-items: center;
-  gap: var(--space-3);
-  flex-shrink: 0;
+  gap: var(--space-2);
+  flex: 1;
   min-width: 0;
+  overflow: hidden;
 }
 
 /* Desktop sidebar toggle — hidden (sidebar always visible on desktop) */
@@ -4257,33 +4300,42 @@ html[data-theme="dark"] .dash-dock-item.active {
   }
   .dash-topbar {
     height: 64px;
-    padding-inline: var(--space-4);
-    gap: var(--space-2);
+    padding-inline: 16px;
+    gap: 12px;
+  }
+  .dash-topbar-left {
+    flex: 1;
+    min-width: 0;
   }
   .dash-topbar .brand-logo {
     display: inline-flex !important;
-    font-size: 1.2rem;
-    gap: 7px;
-    max-width: calc(100% - 150px);
-    overflow: hidden;
+    font-size: 1.12rem !important;
+    gap: 6px;
+    min-width: 0 !important;
+    max-width: 100% !important;
   }
   .dash-topbar .brand-logo span {
     display: inline-block !important;
-    font-size: 1.2rem;
+    font-size: 1.12rem !important;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
   }
   .dash-topbar .brand-logo-icon {
-    font-size: 1.4rem;
-    display: inline-flex !important;
+    font-size: 1.35rem !important;
     flex-shrink: 0;
   }
   .dash-topbar-right {
     display: inline-flex;
     align-items: center;
-    gap: var(--space-2);
+    gap: 6px;
     flex-shrink: 0;
+  }
+  .dash-topbar-right .btn-icon,
+  .dash-hamburger-btn {
+    width: 38px;
+    height: 38px;
+    font-size: 1.15rem;
   }
   .dash-main-content {
     margin-inline-start: 0 !important;
@@ -4312,30 +4364,35 @@ html[data-theme="dark"] .dash-dock-item.active {
   }
   .dash-topbar {
     height: 58px;
-    padding-inline: 12px;
+    padding-inline: 10px;
+    gap: 8px;
+  }
+  .dash-topbar-left {
+    flex: 1;
+    min-width: 0;
   }
   .dash-topbar .brand-logo {
     display: inline-flex !important;
-    font-size: 1.05rem;
-    gap: 6px;
-    max-width: calc(100% - 130px);
-    overflow: hidden;
+    font-size: 0.98rem !important;
+    gap: 5px;
+    min-width: 0 !important;
+    max-width: 100% !important;
   }
   .dash-topbar .brand-logo span {
     display: inline-block !important;
-    font-size: 1.05rem;
+    font-size: 0.98rem !important;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
   }
   .dash-topbar .brand-logo-icon {
-    font-size: 1.25rem;
+    font-size: 1.18rem !important;
     flex-shrink: 0;
   }
   .dash-hamburger-btn {
-    width: 38px;
-    height: 38px;
-    font-size: 1.25rem;
+    width: 36px;
+    height: 36px;
+    font-size: 1.15rem;
   }
   .dash-topbar-right {
     display: inline-flex;
@@ -4344,11 +4401,10 @@ html[data-theme="dark"] .dash-dock-item.active {
     flex-shrink: 0;
   }
   .dash-topbar-right .btn-icon {
-    width: 36px;
-    height: 36px;
-    font-size: 1.1rem;
+    width: 34px;
+    height: 34px;
+    font-size: 1.05rem;
   }
-}
   .kpi-grid {
     grid-template-columns: 1fr;
   }
