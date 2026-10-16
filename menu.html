@@ -29,6 +29,8 @@
         <a href="supper-club.html" class="nav-link">Supper Club</a>
         <a href="ingredients.html" class="nav-link">Our Ingredients</a>
         <a href="contact.html" class="nav-link">Contact Us</a>
+        <a href="dashboard.html" class="nav-link">Dashboard</a>
+        <a href="login.html" class="nav-link">Sign In</a>
       </nav>
 
       <!-- Header Actions -->
@@ -39,7 +41,8 @@
         <button type="button" class="btn-icon theme-toggle-btn" aria-label="Toggle Dark / Light Theme" title="Toggle theme mode">
           <i class="ri-moon-line"></i>
         </button>
-        <a href="contact.html" class="btn btn-primary" id="header-reserve-btn">Book a Table</a>
+        <!-- Authentication / Sign In Button (Removed Book a Table from Nav Bar) -->
+        <a href="login.html" class="btn btn-primary" id="header-auth-btn"><i class="ri-user-line"></i> <span>Sign In</span></a>
         <button type="button" class="hamburger-btn" aria-label="Open mobile navigation" aria-expanded="false" id="mobile-menu-trigger">
           <i class="ri-menu-4-line"></i>
         </button>
@@ -67,7 +70,8 @@
       <a href="supper-club.html" class="drawer-link">Supper Club <i class="ri-arrow-right-s-line"></i></a>
       <a href="ingredients.html" class="drawer-link">Our Ingredients <i class="ri-arrow-right-s-line"></i></a>
       <a href="contact.html" class="drawer-link">Contact Us <i class="ri-arrow-right-s-line"></i></a>
-      <a href="dashboard.html" class="drawer-link" style="opacity: 0.75; font-size: 0.95rem;">Guest Portal <i class="ri-arrow-right-s-line"></i></a>
+      <a href="dashboard.html" class="drawer-link">Guest Portal <i class="ri-arrow-right-s-line"></i></a>
+      <a href="login.html" class="drawer-link">Sign In / Register <i class="ri-arrow-right-s-line"></i></a>
     </nav>
 
     <div class="drawer-footer">
@@ -79,24 +83,31 @@
           <i class="ri-moon-line"></i>
         </button>
       </div>
-      <a href="contact.html" class="btn btn-primary" style="width: 100%;">Book a Table</a>
+      <a href="login.html" class="btn btn-primary" style="width: 100%;"><i class="ri-user-line"></i> Sign In / Register</a>
     </div>
   </aside>
 
   <!-- ==================== MAIN CONTENT ==================== -->
   <main>
-    <!-- PAGE HERO -->
-    <section class="section" style="padding-top: calc(var(--header-height) + var(--space-6)); padding-bottom: var(--space-4);">
-      <div class="container">
-        <header class="section-header">
-          <span class="section-eyebrow">Hyper-Seasonal Daily Curation</span>
-          <h1>Our Seasonal Menus</h1>
-          <p class="section-subtext">
-            Written each morning following walks through our greenhouses and conversations with neighbor farmers. Cooked exclusively over live wood-fire embers.
-          </p>
-        </header>
+    <!-- PAGE HERO WITH BACKGROUND IMAGE (TASK 3) -->
+    <section class="page-hero">
+      <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=1600&auto=format&fit=crop" 
+           alt="Artisan farmstead dining table setting with seasonal dishes" 
+           class="page-hero-backdrop" 
+           loading="eager">
+      <div class="page-hero-overlay"></div>
+      <div class="container page-hero-content">
+        <span class="section-eyebrow">Hyper-Seasonal Daily Curation</span>
+        <h1>Our Seasonal Menus</h1>
+        <p class="section-subtext">
+          Written each morning following walks through our greenhouses and conversations with neighbor farmers. Cooked exclusively over live wood-fire embers.
+        </p>
+      </div>
+    </section>
 
-        <!-- MENU CONTROLS & DIETARY FILTERS -->
+    <!-- MENU CONTROLS & DIETARY FILTERS -->
+    <section class="section" style="padding-top: var(--space-5); padding-bottom: var(--space-4);">
+      <div class="container">
         <div class="menu-controls-wrapper">
           <!-- Meal Category Tabs -->
           <div class="menu-tabs-nav" role="tablist" aria-label="Menu categories">
@@ -351,7 +362,7 @@
           <!-- Dish 9 -->
           <article class="menu-dish-card" data-category="dinner" data-dietary="gf df nf">
             <div class="menu-dish-media">
-              <img src="https://images.unsplash.com/photo-1514944298352-fae06a382104?q=80&w=600&auto=format&fit=crop" 
+              <img src="https://images.unsplash.com/photo-1518492104633-130d0cc84637?q=80&w=600&auto=format&fit=crop" 
                    alt="Gourmet fire-roasted duck breast with reduction sauce and microgreens" loading="lazy">
             </div>
             <div class="menu-dish-body">
@@ -583,7 +594,7 @@
               Seeking an unhurried culinary voyage? Experience our 7-course blind tasting menu paired with natural and biodynamic regional vintages.
             </p>
             <div style="display: flex; justify-content: space-between; align-items: center; padding-top: var(--space-3); border-top: 1px solid var(--color-border);">
-              <span style="font-weight: 700; font-size: 1.15rem; color: var(--color-primary);">$145 per guest</span>
+              <span class="tasting-price" style="font-size: 1.15rem;">$145 per guest</span>
               <a href="contact.html" class="btn btn-outline">Book Tasting</a>
             </div>
           </div>
@@ -643,6 +654,7 @@
             <li><a href="supper-club.html">Supper Club</a></li>
             <li><a href="ingredients.html">Our Ingredients</a></li>
             <li><a href="contact.html">Contact & Bookings</a></li>
+            <li><a href="dashboard.html">Guest Portal</a></li>
           </ul>
         </div>
 
@@ -661,10 +673,15 @@
 
         <div class="footer-col">
           <div class="footer-col-title">Farmstead Location</div>
-          <p style="font-size: 0.95rem; margin-bottom: var(--space-3);">
-            742 Meadowbrook Valley Road<br>
-            Highland Valley, CA 95476<br>
-            (42 miles north of the city)
+          <p style="font-size: 0.95rem; margin-bottom: var(--space-3); display: flex; flex-direction: column; gap: 8px;">
+            <span style="display: flex; align-items: flex-start; gap: 8px;">
+              <i class="ri-map-pin-line" style="color: var(--color-secondary); margin-top: 3px; flex-shrink: 0;"></i>
+              <span>742 Meadowbrook Valley Road<br>Highland Valley, CA 95476<br><small style="color: var(--color-text-muted);">(42 miles north of the city)</small></span>
+            </span>
+            <span style="display: flex; align-items: center; gap: 8px;">
+              <i class="ri-phone-line" style="color: var(--color-secondary); flex-shrink: 0;"></i>
+              <a href="tel:+17078439210" style="color: inherit;">+1 (707) 843-9210</a>
+            </span>
           </p>
           <a href="contact.html" class="btn btn-outline btn-outline-light" style="width: 100%;">Get Directions</a>
         </div>

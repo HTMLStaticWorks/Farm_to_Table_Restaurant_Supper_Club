@@ -496,6 +496,13 @@ function initMenuFilters() {
       }
     });
 
+    // Center lone card on last row (Task 6)
+    dishCards.forEach(c => c.classList.remove('lone-card-center'));
+    const visibleCards = Array.from(dishCards).filter(c => !c.classList.contains('hidden'));
+    if (visibleCards.length % 3 === 1) {
+      visibleCards[visibleCards.length - 1].classList.add('lone-card-center');
+    }
+
     const noResultsMsg = document.getElementById('menu-no-results');
     if (noResultsMsg) {
       if (visibleCount === 0) {
@@ -505,6 +512,9 @@ function initMenuFilters() {
       }
     }
   }
+
+  // Initial calculation of layout and lone card positioning
+  applyFilters();
 
   categoryBtns.forEach(btn => {
     btn.addEventListener('click', (e) => {

@@ -29,6 +29,8 @@
         <a href="supper-club.html" class="nav-link">Supper Club</a>
         <a href="ingredients.html" class="nav-link active">Our Ingredients</a>
         <a href="contact.html" class="nav-link">Contact Us</a>
+        <a href="dashboard.html" class="nav-link">Dashboard</a>
+        <a href="login.html" class="nav-link">Sign In</a>
       </nav>
 
       <!-- Header Actions -->
@@ -39,7 +41,8 @@
         <button type="button" class="btn-icon theme-toggle-btn" aria-label="Toggle Dark / Light Theme" title="Toggle theme mode">
           <i class="ri-moon-line"></i>
         </button>
-        <a href="contact.html" class="btn btn-primary" id="header-reserve-btn">Book a Table</a>
+        <!-- Authentication / Sign In Button (Removed Book a Table from Nav Bar) -->
+        <a href="login.html" class="btn btn-primary" id="header-auth-btn"><i class="ri-user-line"></i> <span>Sign In</span></a>
         <button type="button" class="hamburger-btn" aria-label="Open mobile navigation" aria-expanded="false" id="mobile-menu-trigger">
           <i class="ri-menu-4-line"></i>
         </button>
@@ -67,7 +70,8 @@
       <a href="supper-club.html" class="drawer-link">Supper Club <i class="ri-arrow-right-s-line"></i></a>
       <a href="ingredients.html" class="drawer-link active">Our Ingredients <i class="ri-arrow-right-s-line"></i></a>
       <a href="contact.html" class="drawer-link">Contact Us <i class="ri-arrow-right-s-line"></i></a>
-      <a href="dashboard.html" class="drawer-link" style="opacity: 0.75; font-size: 0.95rem;">Guest Portal <i class="ri-arrow-right-s-line"></i></a>
+      <a href="dashboard.html" class="drawer-link">Guest Portal <i class="ri-arrow-right-s-line"></i></a>
+      <a href="login.html" class="drawer-link">Sign In / Register <i class="ri-arrow-right-s-line"></i></a>
     </nav>
 
     <div class="drawer-footer">
@@ -79,46 +83,53 @@
           <i class="ri-moon-line"></i>
         </button>
       </div>
-      <a href="contact.html" class="btn btn-primary" style="width: 100%;">Book a Table</a>
+      <a href="login.html" class="btn btn-primary" style="width: 100%;"><i class="ri-user-line"></i> Sign In / Register</a>
     </div>
   </aside>
 
   <!-- ==================== MAIN CONTENT ==================== -->
   <main>
-    <!-- PAGE HERO -->
-    <section class="section" style="padding-top: calc(var(--header-height) + var(--space-6)); padding-bottom: var(--space-6);">
-      <div class="container">
-        <header class="section-header">
-          <span class="section-eyebrow">Living Soil & Provenance</span>
-          <h1>Our Ingredients & Terroir</h1>
-          <p class="section-subtext">
-            We do not believe in anonymous food. Every seed, leaf, root, and cut of meat served at our tables is nurtured within our 42-mile regional bio-district.
-          </p>
-        </header>
+    <!-- PAGE HERO WITH BACKGROUND IMAGE (TASK 3) -->
+    <section class="page-hero">
+      <img src="https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?q=80&w=1600&auto=format&fit=crop" 
+           alt="Freshly harvested heirloom organic vegetables, herbs, and vibrant crops" 
+           class="page-hero-backdrop" 
+           loading="eager">
+      <div class="page-hero-overlay"></div>
+      <div class="container page-hero-content">
+        <span class="section-eyebrow">Living Soil & Provenance</span>
+        <h1>Our Ingredients & Terroir</h1>
+        <p class="section-subtext">
+          We do not believe in anonymous food. Every seed, leaf, root, and cut of meat served at our tables is nurtured within our 42-mile regional bio-district.
+        </p>
+      </div>
+    </section>
 
-        <!-- Sourcing Metrics Grid -->
-        <div class="grid-4" style="margin-top: var(--space-5);">
+    <!-- Sourcing Metrics Grid Section -->
+    <section class="section" style="padding-top: var(--space-6); padding-bottom: var(--space-6);">
+      <div class="container">
+        <div class="grid-4">
           <div class="card">
             <div class="card-icon"><i class="ri-compass-3-line"></i></div>
-            <div style="font-family: var(--font-heading); font-size: 2.2rem; font-weight: 700; color: var(--color-primary); margin-bottom: 4px;">42 Miles</div>
+            <div class="stat-metric-number">42 Miles</div>
             <p style="margin: 0; font-size: 0.95rem;">Our strict maximum sourcing radius from hearth to farm.</p>
           </div>
 
           <div class="card">
             <div class="card-icon"><i class="ri-seedling-line"></i></div>
-            <div style="font-family: var(--font-heading); font-size: 2.2rem; font-weight: 700; color: var(--color-primary); margin-bottom: 4px;">100%</div>
+            <div class="stat-metric-number">100%</div>
             <p style="margin: 0; font-size: 0.95rem;">Regenerative & organic soil practices with zero synthetic chemicals.</p>
           </div>
 
           <div class="card">
             <div class="card-icon"><i class="ri-leaf-line"></i></div>
-            <div style="font-family: var(--font-heading); font-size: 2.2rem; font-weight: 700; color: var(--color-primary); margin-bottom: 4px;">28 Varieties</div>
+            <div class="stat-metric-number">28 Varieties</div>
             <p style="margin: 0; font-size: 0.95rem;">Heirloom and endangered heritage seeds revived in estate greenhouses.</p>
           </div>
 
           <div class="card">
             <div class="card-icon"><i class="ri-recycle-line"></i></div>
-            <div style="font-family: var(--font-heading); font-size: 2.2rem; font-weight: 700; color: var(--color-primary); margin-bottom: 4px;">Zero Waste</div>
+            <div class="stat-metric-number">Zero Waste</div>
             <p style="margin: 0; font-size: 0.95rem;">100% of kitchen organic trims composted back into the living soil.</p>
           </div>
         </div>
@@ -181,7 +192,7 @@
             <p style="font-size: 0.92rem; margin-bottom: var(--space-3); color: var(--color-text-muted);">
               Twenty acres of intensive biodynamic cultivation. Produces our daily heirloom Chioggia beets, rainbow chard, purple Romanesco, edible blossoms, and greenhouse microgreens.
             </p>
-            <div style="margin-top: auto; padding-top: var(--space-3); border-top: 1px dashed var(--color-border); font-size: 0.82rem; color: var(--color-primary); font-weight: 600;">
+            <div class="farm-partner-footer">
               <i class="ri-seedling-line"></i> Lead Horticulturist: Clara Lindqvist
             </div>
           </article>
@@ -196,7 +207,7 @@
             <p style="font-size: 0.92rem; margin-bottom: var(--space-3); color: var(--color-text-muted);">
               Family-run water-powered stone mill reviving landrace wheats, ancient emmer, and rye. Milled cold every Tuesday for our 48-hour sourdough loaves and hearth pastries.
             </p>
-            <div style="margin-top: auto; padding-top: var(--space-3); border-top: 1px dashed var(--color-border); font-size: 0.82rem; color: var(--color-primary); font-weight: 600;">
+            <div class="farm-partner-footer">
               <i class="ri-bread-line"></i> Master Miller: Thomas Brennan
             </div>
           </article>
@@ -211,7 +222,7 @@
             <p style="font-size: 0.92rem; margin-bottom: var(--space-3); color: var(--color-text-muted);">
               A sustainable guild harvesting wild mountain chanterelles, black pine truffles, spruce tips, wild watercress, and seasonal mountain berries without disturbing forest roots.
             </p>
-            <div style="margin-top: auto; padding-top: var(--space-3); border-top: 1px dashed var(--color-border); font-size: 0.82rem; color: var(--color-primary); font-weight: 600;">
+            <div class="farm-partner-footer">
               <i class="ri-compass-line"></i> Forager Lead: Maya O'Connor
             </div>
           </article>
@@ -226,7 +237,7 @@
             <p style="font-size: 0.92rem; margin-bottom: var(--space-3); color: var(--color-text-muted);">
               Glacial run-off streams providing sustainable rainbow trout and brook charr. Reared with natural water oxygenation and harvested on day-of-service.
             </p>
-            <div style="margin-top: auto; padding-top: var(--space-3); border-top: 1px dashed var(--color-border); font-size: 0.82rem; color: var(--color-primary); font-weight: 600;">
+            <div class="farm-partner-footer">
               <i class="ri-drop-line"></i> Stream Master: Liam Hayes
             </div>
           </article>
@@ -241,7 +252,7 @@
             <p style="font-size: 0.92rem; margin-bottom: var(--space-3); color: var(--color-text-muted);">
               Pioneering natural winemakers producing unfined, unfiltered skin-contact orange wines and field blends farmed according to celestial and soil rhythms.
             </p>
-            <div style="margin-top: auto; padding-top: var(--space-3); border-top: 1px dashed var(--color-border); font-size: 0.82rem; color: var(--color-primary); font-weight: 600;">
+            <div class="farm-partner-footer">
               <i class="ri-goblet-line"></i> Vintners: Tracey & Jared Brandt
             </div>
           </article>
@@ -256,7 +267,7 @@
             <p style="font-size: 0.92rem; margin-bottom: var(--space-3); color: var(--color-text-muted);">
               Woodland pasture where heritage Berkshire pigs and pasture-raised ducks graze freely under ancient oaks on fallen acorns and heritage Gravenstein apples.
             </p>
-            <div style="margin-top: auto; padding-top: var(--space-3); border-top: 1px dashed var(--color-border); font-size: 0.82rem; color: var(--color-primary); font-weight: 600;">
+            <div class="farm-partner-footer">
               <i class="ri-user-smile-line"></i> Stewards: The Thorne Family
             </div>
           </article>
@@ -368,6 +379,7 @@
             <li><a href="supper-club.html">Supper Club</a></li>
             <li><a href="ingredients.html">Our Ingredients</a></li>
             <li><a href="contact.html">Contact & Bookings</a></li>
+            <li><a href="dashboard.html">Guest Portal</a></li>
           </ul>
         </div>
 
@@ -386,10 +398,15 @@
 
         <div class="footer-col">
           <div class="footer-col-title">Farmstead Location</div>
-          <p style="font-size: 0.95rem; margin-bottom: var(--space-3);">
-            742 Meadowbrook Valley Road<br>
-            Highland Valley, CA 95476<br>
-            (42 miles north of the city)
+          <p style="font-size: 0.95rem; margin-bottom: var(--space-3); display: flex; flex-direction: column; gap: 8px;">
+            <span style="display: flex; align-items: flex-start; gap: 8px;">
+              <i class="ri-map-pin-line" style="color: var(--color-secondary); margin-top: 3px; flex-shrink: 0;"></i>
+              <span>742 Meadowbrook Valley Road<br>Highland Valley, CA 95476<br><small style="color: var(--color-text-muted);">(42 miles north of the city)</small></span>
+            </span>
+            <span style="display: flex; align-items: center; gap: 8px;">
+              <i class="ri-phone-line" style="color: var(--color-secondary); flex-shrink: 0;"></i>
+              <a href="tel:+17078439210" style="color: inherit;">+1 (707) 843-9210</a>
+            </span>
           </p>
           <a href="contact.html" class="btn btn-outline btn-outline-light" style="width: 100%;">Get Directions</a>
         </div>
