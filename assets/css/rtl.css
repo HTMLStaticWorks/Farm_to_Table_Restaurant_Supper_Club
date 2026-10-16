@@ -55,8 +55,14 @@ body.rtl .mobile-drawer.active {
 @media (max-width: 1024px) {
   [dir="rtl"] .hamburger-btn,
   body.rtl .hamburger-btn {
-    margin-left: 0;
-    margin-right: auto;
+    margin-left: 0 !important;
+    margin-right: auto !important;
+  }
+  [dir="rtl"] .header-actions,
+  body.rtl .header-actions {
+    min-width: 0 !important;
+    width: auto !important;
+    margin-inline-start: auto;
   }
 }
 

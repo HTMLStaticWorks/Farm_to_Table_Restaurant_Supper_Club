@@ -91,28 +91,30 @@ function enableRTL(enable) {
    3. NAVIGATION & MOBILE DRAWER (STEP 4)
    ========================================================================== */
 function initNavigation() {
-  const hamburger = document.querySelector('.hamburger-btn');
+  const hamburgerBtns = document.querySelectorAll('.hamburger-btn:not(.dash-hamburger-btn), #mobile-menu-trigger');
   const drawer = document.querySelector('.mobile-drawer');
   const backdrop = document.querySelector('.drawer-backdrop');
   const closeBtn = document.querySelector('.drawer-close');
 
-  if (!hamburger || !drawer) return;
+  if (!drawer) return;
 
   function openDrawer() {
     drawer.classList.add('active');
     if (backdrop) backdrop.classList.add('active');
     document.body.style.overflow = 'hidden';
-    hamburger.setAttribute('aria-expanded', 'true');
+    hamburgerBtns.forEach(btn => btn.setAttribute('aria-expanded', 'true'));
   }
 
   function closeDrawer() {
     drawer.classList.remove('active');
     if (backdrop) backdrop.classList.remove('active');
     document.body.style.overflow = '';
-    hamburger.setAttribute('aria-expanded', 'false');
+    hamburgerBtns.forEach(btn => btn.setAttribute('aria-expanded', 'false'));
   }
 
-  hamburger.addEventListener('click', openDrawer);
+  hamburgerBtns.forEach(btn => {
+    btn.addEventListener('click', openDrawer);
+  });
   if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
   if (backdrop) backdrop.addEventListener('click', closeDrawer);
 
